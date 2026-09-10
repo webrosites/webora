@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>La Maison — Modern European Restaurant</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #f5f1e8;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 11, 11, 0.92);
+      border-bottom: 1px solid #262626;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: #cfcfcf;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      background:
+        radial-gradient(circle at center, #40352b 0%, #17130f 35%, #0b0b0b 70%);
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      border: 1px solid #6d5d4a;
+      padding: 8px 16px;
+      border-radius: 50px;
+      color: #d8c6ad;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(52px, 9vw, 100px);
+      line-height: 0.95;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      color: #c8c3ba;
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 15px 26px;
+      border-radius: 50px;
+      background: #f5f1e8;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 24px;
+    }
+
+    .section-title {
+      font-family: Georgia, serif;
+      font-size: 48px;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .section-subtitle {
+      color: #aaa;
+      max-width: 600px;
+      margin-bottom: 45px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    .card h3 {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #aaa;
+      font-size: 15px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid #292929;
+    }
+
+    .menu-item h3 {
+      font-family: Georgia, serif;
+      font-size: 20px;
+    }
+
+    .menu-item p {
+      color: #999;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .price {
+      color: #d8c6ad;
+      white-space: nowrap;
+    }
+
+    .about {
+      background: #141210;
+      border-top: 1px solid #292929;
+      border-bottom: 1px solid #292929;
+    }
+
+    .about-content {
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: #b5b0a8;
+      font-size: 17px;
+      margin-top: 20px;
+    }
+
+    .hours {
+      background: #0b0b0b;
+      border: 1px solid #292929;
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .hours h3 {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid #252525;
+      color: #bbb;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 120px 24px;
+      background: radial-gradient(circle at center, #30271f, #0b0b0b 65%);
+    }
+
+    .cta h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 500;
+    }
+
+    .cta p {
+      color: #aaa;
+      margin-top: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #292929;
+      color: #777;
+      font-size: 13px;
+    }
+
+    @media (max-width: 750px) {
+      .nav-links {
+        display: none;
+      }
+
+      .cards,
+      .menu,
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 40px;
+      }
+
+      .hero {
+        min-height: 80vh;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">LA MAISON</div>
+
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#hours">Hours</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">MODERN EUROPEAN DINING</div>
+
+      <h1>A taste worth remembering.</h1>
+
+      <p>
+        Seasonal ingredients, thoughtful cooking and an intimate atmosphere
+        come together at La Maison.
+      </p>
+
+      <a class="button" href="#contact">Reserve a Table →</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">The La Maison experience.</h2>
+
+    <p class="section-subtitle">
+      A relaxed dining experience built around exceptional ingredients,
+      elegant flavours and warm hospitality.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Seasonal</h3>
+        <p>
+          Our menu changes with the seasons to showcase ingredients at their best.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Handcrafted</h3>
+        <p>
+          Every plate is carefully prepared by our kitchen with attention to detail.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Intimate</h3>
+        <p>
+          A warm, elegant space designed for memorable dinners and conversations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="menu">
+    <h2 class="section-title">Our menu.</h2>
+
+    <p class="section-subtitle">
+      A selection of favourites from our seasonal kitchen.
+    </p>
+
+    <div class="menu">
+
+      <div>
+        <div class="menu-item">
+          <div>
+            <h3>Burrata & Heirloom Tomato</h3>
+            <p>Basil oil, sea salt, toasted sourdough</p>
+          </div>
+          <div class="price">$14</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Wild Mushroom Risotto</h3>
+            <p>Parmesan, herbs, roasted mushrooms</p>
+          </div>
+          <div class="price">$24</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Grilled Sea Bass</h3>
+            <p>Lemon butter, seasonal vegetables</p>
+          </div>
+          <div class="price">$29</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="menu-item">
+          <div>
+            <h3>French Onion Soup</h3>
+            <p>Caramelised onions, Gruyère, toasted bread</p>
+          </div>
+          <div class="price">$12</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Herb Roasted Chicken</h3>
+            <p>Garlic jus, potatoes, garden herbs</p>
+          </div>
+          <div class="price">$26</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <h3>Chocolate Tart</h3>
+            <p>Dark chocolate, vanilla cream, sea salt</p>
+          </div>
+          <div class="price">$11</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-content">
+
+      <div class="about-text">
+        <h2 class="section-title">Made for good evenings.</h2>
+
+        <p>
+          La Maison is a modern European restaurant where classic techniques
+          meet contemporary flavours.
+        </p>
+
+        <p>
+          Whether it is a date night, a celebration or simply dinner with
+          friends, our table is ready for you.
+        </p>
+      </div>
+
+      <div class="hours" id="hours">
+        <h3>Opening Hours</h3>
+
+        <div class="hours-row">
+          <span>Monday – Thursday</span>
+          <span>5pm – 10pm</span>
+        </div>
+
+        <div class="hours-row">
+          <span>Friday – Saturday</span>
+          <span>5pm – 11pm</span>
+        </div>
+
+        <div class="hours-row">
+          <span>Sunday</span>
+          <span>4pm – 9pm</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2>Your table is waiting.</h2>
+
+    <p>
+      125 Main Street · Downtown · Reservations recommended
+    </p>
+
+    <a class="button" href="mailto:hello@lamaison.example">
+      Make a Reservation
+    </a>
+  </section>
+
+  <footer>
+    © 2026 La Maison · Modern European Restaurant
+  </footer>
+
+</body>
+</html>
