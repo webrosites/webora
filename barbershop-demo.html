@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gentleman's Club | Barbershop</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#0b0b0b;color:#f5f1e8}
+a{text-decoration:none;color:inherit}
+
+nav{
+position:fixed;top:0;left:0;right:0;z-index:10;
+padding:22px 6%;
+display:flex;justify-content:space-between;align-items:center;
+background:#0b0b0bdd;backdrop-filter:blur(15px)
+}
+
+.logo{font-size:18px;font-weight:800;letter-spacing:2px}
+.logo span{color:#c9a45c}
+
+nav a{margin-left:25px;font-size:14px;color:#ccc}
+
+.btn{
+display:inline-block;padding:14px 22px;border-radius:30px;
+background:#c9a45c;color:#111;font-weight:800
+}
+
+.hero{
+min-height:100vh;padding:150px 8% 80px;
+display:flex;align-items:center;
+background:
+radial-gradient(circle at 80% 40%,#c9a45c33,transparent 30%),
+linear-gradient(135deg,#111,#070707)
+}
+
+.hero-content{max-width:800px}
+.tag{color:#c9a45c;letter-spacing:4px;font-size:12px;font-weight:bold}
+h1{font-family:Georgia,serif;font-size:clamp(55px,8vw,100px);line-height:.95;margin:25px 0}
+h1 span{color:#c9a45c}
+.hero p{max-width:580px;color:#aaa;font-size:18px;line-height:1.7;margin-bottom:35px}
+
+section{padding:100px 8%}
+.title{font-family:Georgia,serif;font-size:48px;margin-bottom:15px}
+.sub{color:#888;margin-bottom:45px}
+
+.cards{
+display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+}
+
+.card{
+background:#141414;border:1px solid #292929;
+padding:32px;border-radius:18px;min-height:230px;
+transition:.3s
+}
+
+.card:hover{transform:translateY(-7px);border-color:#c9a45c}
+.card small{color:#c9a45c}
+.card h3{font-family:Georgia,serif;font-size:27px;margin:35px 0 10px}
+.card p{color:#888}
+
+.prices{display:grid;gap:12px;max-width:750px}
+.price{
+display:flex;justify-content:space-between;
+padding:22px;border-bottom:1px solid #292929
+}
+.price b{color:#c9a45c}
+
+.cta{text-align:center;background:#12110f}
+.cta h2{font-family:Georgia,serif;font-size:clamp(40px,6vw,70px);margin:20px 0 30px}
+
+footer{
+padding:35px 8%;display:flex;justify-content:space-between;
+color:#666;font-size:13px
+}
+
+@media(max-width:700px){
+nav a:not(.btn){display:none}
+.cards{grid-template-columns:1fr}
+.hero{padding-top:130px}
+section{padding:80px 7%}
+.title{font-size:40px}
+footer{display:block}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">THE <span>GENTLEMAN'S</span> CLUB</div>
+<div>
+<a href="#services">Services</a>
+<a href="#prices">Prices</a>
+<a href="#book" class="btn">Book Now</a>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-content">
+<div class="tag">EST. 2012 · PREMIUM BARBERSHOP</div>
+
+<h1>
+Sharp cuts.<br>
+<span>Sharper presence.</span>
+</h1>
+
+<p>
+Classic barbering meets modern style. Precision cuts,
+hot towel shaves and effortless grooming for men who
+care about the details.
+</p>
+
+<a href="#book" class="btn">Book Your Chair →</a>
+</div>
+</section>
+
+<section id="services">
+<div class="title">The Craft</div>
+<div class="sub">Everything you need to look your absolute best.</div>
+
+<div class="cards">
+
+<div class="card">
+<small>01</small>
+<h3>Signature Cut</h3>
+<p>Consultation, precision haircut and premium styling.</p>
+</div>
+
+<div class="card">
+<small>02</small>
+<h3>Beard Ritual</h3>
+<p>Professional shaping, detailing and hot towel treatment.</p>
+</div>
+
+<div class="card">
+<small>03</small>
+<h3>Royal Shave</h3>
+<p>Classic straight-razor shave with a luxurious finish.</p>
+</div>
+
+</div>
+</section>
+
+<section id="prices">
+<div class="title">The Menu</div>
+<div class="sub">Simple pricing. Exceptional service.</div>
+
+<div class="prices">
+
+<div class="price"><span>Signature Cut · 45 min</span><b>$45</b></div>
+<div class="price"><span>Cut + Beard · 60 min</span><b>$65</b></div>
+<div class="price"><span>Royal Shave · 40 min</span><b>$40</b></div>
+<div class="price"><span>Executive Experience · 90 min</span><b>$95</b></div>
+
+</div>
+</section>
+
+<section class="cta" id="book">
+<div class="tag">YOUR CHAIR IS WAITING</div>
+<h2>Leave looking<br>like you mean it.</h2>
+
+<a class="btn"
+href="mailto:hello.weborasites@gmail.com?subject=Barbershop%20Appointment">
+Book an Appointment →
+</a>
+</section>
+
+<footer>
+<div>© 2026 The Gentleman's Club</div>
+<div>Premium Demo by Webora</div>
+</footer>
+
+</body>
+</html>
