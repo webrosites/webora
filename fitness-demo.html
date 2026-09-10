@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Forge Fitness | Train Without Limits</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"DM Sans",sans-serif;
+  background:#080808;
+  color:#f5f5f5;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:0 28px;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:20;
+  height:78px;
+  padding:0 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#080808dd;
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid #ffffff12;
+}
+
+.logo{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.logo span{
+  color:#d7ff38;
+}
+
+nav a{
+  margin-left:26px;
+  font-size:13px;
+  color:#bbb;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 22px;
+  border-radius:4px;
+  background:#d7ff38;
+  color:#090909;
+  font-weight:900;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  padding:150px 7% 80px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,#080808 0%,#080808dd 40%,#08080844 100%),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=90")
+    center/cover;
+}
+
+.hero-content{
+  max-width:800px;
+  position:relative;
+  z-index:2;
+}
+
+.tag{
+  color:#d7ff38;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-family:"Oswald",sans-serif;
+  text-transform:uppercase;
+  font-size:clamp(65px,9vw,125px);
+  line-height:.88;
+  margin:25px 0;
+}
+
+.hero h1 span{
+  color:#d7ff38;
+}
+
+.hero p{
+  max-width:560px;
+  color:#aaa;
+  font-size:17px;
+  line-height:1.7;
+  margin-bottom:34px;
+}
+
+.actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.ghost{
+  display:inline-block;
+  padding:14px 22px;
+  border:1px solid #ffffff35;
+  border-radius:4px;
+  font-weight:800;
+}
+
+/* STATS */
+
+.stats{
+  background:#d7ff38;
+  color:#080808;
+  padding:25px 7%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  text-align:center;
+}
+
+.stat strong{
+  display:block;
+  font-family:"Oswald",sans-serif;
+  font-size:34px;
+}
+
+.stat span{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+/* SECTIONS */
+
+section{
+  padding:110px 0;
+}
+
+.heading{
+  margin-bottom:55px;
+}
+
+.heading .tag{
+  margin-bottom:12px;
+}
+
+.heading h2{
+  font-family:"Oswald",sans-serif;
+  text-transform:uppercase;
+  font-size:58px;
+  line-height:1;
+}
+
+.heading p{
+  color:#888;
+  max-width:550px;
+  margin-top:15px;
+}
+
+/* PROGRAMS */
+
+.programs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  background:#111;
+  border:1px solid #242424;
+  padding:30px;
+  min-height:300px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:#d7ff38;
+}
+
+.card-number{
+  color:#d7ff38;
+  font-size:12px;
+  font-weight:900;
+}
+
+.card h3{
+  font-family:"Oswald",sans-serif;
+  text-transform:uppercase;
+  font-size:32px;
+  margin:65px 0 12px;
+}
+
+.card p{
+  color:#888;
+  line-height:1.7;
+}
+
+/* TRAINING */
+
+.training{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.training-img{
+  min-height:520px;
+  background:
+    url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1000&q=90")
+    center/cover;
+}
+
+.training-content{
+  background:#111;
+  padding:55px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.training-content h3{
+  font-family:"Oswald",sans-serif;
+  text-transform:uppercase;
+  font-size:55px;
+  line-height:1;
+  margin:20px 0;
+}
+
+.training-content p{
+  color:#888;
+  line-height:1.8;
+  margin-bottom:28px;
+}
+
+/* MEMBERSHIP */
+
+.memberships{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.membership{
+  background:#111;
+  border:1px solid #292929;
+  padding:35px;
+}
+
+.membership.featured{
+  border-color:#d7ff38;
+}
+
+.membership h3{
+  font-family:"Oswald",sans-serif;
+  font-size:30px;
+  text-transform:uppercase;
+}
+
+.price{
+  font-family:"Oswald",sans-serif;
+  font-size:50px;
+  margin:25px 0;
+}
+
+.price span{
+  font-family:"DM Sans";
+  font-size:13px;
+  color:#777;
+}
+
+.membership ul{
+  list-style:none;
+  color:#999;
+  line-height:2.2;
+  margin-bottom:25px;
+}
+
+.membership li::before{
+  content:"✓";
+  color:#d7ff38;
+  margin-right:9px;
+}
+
+/* CTA */
+
+.cta{
+  text-align:center;
+  background:
+    linear-gradient(#080808dd,#080808dd),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=80")
+    center/cover;
+}
+
+.cta h2{
+  font-family:"Oswald",sans-serif;
+  text-transform:uppercase;
+  font-size:clamp(55px,7vw,90px);
+  line-height:.95;
+  margin:18px 0 32px;
+}
+
+footer{
+  padding:35px 7%;
+  display:flex;
+  justify-content:space-between;
+  color:#666;
+  font-size:13px;
+  border-top:1px solid #222;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  nav a:not(.btn){
+    display:none;
+  }
+
+  .hero{
+    padding-top:130px;
+  }
+
+  .hero h1{
+    font-size:65px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .programs,
+  .training,
+  .memberships{
+    grid-template-columns:1fr;
+  }
+
+  .training-img{
+    min-height:400px;
+  }
+
+  .training-content{
+    padding:35px;
+  }
+
+  .heading h2{
+    font-size:45px;
+  }
+
+  footer{
+    display:block;
+  }
+
+  footer div+div{
+    margin-top:8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+
+<div class="logo">
+FORGE <span>FITNESS</span>
+</div>
+
+<div>
+<a href="#programs">Programs</a>
+<a href="#training">Training</a>
+<a href="#membership">Membership</a>
+<a href="#join" class="btn">Join Now</a>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="hero-content">
+
+<div class="tag">
+Strength · Discipline · Results
+</div>
+
+<h1>
+Build<br>
+Your<br>
+<span>Limitless.</span>
+</h1>
+
+<p>
+Forge Fitness is a performance-driven training space
+for people who are serious about becoming stronger,
+fitter and better than yesterday.
+</p>
+
+<div class="actions">
+
+<a href="#join" class="btn">
+Start Training →
+</a>
+
+<a href="#programs" class="ghost">
+Explore Programs
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+<strong>12+</strong>
+<span>Years Experience</span>
+</div>
+
+<div class="stat">
+<strong>2,500+</strong>
+<span>Members</span>
+</div>
+
+<div class="stat">
+<strong>40+</strong>
+<span>Weekly Classes</span>
+</div>
+
+</div>
+
+
+<!-- PROGRAMS -->
+
+<section id="programs">
+
+<div class="wrap">
+
+<div class="heading">
+
+<div class="tag">
+Train Different
+</div>
+
+<h2>
+Programs Built<br>
+For Progress.
+</h2>
+
+<p>
+Whether you're starting from zero or chasing your next
+personal best, there's a program designed around you.
+</p>
+
+</div>
+
+
+<div class="programs">
+
+<div class="card">
+
+<div class="card-number">01</div>
+
+<h3>Strength</h3>
+
+<p>
+Build serious strength with progressive resistance
+training, expert coaching and structured programming.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-number">02</div>
+
+<h3>Conditioning</h3>
+
+<p>
+Improve endurance, speed and athletic performance
+with high-intensity functional training.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-number">03</div>
+
+<h3>Personal Training</h3>
+
+<p>
+One-on-one coaching, personalized programming and
+accountability built around your exact goals.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TRAINING -->
+
+<section id="training">
+
+<div class="wrap">
+
+<div class="training">
+
+<div class="training-img"></div>
+
+<div class="training-content">
+
+<div class="tag">
+The Forge Method
+</div>
+
+<h3>
+Train Hard.<br>
+Train Smart.
+</h3>
+
+<p>
+Our coaches combine proven strength principles,
+modern conditioning and real accountability to help
+you create results that last.
+</p>
+
+<a href="#join" class="btn">
+Meet Your New Standard →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MEMBERSHIP -->
+
+<section id="membership">
+
+<div class="wrap">
+
+<div class="heading">
+
+<div class="tag">
+Membership
+</div>
+
+<h2>
+Choose Your<br>
+Commitment.
+</h2>
+
+</div>
+
+
+<div class="memberships">
+
+<div class="membership">
+
+<h3>Essential</h3>
+
+<div class="price">
+$39 <span>/ month</span>
+</div>
+
+<ul>
+<li>Full gym access</li>
+<li>Locker room access</li>
+<li>Free fitness assessment</li>
+</ul>
+
+<a href="#join" class="ghost">
+Choose Essential
+</a>
+
+</div>
+
+
+<div class="membership featured">
+
+<h3>Performance</h3>
+
+<div class="price">
+$69 <span>/ month</span>
+</div>
+
+<ul>
+<li>Everything in Essential</li>
+<li>Unlimited group classes</li>
+<li>Training programs</li>
+</ul>
+
+<a href="#join" class="btn">
+Choose Performance
+</a>
+
+</div>
+
+
+<div class="membership">
+
+<h3>Elite</h3>
+
+<div class="price">
+$119 <span>/ month</span>
+</div>
+
+<ul>
+<li>Everything in Performance</li>
+<li>Personal training sessions</li>
+<li>Priority coaching</li>
+</ul>
+
+<a href="#join" class="ghost">
+Choose Elite
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta" id="join">
+
+<div class="wrap">
+
+<div class="tag">
+Your strongest chapter starts now
+</div>
+
+<h2>
+Stop waiting.<br>
+Start forging.
+</h2>
+
+<a
+class="btn"
+href="mailto:hello.weborasites@gmail.com?subject=Forge%20Fitness%20Membership"
+>
+Join Forge Fitness →
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div>
+© 2026 Forge Fitness
+</div>
+
+<div>
+Premium Demo by Webora
+</div>
+
+</footer>
+
+</body>
+</html>
