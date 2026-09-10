@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna Beauty | Salon & Wellness</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:#fbf7f4;color:#292322}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:auto;padding:0 28px}
+
+nav{
+position:fixed;top:0;left:0;right:0;z-index:10;
+height:78px;padding:0 5%;
+display:flex;align-items:center;justify-content:space-between;
+background:#fbf7f4e8;backdrop-filter:blur(15px);
+border-bottom:1px solid #e9ddd7
+}
+.logo{font-family:"Playfair Display",serif;font-size:27px}
+.logo span{font-family:"DM Sans";font-size:10px;letter-spacing:3px;color:#a67d70;margin-left:8px}
+nav a{font-size:13px;margin-left:25px;color:#5b504c}
+.btn{
+display:inline-block;padding:13px 21px;border-radius:30px;
+background:#292322;color:white;font-weight:700
+}
+
+.hero{
+min-height:100vh;padding:140px 6% 80px;
+display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center
+}
+.hero h1{
+font-family:"Playfair Display",serif;
+font-size:clamp(55px,7vw,90px);line-height:.98;margin:22px 0
+}
+.hero h1 em{color:#a67d70}
+.hero p{max-width:500px;color:#756965;font-size:17px;line-height:1.8;margin-bottom:30px}
+.tag{
+font-size:11px;letter-spacing:4px;text-transform:uppercase;
+color:#a67d70;font-weight:700
+}
+.hero-img{
+height:620px;border-radius:180px 180px 25px 25px;
+background:url("https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=85") center/cover;
+box-shadow:20px 25px 60px #6d514326
+}
+
+section{padding:110px 0}
+.heading{text-align:center;margin-bottom:55px}
+.heading h2{font-family:"Playfair Display",serif;font-size:52px}
+.heading p{color:#817570;margin-top:12px}
+
+.services{
+display:grid;grid-template-columns:repeat(3,1fr);gap:20px
+}
+.card{
+background:white;border:1px solid #eadfda;border-radius:20px;
+padding:30px;transition:.3s
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 20px 45px #6d514318}
+.card img{width:100%;height:220px;object-fit:cover;border-radius:14px;margin-bottom:22px}
+.card h3{font-family:"Playfair Display",serif;font-size:28px}
+.card p{color:#827771;margin-top:8px}
+
+.gallery{
+display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:15px
+}
+.gallery img{
+width:100%;height:330px;object-fit:cover;border-radius:18px
+}
+.gallery img:first-child{height:500px;grid-row:span 2}
+.gallery img:nth-child(2),.gallery img:nth-child(3){height:240px}
+
+.prices{max-width:760px;margin:auto;background:white;border-radius:20px;padding:15px 30px}
+.price{
+display:flex;justify-content:space-between;
+padding:22px 5px;border-bottom:1px solid #eee2dd
+}
+.price:last-child{border:0}
+.price b{color:#a67d70}
+
+.cta{
+text-align:center;background:#292322;color:white;padding:120px 20px
+}
+.cta h2{
+font-family:"Playfair Display",serif;
+font-size:clamp(45px,6vw,75px);line-height:1.05;margin:18px 0 30px
+}
+.cta .btn{background:#e5c8bd;color:#292322}
+
+footer{
+padding:35px 6%;display:flex;justify-content:space-between;
+color:#857975;font-size:13px
+}
+
+@media(max-width:800px){
+nav a:not(.btn){display:none}
+.hero{grid-template-columns:1fr;padding-top:120px}
+.hero-img{height:480px;order:-1}
+.services{grid-template-columns:1fr}
+.gallery{grid-template-columns:1fr 1fr}
+.gallery img:first-child{grid-column:span 2;height:360px}
+.gallery img:nth-child(2),.gallery img:nth-child(3){height:220px}
+.heading h2{font-size:42px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">Luna Beauty <span>SALON & WELLNESS</span></div>
+<div>
+<a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#prices">Prices</a>
+<a href="#book" class="btn">Book Now</a>
+</div>
+</nav>
+
+<section class="hero">
+<div>
+<div class="tag">Beauty · Wellness · Confidence</div>
+
+<h1>Feel beautiful.<br><em>Be unforgettable.</em></h1>
+
+<p>
+A modern beauty studio created for slow mornings,
+beautiful transformations and a little time just for you.
+</p>
+
+<a href="#book" class="btn">Book Your Visit →</a>
+</div>
+
+<div class="hero-img"></div>
+</section>
+
+<section id="services">
+<div class="wrap">
+<div class="heading">
+<div class="tag">Our services</div>
+<h2>Made for your glow.</h2>
+<p>Thoughtful beauty treatments, beautifully delivered.</p>
+</div>
+
+<div class="services">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=85">
+<h3>Hair Studio</h3>
+<p>Cut, colour, styling and signature transformations.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=85">
+<h3>Skin Rituals</h3>
+<p>Relaxing facials designed to leave your skin glowing.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=85">
+<h3>Nail Atelier</h3>
+<p>Elegant manicures, pedicures and modern nail art.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="gallery">
+<div class="wrap">
+<div class="heading">
+<div class="tag">The Luna look</div>
+<h2>A little inspiration.</h2>
+</div>
+
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1000&q=85">
+<img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=85">
+<img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=800&q=85">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=85">
+</div>
+</div>
+</section>
+
+<section id="prices">
+<div class="wrap">
+<div class="heading">
+<div class="tag">Signature menu</div>
+<h2>Beautifully simple.</h2>
+</div>
+
+<div class="prices">
+<div class="price"><span>Signature Haircut & Style</span><b>$65</b></div>
+<div class="price"><span>Gloss & Blowout</span><b>$55</b></div>
+<div class="price"><span>Luna Facial Ritual</span><b>$75</b></div>
+<div class="price"><span>Manicure & Gel Finish</span><b>$45</b></div>
+<div class="price"><span>Full Beauty Experience</span><b>$150</b></div>
+</div>
+</div>
+</section>
+
+<section class="cta" id="book">
+<div class="tag">Your moment starts here</div>
+<h2>Come for the beauty.<br>Stay for the feeling.</h2>
+
+<a class="btn"
+href="mailto:hello.weborasites@gmail.com?subject=Luna%20Beauty%20Appointment">
+Book an Appointment →
+</a>
+</section>
+
+<footer>
+<div>© 2026 Luna Beauty</div>
+<div>Premium Demo by Webora</div>
+</footer>
+
+</body>
+</html>
