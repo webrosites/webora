@@ -1042,7 +1042,34 @@
   <div id="webora-ai">
     <button id="webora-ai-launch" aria-label="Open Webora AI">
       <span class="ai-glow"></span>
-      <span class="ai-logo">✨</span>
+      <!-- Cute Animated Waving Bot SVG -->
+      <svg class="bot-avatar-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Body -->
+        <path d="M36 78 C36 64, 64 64, 64 78 L66 94 C66 96, 34 96, 34 94 Z" fill="#E8EEF5"/>
+        <circle cx="50" cy="74" r="4.5" fill="#00D2FF"/>
+        
+        <!-- Left Hand (Waving Arm) -->
+        <g class="bot-arm-wave">
+          <path d="M37 68 C27 58, 20 48, 22 42 C24 38, 30 42, 34 56" stroke="#E8EEF5" stroke-width="7" stroke-linecap="round"/>
+        </g>
+
+        <!-- Head Base & Neck -->
+        <rect x="46" y="56" width="8" height="6" rx="2" fill="#111"/>
+        <rect x="25" y="24" width="50" height="36" rx="18" fill="#F4F7FB" stroke="#D3DCE6" stroke-width="1.5"/>
+
+        <!-- Headphones -->
+        <path d="M22 34 C22 18, 78 18, 78 34" stroke="#2B2D38" stroke-width="4.5" stroke-linecap="round"/>
+        <rect x="20" y="32" width="6" height="14" rx="3" fill="#1E2029"/>
+        <rect x="74" y="32" width="6" height="14" rx="3" fill="#1E2029"/>
+
+        <!-- Screen Face -->
+        <rect x="30" y="28" width="40" height="28" rx="14" fill="#15171E"/>
+
+        <!-- Cyan Glowing Eyes & Smile -->
+        <path class="bot-eye" d="M37 38 C39 35, 43 35, 45 38" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round"/>
+        <path class="bot-eye" d="M55 38 C57 35, 61 35, 63 38" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M46 45 C48 48, 52 48, 54 45 Z" fill="#00F0FF"/>
+      </svg>
     </button>
 
     <div id="webora-ai-window">
@@ -1089,59 +1116,87 @@
   </div>
 
   <style>
-  /* ================= ADVANCED AI STYLING ================= */
+  /* ================= ADVANCED AI STYLING (CORNER & ANIMATION FIX) ================= */
   #webora-ai {
     position: fixed;
-    right: 22px;
-    top: 22px;
+    right: 24px;
+    bottom: 24px;   /* Shifted to bottom right */
+    top: auto;
     z-index: 99999;
     font-family: inherit;
   }
 
   #webora-ai-launch {
     position: relative;
-    width: 60px;
-    height: 60px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 58px;
+    height: 58px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #2a2a38, #0c0c11);
-    color: #fff;
+    background: radial-gradient(circle at 35% 35%, #2a3342, #0d1117);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(115, 86, 255, 0.25);
-    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 210, 255, 0.25);
+    transition: transform 0.25s ease;
   }
 
   #webora-ai-launch:hover {
     transform: scale(1.08);
   }
 
-  .ai-logo {
-    font-size: 24px;
+  .bot-avatar-svg {
+    width: 44px;
+    height: 44px;
+    overflow: visible;
   }
 
+  /* Waving Hand Animation */
+  .bot-arm-wave {
+    transform-origin: 35px 68px;
+    animation: botWave 2.2s infinite ease-in-out;
+  }
+
+  @keyframes botWave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-16deg); }
+    50% { transform: rotate(10deg); }
+    75% { transform: rotate(-12deg); }
+  }
+
+  /* Eye Blinking */
+  .bot-eye {
+    animation: botBlink 3.5s infinite;
+  }
+
+  @keyframes botBlink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+  }
+
+  /* Glow ring */
   .ai-glow {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    animation: aiPulse 2.4s infinite;
+    animation: botGlow 2.4s infinite;
   }
 
-  @keyframes aiPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(115, 86, 255, 0.3); }
-    50% { box-shadow: 0 0 0 12px rgba(115, 86, 255, 0); }
+  @keyframes botGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.35); }
+    50% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
   }
 
+  /* Chat Window */
   #webora-ai-window {
     position: absolute;
     right: 0;
-    top: 72px;
-    width: 375px;
-    height: 560px;
-    max-width: calc(100vw - 30px);
+    bottom: 70px;
+    top: auto;
+    width: 365px;
+    height: 520px;
+    max-width: calc(100vw - 32px);
     display: none;
     flex-direction: column;
     overflow: hidden;
@@ -1409,14 +1464,26 @@
     border-top: 1px solid rgba(255, 255, 255, 0.03);
   }
 
+  /* MOBILE RESPONSIVE COMPACT */
   @media(max-width: 480px) {
     #webora-ai {
-      right: 14px;
-      top: 68px;
+      right: 18px;
+      bottom: 18px;
+      top: auto;
+    }
+    #webora-ai-launch {
+      width: 48px;
+      height: 48px;
+    }
+    .bot-avatar-svg {
+      width: 36px;
+      height: 36px;
     }
     #webora-ai-window {
-      width: calc(100vw - 28px);
-      height: 520px;
+      right: 0;
+      bottom: 60px;
+      width: calc(100vw - 36px);
+      height: 480px;
     }
   }
   </style>
