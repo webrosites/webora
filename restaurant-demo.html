@@ -166,13 +166,20 @@ background-position: center;
     }
 
     .menu-item {
-      display: flex;
+      display: block;
       justify-content: space-between;
       gap: 20px;
       padding: 20px 0;
       border-bottom: 1px solid #292929;
     }
-
+.menu-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  display: block;
+}
     .menu-item h3 {
       font-family: Georgia, serif;
       font-size: 20px;
@@ -357,6 +364,7 @@ background-position: center;
       <div>
         <div class="menu-item">
           <div>
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85" alt="Burrata & Heirloom Tomato">
             <h3>Burrata & Heirloom Tomato</h3>
             <p>Basil oil, sea salt, toasted sourdough</p>
           </div>
@@ -365,7 +373,7 @@ background-position: center;
 
         <div class="menu-item">
           <div>
-            <h3>Wild Mushroom Risotto</h3>
+            <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=1000&q=85" alt="Wild Mushroom Risotto"><h3>Wild Mushroom Risotto</h3>
             <p>Parmesan, herbs, roasted mushrooms</p>
           </div>
           <div class="price">$24</div>
@@ -373,7 +381,7 @@ background-position: center;
 
         <div class="menu-item">
           <div>
-            <h3>Grilled Sea Bass</h3>
+            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b2a1?auto=format&fit=crop&w=1000&q=85" alt="Grilled Sea Bass"><h3>Grilled Sea Bass</h3>
             <p>Lemon butter, seasonal vegetables</p>
           </div>
           <div class="price">$29</div>
