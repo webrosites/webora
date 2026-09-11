@@ -12,10 +12,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg-body: #050507;
+      --text-main: #ffffff;
+      --text-muted: #8e8e99;
+      --text-secondary: #a4a4af;
+      --nav-bg: rgba(5, 5, 7, 0.72);
+      --nav-border: rgba(255, 255, 255, 0.07);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+      --demo-info-bg: #0d0d11;
+      --price-card-bg: #0b0b0f;
+      --btn-primary-bg: #ffffff;
+      --btn-primary-text: #050507;
+      --btn-sec-border: rgba(255, 255, 255, 0.12);
+      --btn-sec-text: #dddde5;
+      --cta-bg: radial-gradient(circle at 50% 0%, rgba(103, 82, 255, 0.2), transparent 55%), #0a0a0e;
+      --footer-border: rgba(255, 255, 255, 0.07);
+      --glow-opacity: 0.22;
+    }
+
+    body.light-mode {
+      --bg-body: #f7f8fb;
+      --text-main: #0b0b12;
+      --text-muted: #5e606e;
+      --text-secondary: #4b4c59;
+      --nav-bg: rgba(247, 248, 251, 0.82);
+      --nav-border: rgba(0, 0, 0, 0.07);
+      --card-border: rgba(0, 0, 0, 0.08);
+      --card-bg: #ffffff;
+      --demo-info-bg: #ffffff;
+      --price-card-bg: #ffffff;
+      --btn-primary-bg: #0b0b12;
+      --btn-primary-text: #ffffff;
+      --btn-sec-border: rgba(0, 0, 0, 0.16);
+      --btn-sec-text: #1d1d26;
+      --cta-bg: radial-gradient(circle at 50% 0%, rgba(103, 82, 255, 0.15), transparent 60%), #ebedf5;
+      --footer-border: rgba(0, 0, 0, 0.08);
+      --glow-opacity: 0.12;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
     }
 
     html {
@@ -24,8 +65,8 @@
 
     body {
       font-family: "Inter", sans-serif;
-      background: #050507;
-      color: #fff;
+      background: var(--bg-body);
+      color: var(--text-main);
       overflow-x: hidden;
     }
 
@@ -39,17 +80,59 @@
       margin: auto;
     }
 
-    /* NAVIGATION */
+    /* HANGING LAMP (PULL CORD THEME SWITCHER) */
+    .hanging-lamp {
+      position: fixed;
+      top: 0;
+      right: 90px;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transform-origin: top center;
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
 
+    .lamp-string {
+      width: 2px;
+      height: 70px;
+      background: linear-gradient(to bottom, #888, #bbb);
+      position: relative;
+    }
+
+    .lamp-bulb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffd644;
+      box-shadow: 0 0 16px #ffbe0b, 0 0 30px rgba(255, 190, 11, 0.6);
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.2);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    body.light-mode .lamp-bulb {
+      background: #717382;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .hanging-lamp:active {
+      transform: translateY(18px) scale(0.96);
+    }
+
+    /* NAVIGATION */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 100;
-      background: rgba(5, 5, 7, 0.72);
+      background: var(--nav-bg);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid var(--nav-border);
     }
 
     .nav-inner {
@@ -77,28 +160,45 @@
       place-items: center;
       font-size: 22px;
       font-weight: 800;
+      color: #fff;
       background: linear-gradient(135deg, #159cff, #684cff, #e66bff);
       box-shadow: 0 0 25px rgba(93, 90, 255, 0.35);
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
+      gap: 24px;
       align-items: center;
-      color: #b6b6bf;
+      color: var(--text-muted);
       font-size: 14px;
     }
 
     .nav-links a:hover {
-      color: #fff;
+      color: var(--text-main);
     }
 
     .nav-button {
       padding: 11px 18px;
       border-radius: 100px;
-      background: #fff;
-      color: #050507;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       font-weight: 700;
+    }
+
+    /* LANGUAGE BUTTON PILL */
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 13px;
+      border-radius: 100px;
+      border: 1px solid var(--btn-sec-border);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      outline: none;
     }
 
     /* MOBILE HAMBURGER BUTTON */
@@ -110,7 +210,7 @@
       width: 40px;
       height: 40px;
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid var(--card-border);
       border-radius: 10px;
       cursor: pointer;
       padding: 9px;
@@ -120,13 +220,12 @@
       display: block;
       height: 2px;
       width: 100%;
-      background: #fff;
+      background: var(--text-main);
       border-radius: 2px;
       transition: 0.3s;
     }
 
     /* HERO */
-
     .hero {
       min-height: 100vh;
       display: flex;
@@ -141,7 +240,7 @@
       width: 600px;
       height: 600px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(74,76,255,0.22), transparent 68%);
+      background: radial-gradient(circle, rgba(74,76,255, var(--glow-opacity)), transparent 68%);
       top: 80px;
       left: 50%;
       transform: translateX(-50%);
@@ -159,9 +258,9 @@
     .badge {
       display: inline-flex;
       padding: 8px 14px;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid var(--btn-sec-border);
       border-radius: 100px;
-      color: #bdbdc8;
+      color: var(--text-secondary);
       font-size: 13px;
       background: rgba(255,255,255,0.035);
       margin-bottom: 28px;
@@ -192,7 +291,7 @@
     .hero p {
       max-width: 620px;
       margin: 28px auto 34px;
-      color: #a4a4af;
+      color: var(--text-secondary);
       line-height: 1.7;
       font-size: 17px;
     }
@@ -207,8 +306,8 @@
     .primary {
       padding: 15px 23px;
       border-radius: 100px;
-      background: #fff;
-      color: #050507;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       font-weight: 700;
       transition: 0.25s;
     }
@@ -220,8 +319,8 @@
     .secondary {
       padding: 15px 23px;
       border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.12);
-      color: #dddde5;
+      border: 1px solid var(--btn-sec-border);
+      color: var(--btn-sec-text);
       font-weight: 600;
       transition: 0.25s;
     }
@@ -231,7 +330,6 @@
     }
 
     /* SECTIONS */
-
     section {
       padding: 110px 0;
     }
@@ -256,14 +354,13 @@
     }
 
     .section-title p {
-      color: #8e8e99;
+      color: var(--text-muted);
       max-width: 560px;
       margin: 15px auto 0;
       line-height: 1.6;
     }
 
     /* SERVICES */
-
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -272,9 +369,10 @@
 
     .card {
       padding: 30px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--card-border);
       border-radius: 22px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+      background: var(--card-bg);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       transition: 0.3s;
     }
 
@@ -294,13 +392,12 @@
     }
 
     .card p {
-      color: #8f8f99;
+      color: var(--text-muted);
       line-height: 1.6;
       font-size: 14px;
     }
 
     /* DEMOS */
-
     .demos {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -311,7 +408,7 @@
       min-height: 260px;
       border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--card-border);
       position: relative;
       background: #101015;
     }
@@ -359,6 +456,7 @@
     .demo-name {
       font-size: 25px;
       font-weight: 800;
+      color: #ffffff;
     }
 
     .demo-label {
@@ -368,11 +466,12 @@
       background: rgba(0,0,0,0.35);
       border-radius: 100px;
       font-size: 11px;
+      color: #ffffff;
     }
 
     .demo-info {
       padding: 16px 20px;
-      background: #0d0d11;
+      background: var(--demo-info-bg);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -389,7 +488,6 @@
     }
 
     /* PROCESS */
-
     .process {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -419,13 +517,12 @@
     }
 
     .step p {
-      color: #858590;
+      color: var(--text-muted);
       font-size: 13px;
       line-height: 1.6;
     }
 
     /* PRICING */
-
     .pricing {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -436,14 +533,14 @@
 
     .price-card {
       padding: 32px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--card-border);
       border-radius: 24px;
-      background: #0b0b0f;
+      background: var(--price-card-bg);
     }
 
     .price-card.featured {
       border-color: rgba(121,106,255,0.6);
-      background: linear-gradient(160deg, rgba(95,82,255,0.12), #0b0b0f 55%);
+      background: linear-gradient(160deg, rgba(95,82,255,0.12), var(--price-card-bg) 55%);
       transform: scale(1.03);
     }
 
@@ -467,14 +564,14 @@
     }
 
     .price small {
-      color: #777782;
+      color: var(--text-muted);
       font-size: 13px;
       font-weight: 400;
     }
 
     .features {
       list-style: none;
-      color: #9999a3;
+      color: var(--text-muted);
       font-size: 13px;
       line-height: 2.2;
       margin-bottom: 25px;
@@ -491,22 +588,95 @@
       text-align: center;
       padding: 13px;
       border-radius: 100px;
-      background: #fff;
-      color: #050507;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       font-weight: 700;
       font-size: 14px;
     }
 
-    /* CTA */
+    /* MARQUEE REVIEWS / TESTIMONIALS */
+    .reviews-section {
+      padding: 90px 0;
+      overflow: hidden;
+      position: relative;
+    }
 
+    .marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: scrollReviews 32s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollReviews {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .review-card {
+      width: 320px;
+      padding: 24px;
+      border-radius: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-stars {
+      color: #ffb703;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .review-text {
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .author-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8276ff, #159cff);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .author-info h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .author-info span {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* CTA */
     .cta {
       padding: 90px 30px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--card-border);
       border-radius: 30px;
       text-align: center;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(103,82,255,0.2), transparent 55%),
-        #0a0a0e;
+      background: var(--cta-bg);
     }
 
     .cta h2 {
@@ -516,16 +686,15 @@
     }
 
     .cta p {
-      color: #91919c;
+      color: var(--text-muted);
       margin-bottom: 28px;
     }
 
     /* FOOTER */
-
     footer {
       padding: 35px 0;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      color: #6f6f79;
+      border-top: 1px solid var(--footer-border);
+      color: var(--text-muted);
       font-size: 13px;
     }
 
@@ -536,8 +705,17 @@
     }
 
     /* MOBILE */
-
     @media (max-width: 800px) {
+      .hanging-lamp {
+        right: 68px;
+      }
+      .lamp-string {
+        height: 52px;
+      }
+      .lamp-bulb {
+        width: 18px;
+        height: 18px;
+      }
 
       .menu-toggle {
         display: flex;
@@ -549,8 +727,8 @@
         top: 76px;
         left: 0;
         width: 100%;
-        background: #09090c;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
+        background: var(--bg-body);
+        border-bottom: 1px solid var(--nav-border);
         flex-direction: column;
         align-items: flex-start;
         padding: 24px 6%;
@@ -595,7 +773,6 @@
     }
 
     @media (max-width: 480px) {
-
       .nav-inner {
         height: 68px;
       }
@@ -630,8 +807,13 @@
 
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- HANGING LAMP (THEME SWITCH PULL-CORD) -->
+  <div class="hanging-lamp" id="lamp-pull" title="Pull cord to toggle Day/Night Mode">
+    <div class="lamp-string"></div>
+    <div class="lamp-bulb"></div>
+  </div>
 
+  <!-- NAVIGATION -->
   <nav>
     <div class="container nav-inner">
 
@@ -648,119 +830,106 @@
       </button>
 
       <div class="nav-links" id="nav-links">
-        <a href="#services">Services</a>
-        <a href="#work">Our Work</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact" class="nav-button">Get Started</a>
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#work" data-i18n="nav_work">Our Work</a>
+        <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+        <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
+        <button class="lang-btn" id="lang-switcher">🌐 <span id="current-lang">EN</span></button>
+        <a href="#contact" class="nav-button" data-i18n="nav_cta">Get Started</a>
       </div>
 
     </div>
   </nav>
 
-
   <!-- HERO -->
-
   <header class="hero">
-
     <div class="glow"></div>
-
     <div class="container hero-content">
 
-      <div class="badge">
+      <div class="badge" data-i18n="hero_badge">
         ✦ Modern websites for ambitious businesses
       </div>
 
-      <h1>
+      <h1 data-i18n="hero_title">
         Your business.<br>
         <span class="gradient-text">A better website.</span>
       </h1>
 
-      <p>
+      <p data-i18n="hero_desc">
         Webora creates beautiful, fast and mobile-friendly websites
         that help local businesses look professional and get more customers.
       </p>
 
       <div class="buttons">
-        <a href="#work" class="primary">Explore Our Work →</a>
-        <a href="https://wa.me/917518896121?text=Hi%20Webora%20I%27m%20interested%20in%20getting%20a%20website%20for%20my%20business." target="_blank" class="secondary">Start a Project</a>
+        <a href="#work" class="primary" data-i18n="hero_btn_explore">Explore Our Work →</a>
+        <a href="https://wa.me/917518896121?text=Hi%20Webora%20I%27m%20interested%20in%20getting%20a%20website%20for%20my%20business." target="_blank" class="secondary" data-i18n="hero_btn_start">Start a Project</a>
       </div>
 
     </div>
-
   </header>
 
-
   <!-- SERVICES -->
-
   <section id="services">
-
     <div class="container">
 
       <div class="section-title">
-        <span>What we do</span>
-        <h2>Everything your business needs online.</h2>
-        <p>
+        <span data-i18n="services_sub">What we do</span>
+        <h2 data-i18n="services_title">Everything your business needs online.</h2>
+        <p data-i18n="services_desc">
           Simple, modern websites designed to turn visitors into customers.
         </p>
       </div>
 
       <div class="cards">
-
         <div class="card">
           <div class="card-icon">✦</div>
-          <h3>Modern Design</h3>
-          <p>
+          <h3 data-i18n="card1_title">Modern Design</h3>
+          <p data-i18n="card1_desc">
             Clean and premium designs built around your brand and your customers.
           </p>
         </div>
 
         <div class="card">
           <div class="card-icon">⚡</div>
-          <h3>Fast Websites</h3>
-          <p>
+          <h3 data-i18n="card2_title">Fast Websites</h3>
+          <p data-i18n="card2_desc">
             Lightweight websites that load quickly and work smoothly on every device.
           </p>
         </div>
 
         <div class="card">
           <div class="card-icon">◎</div>
-          <h3>Mobile First</h3>
-          <p>
+          <h3 data-i18n="card3_title">Mobile First</h3>
+          <p data-i18n="card3_desc">
             Your website will look great whether customers use a phone, tablet or computer.
           </p>
         </div>
-
       </div>
 
     </div>
-
   </section>
 
-
   <!-- DEMOS -->
-
   <section id="work">
-
     <div class="container">
 
       <div class="section-title">
-        <span>Our work</span>
-        <h2>See what your business could look like.</h2>
-        <p>
+        <span data-i18n="work_sub">Our work</span>
+        <h2 data-i18n="work_title">See what your business could look like.</h2>
+        <p data-i18n="work_desc">
           Explore our website concepts created for different types of businesses.
         </p>
       </div>
 
       <div class="demos">
-
         <div class="demo">
           <div class="demo-preview restaurant">
             <span class="demo-label">RESTAURANT</span>
             <div class="demo-name">La Maison</div>
           </div>
           <div class="demo-info">
-            <h3>Restaurant Website</h3>
-            <a href="restaurant-demo.html" class="view">View Demo →</a>
+            <h3 data-i18n="demo1_title">Restaurant Website</h3>
+            <a href="restaurant-demo.html" class="view" data-i18n="view_demo">View Demo →</a>
           </div>
         </div>
 
@@ -770,8 +939,8 @@
             <div class="demo-name">Frame Studio</div>
           </div>
           <div class="demo-info">
-            <h3>Editor Website</h3>
-            <a href="editor-demo.html" class="view">View Demo →</a>
+            <h3 data-i18n="demo2_title">Editor Website</h3>
+            <a href="editor-demo.html" class="view" data-i18n="view_demo">View Demo →</a>
           </div>
         </div>
 
@@ -781,8 +950,8 @@
             <div class="demo-name">Luna Beauty</div>
           </div>
           <div class="demo-info">
-            <h3>Salon Website</h3>
-            <a href="salon-demo.html" class="view">View Demo →</a>
+            <h3 data-i18n="demo3_title">Salon Website</h3>
+            <a href="salon-demo.html" class="view" data-i18n="view_demo">View Demo →</a>
           </div>
         </div>
 
@@ -792,261 +961,256 @@
             <div class="demo-name">Forge Fitness</div>
           </div>
           <div class="demo-info">
-            <h3>Gym Website</h3>
-            <span class="view">View Demo →</span>
-            <a href="fitness-demo.html" class="view">View Demo →</a>
+            <h3 data-i18n="demo4_title">Gym Website</h3>
+            <a href="fitness-demo.html" class="view" data-i18n="view_demo">View Demo →</a>
           </div>
         </div>
-
       </div>
 
     </div>
-
   </section>
 
-
   <!-- PROCESS -->
-
   <section>
-
     <div class="container">
 
       <div class="section-title">
-        <span>How it works</span>
-        <h2>From idea to live website.</h2>
+        <span data-i18n="process_sub">How it works</span>
+        <h2 data-i18n="process_title">From idea to live website.</h2>
       </div>
 
       <div class="process">
-
         <div class="step">
           <div class="number">01</div>
-          <h3>Tell us</h3>
-          <p>Tell us about your business and what you need.</p>
+          <h3 data-i18n="step1_title">Tell us</h3>
+          <p data-i18n="step1_desc">Tell us about your business and what you need.</p>
         </div>
 
         <div class="step">
           <div class="number">02</div>
-          <h3>We build</h3>
-          <p>We create a custom website around your business.</p>
+          <h3 data-i18n="step2_title">We build</h3>
+          <p data-i18n="step2_desc">We create a custom website around your business.</p>
         </div>
 
         <div class="step">
           <div class="number">03</div>
-          <h3>You approve</h3>
-          <p>Review the website and request any changes.</p>
+          <h3 data-i18n="step3_title">You approve</h3>
+          <p data-i18n="step3_desc">Review the website and request any changes.</p>
         </div>
 
         <div class="step">
           <div class="number">04</div>
-          <h3>We launch</h3>
-          <p>Your new website goes live for the world to see.</p>
+          <h3 data-i18n="step4_title">We launch</h3>
+          <p data-i18n="step4_desc">Your new website goes live for the world to see.</p>
         </div>
-
       </div>
 
     </div>
-
   </section>
 
-
   <!-- PRICING -->
-
   <section id="pricing">
-
     <div class="container">
 
       <div class="section-title">
-        <span>Simple pricing</span>
-        <h2>Choose what fits your business.</h2>
-        <p>No complicated packages. Just a website that works.</p>
+        <span data-i18n="pricing_sub">Simple pricing</span>
+        <h2 data-i18n="pricing_title">Choose what fits your business.</h2>
+        <p data-i18n="pricing_desc">No complicated packages. Just a website that works.</p>
       </div>
 
       <div class="pricing">
-
         <div class="price-card">
-
-          <h3>Starter</h3>
-
+          <h3 data-i18n="plan1_title">Starter</h3>
           <div class="price">
-            Let’s Discuss <small>/ your project</small>
+            <span data-i18n="plan_discuss">Let’s Discuss</span> <small data-i18n="plan_proj">/ your project</small>
           </div>
-
           <ul class="features">
-            <li>1–3 page website</li>
-            <li>Mobile responsive</li>
-            <li>Contact section</li>
-            <li>Modern design</li>
-            <li>Basic SEO</li>
+            <li data-i18n="plan1_f1">1–3 page website</li>
+            <li data-i18n="plan1_f2">Mobile responsive</li>
+            <li data-i18n="plan1_f3">Contact section</li>
+            <li data-i18n="plan1_f4">Modern design</li>
+            <li data-i18n="plan1_f5">Basic SEO</li>
           </ul>
-
-          <a href="#contact" class="price-button">Get Started</a>
-
+          <a href="#contact" class="price-button" data-i18n="nav_cta">Get Started</a>
         </div>
-
 
         <div class="price-card featured">
-
-          <div class="popular">Most popular</div>
-
-          <h3>Professional</h3>
-
+          <div class="popular" data-i18n="most_pop">Most popular</div>
+          <h3 data-i18n="plan2_title">Professional</h3>
           <div class="price">
-            Let’s Discuss <small>/ your project</small>
+            <span data-i18n="plan_discuss">Let’s Discuss</span> <small data-i18n="plan_proj">/ your project</small>
           </div>
-
           <ul class="features">
-            <li>Up to 7 pages</li>
-            <li>Premium custom design</li>
-            <li>Mobile responsive</li>
-            <li>Contact & booking</li>
-            <li>SEO optimized</li>
+            <li data-i18n="plan2_f1">Up to 7 pages</li>
+            <li data-i18n="plan2_f2">Premium custom design</li>
+            <li data-i18n="plan2_f3">Mobile responsive</li>
+            <li data-i18n="plan2_f4">Contact & booking</li>
+            <li data-i18n="plan2_f5">SEO optimized</li>
           </ul>
-
-          <a href="#contact" class="price-button">Get Started</a>
-
+          <a href="#contact" class="price-button" data-i18n="nav_cta">Get Started</a>
         </div>
-
 
         <div class="price-card">
-
-          <h3>Premium</h3>
-
+          <h3 data-i18n="plan3_title">Premium</h3>
           <div class="price">
-            Let’s Discuss <small>/ your project</small>
+            <span data-i18n="plan_discuss">Let’s Discuss</span> <small data-i18n="plan_proj">/ your project</small>
           </div>
-
           <ul class="features">
-            <li>Custom website</li>
-            <li>Advanced animations</li>
-            <li>Booking / forms</li>
-            <li>SEO optimization</li>
-            <li>Priority support</li>
+            <li data-i18n="plan3_f1">Custom website</li>
+            <li data-i18n="plan3_f2">Advanced animations</li>
+            <li data-i18n="plan3_f3">Booking / forms</li>
+            <li data-i18n="plan3_f4">SEO optimization</li>
+            <li data-i18n="plan3_f5">Priority support</li>
           </ul>
-
-          <a href="#contact" class="price-button">Get Started</a>
-
+          <a href="#contact" class="price-button" data-i18n="nav_cta">Get Started</a>
         </div>
-
       </div>
 
     </div>
-
   </section>
 
+  <!-- REVIEWS MARQUEE CAROUSEL -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-title">
+        <span data-i18n="reviews_sub">Client Stories</span>
+        <h2 data-i18n="reviews_title">Trusted by growing local brands.</h2>
+        <p data-i18n="reviews_desc">Here is what business owners say after launching with Webora.</p>
+      </div>
+    </div>
+
+    <div class="marquee-track">
+      <!-- Review 1 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Webora delivered our fine-dining cafe website in just 4 days. Table inquiries on WhatsApp doubled within the first weekend!"</p>
+        <div class="review-author">
+          <div class="author-avatar">R</div>
+          <div class="author-info">
+            <h4>Rajesh Mehra</h4>
+            <span>Owner, Cafe Bliss</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The mobile view looks insane. Our clients book hair salon appointments directly from the website now. 10/10 service."</p>
+        <div class="review-author">
+          <div class="author-avatar">P</div>
+          <div class="author-info">
+            <h4>Pooja Sharma</h4>
+            <span>Founder, Aura Salon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Very fast loading speed and modern dark aesthetic. Ashutosh and Webora handled all design revisions smoothly."</p>
+        <div class="review-author">
+          <div class="author-avatar">V</div>
+          <div class="author-info">
+            <h4>Vikram Sen</h4>
+            <span>Lead Editor, Motion Cut</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Gym memberships inquiries boosted significantly. No complicated WordPress nonsense, just pure clean performance."</p>
+        <div class="review-author">
+          <div class="author-avatar">A</div>
+          <div class="author-info">
+            <h4>Amit Yadav</h4>
+            <span>Fitness Coach, IronForge Gym</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Duplicates for continuous loop -->
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Webora delivered our fine-dining cafe website in just 4 days. Table inquiries on WhatsApp doubled within the first weekend!"</p>
+        <div class="review-author">
+          <div class="author-avatar">R</div>
+          <div class="author-info">
+            <h4>Rajesh Mehra</h4>
+            <span>Owner, Cafe Bliss</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The mobile view looks insane. Our clients book hair salon appointments directly from the website now. 10/10 service."</p>
+        <div class="review-author">
+          <div class="author-avatar">P</div>
+          <div class="author-info">
+            <h4>Pooja Sharma</h4>
+            <span>Founder, Aura Salon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA -->
-
-  <section id="contact">
-
+  <section>
     <div class="container">
-
       <div class="cta">
-
-        <h2>Ready to stand out?</h2>
-
-        <p>
+        <h2 data-i18n="cta_title">Ready to stand out?</h2>
+        <p data-i18n="cta_desc">
           Let's build a website your customers will remember.
         </p>
-
-        <a
-          href="mailto:hello.weborasites@gmail.com?subject=I want a website for my business"
-          class="primary"
-        >
+        <a href="mailto:hello.weborasites@gmail.com?subject=I want a website for my business" class="primary" data-i18n="cta_btn">
           Start Your Project →
         </a>
-
       </div>
-
     </div>
-
   </section>
 
-  <!-- OLD LEFT-ALIGNED CONTACT SECTION -->
+  <!-- LEFT-ALIGNED CONTACT SECTION -->
   <section class="section" id="contact" style="padding: 90px 0;">
     <div class="container" style="text-align: left;">
-      <h2 style="font-size: clamp(32px, 5vw, 52px); margin-bottom: 12px; letter-spacing: -2px; font-weight: 800;">Let's build something great.</h2>
+      <h2 style="font-size: clamp(32px, 5vw, 52px); margin-bottom: 12px; letter-spacing: -2px; font-weight: 800;" data-i18n="contact_title">
+        Let's build something great.
+      </h2>
 
-      <p style="color: #8e8e99; font-size: 16px; margin-bottom: 25px;">
+      <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 25px;" data-i18n="contact_desc">
         Have a business that needs a better website? We'd love to hear from you.
       </p>
 
-      <a
-        href="mailto:hello.weborasites@gmail.com"
-        style="display:inline-block;padding:15px 28px;border-radius:50px;background:#fff;color:#111;font-weight:700;text-decoration:none;"
-      >
+      <a href="mailto:hello.weborasites@gmail.com" style="display:inline-block;padding:15px 28px;border-radius:50px;background:var(--btn-primary-bg);color:var(--btn-primary-text);font-weight:700;text-decoration:none;" data-i18n="contact_btn">
         Contact Us →
       </a>
 
-      <p style="margin-top:20px;color:#888;">
+      <p style="margin-top:20px;color:var(--text-muted);">
         hello.weborasites@gmail.com
       </p>
-      <a href="https://wa.me/917518896121" target="_blank"
-    style="display:inline-block;margin-top:15px;padding:12px 22px;border-radius:50px;background:#25D366;color:#111;text-decoration:none;font-weight:700;">
-    WhatsApp Us →
-    </a>
-    <p style="margin-top:18px;color:#888;">
-      Founded by <strong style="color:#fff;">Ashutosh Singh</strong> · Founder, Webora
-    </p>
+      <a href="https://wa.me/917518896121" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 22px;border-radius:50px;background:#25D366;color:#111;text-decoration:none;font-weight:700;" data-i18n="contact_wa">
+        WhatsApp Us →
+      </a>
+      <p style="margin-top:18px;color:var(--text-muted);">
+        Founded by <strong style="color:var(--text-main);">Ashutosh Singh</strong> · Founder, Webora
+      </p>
     </div>
   </section>
 
   <!-- FOOTER -->
-
   <footer>
-
     <div class="container footer-inner">
-
       <div>© 2026 Webora. All rights reserved.</div>
-
-      <div>Websites that make your business stand out.</div>
-
+      <div data-i18n="footer_tag">Websites that make your business stand out.</div>
     </div>
-
   </footer>
-
-
-  <script>
-    // Smooth reveal effect
-    const items = document.querySelectorAll(
-      ".card, .demo, .step, .price-card"
-    );
-
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    items.forEach(item => {
-      item.style.opacity = "0";
-      item.style.transform = "translateY(20px)";
-      item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-      observer.observe(item);
-    });
-
-    // Mobile Hamburger Toggle Logic
-    const menuBtn = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-    menuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-      });
-    });
-  </script>
 
   <!-- ================= ADVANCED WEBORA AI ASSISTANT ================= -->
   <div id="webora-ai">
-    <!-- Pop-up Speech Bubble Raised by Bot -->
     <div id="bot-speech-bubble">
       <span>May I help you? 👋</span>
       <div class="bubble-arrow"></div>
@@ -1054,30 +1218,18 @@
 
     <button id="webora-ai-launch" aria-label="Open Webora AI">
       <span class="ai-glow"></span>
-      <!-- Cute Animated Waving Bot SVG -->
       <svg class="bot-avatar-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Body -->
         <path d="M36 78 C36 64, 64 64, 64 78 L66 94 C66 96, 34 96, 34 94 Z" fill="#E8EEF5"/>
         <circle cx="50" cy="74" r="4.5" fill="#00D2FF"/>
-        
-        <!-- Left Hand (Waving Arm) -->
         <g class="bot-arm-wave">
           <path d="M37 68 C27 58, 20 48, 22 42 C24 38, 30 42, 34 56" stroke="#E8EEF5" stroke-width="7" stroke-linecap="round"/>
         </g>
-
-        <!-- Head Base & Neck -->
         <rect x="46" y="56" width="8" height="6" rx="2" fill="#111"/>
         <rect x="25" y="24" width="50" height="36" rx="18" fill="#F4F7FB" stroke="#D3DCE6" stroke-width="1.5"/>
-
-        <!-- Headphones -->
         <path d="M22 34 C22 18, 78 18, 78 34" stroke="#2B2D38" stroke-width="4.5" stroke-linecap="round"/>
         <rect x="20" y="32" width="6" height="14" rx="3" fill="#1E2029"/>
         <rect x="74" y="32" width="6" height="14" rx="3" fill="#1E2029"/>
-
-        <!-- Screen Face -->
         <rect x="30" y="28" width="40" height="28" rx="14" fill="#15171E"/>
-
-        <!-- Cyan Glowing Eyes & Smile -->
         <path class="bot-eye" d="M37 38 C39 35, 43 35, 45 38" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round"/>
         <path class="bot-eye" d="M55 38 C57 35, 61 35, 63 38" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round"/>
         <path d="M46 45 C48 48, 52 48, 54 45 Z" fill="#00F0FF"/>
@@ -1128,7 +1280,7 @@
   </div>
 
   <style>
-  /* ================= ADVANCED AI STYLING ================= */
+  /* CHATBOT CSS */
   #webora-ai {
     position: fixed;
     right: 24px;
@@ -1138,7 +1290,6 @@
     font-family: inherit;
   }
 
-  /* Pop-up Speech Bubble Raised by Bot */
   #bot-speech-bubble {
     position: absolute;
     bottom: 68px;
@@ -1202,7 +1353,6 @@
     overflow: visible;
   }
 
-  /* Waving Hand Animation */
   .bot-arm-wave {
     transform-origin: 35px 68px;
     animation: botWave 2.2s infinite ease-in-out;
@@ -1215,7 +1365,6 @@
     75% { transform: rotate(-12deg); }
   }
 
-  /* Eye Blinking */
   .bot-eye {
     animation: botBlink 3.5s infinite;
   }
@@ -1225,7 +1374,6 @@
     95% { transform: scaleY(0.1); }
   }
 
-  /* Glow ring */
   .ai-glow {
     position: absolute;
     width: 100%;
@@ -1239,7 +1387,6 @@
     50% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
   }
 
-  /* Chat Window */
   #webora-ai-window {
     position: absolute;
     right: 0;
@@ -1515,7 +1662,6 @@
     border-top: 1px solid rgba(255, 255, 255, 0.03);
   }
 
-  /* MOBILE RESPONSIVE COMPACT */
   @media(max-width: 480px) {
     #webora-ai {
       right: 18px;
@@ -1548,6 +1694,236 @@
   </style>
 
   <script>
+    // Reveal animation
+    const items = document.querySelectorAll(".card, .demo, .step, .price-card");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(item => {
+      item.style.opacity = "0";
+      item.style.transform = "translateY(20px)";
+      item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      observer.observe(item);
+    });
+
+    // Mobile Hamburger
+    const menuBtn = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("active"));
+    });
+
+    // HANGING LAMP PULL SOUND & THEME SWITCH
+    let audioContext = null;
+    function playClickSound() {
+      try {
+        if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(800, audioContext.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.08, audioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+        osc.start();
+        osc.stop(audioContext.currentTime + 0.05);
+      } catch(e) {}
+    }
+
+    const lampPull = document.getElementById("lamp-pull");
+    lampPull.addEventListener("click", () => {
+      playClickSound();
+      document.body.classList.toggle("light-mode");
+      const isLight = document.body.classList.contains("light-mode");
+      localStorage.setItem("webora_theme", isLight ? "light" : "dark");
+    });
+
+    if(localStorage.getItem("webora_theme") === "light") {
+      document.body.classList.add("light-mode");
+    }
+
+    // MULTI-LANGUAGE SYSTEM (EN / HI / HINGLISH)
+    const translations = {
+      en: {
+        nav_services: "Services",
+        nav_work: "Our Work",
+        nav_pricing: "Pricing",
+        nav_reviews: "Reviews",
+        nav_cta: "Get Started",
+        hero_badge: "✦ Modern websites for ambitious businesses",
+        hero_title: 'Your business.<br><span class="gradient-text">A better website.</span>',
+        hero_desc: "Webora creates beautiful, fast and mobile-friendly websites that help local businesses look professional and get more customers.",
+        hero_btn_explore: "Explore Our Work →",
+        hero_btn_start: "Start a Project",
+        services_sub: "What we do",
+        services_title: "Everything your business needs online.",
+        services_desc: "Simple, modern websites designed to turn visitors into customers.",
+        card1_title: "Modern Design",
+        card1_desc: "Clean and premium designs built around your brand and your customers.",
+        card2_title: "Fast Websites",
+        card2_desc: "Lightweight websites that load quickly and work smoothly on every device.",
+        card3_title: "Mobile First",
+        card3_desc: "Your website will look great whether customers use a phone, tablet or computer.",
+        work_sub: "Our work",
+        work_title: "See what your business could look like.",
+        work_desc: "Explore our website concepts created for different types of businesses.",
+        view_demo: "View Demo →",
+        demo1_title: "Restaurant Website",
+        demo2_title: "Editor Website",
+        demo3_title: "Salon Website",
+        demo4_title: "Gym Website",
+        process_sub: "How it works",
+        process_title: "From idea to live website.",
+        step1_title: "Tell us",
+        step1_desc: "Tell us about your business and what you need.",
+        step2_title: "We build",
+        step2_desc: "We create a custom website around your business.",
+        step3_title: "You approve",
+        step3_desc: "Review the website and request any changes.",
+        step4_title: "We launch",
+        step4_desc: "Your new website goes live for the world to see.",
+        pricing_sub: "Simple pricing",
+        pricing_title: "Choose what fits your business.",
+        pricing_desc: "No complicated packages. Just a website that works.",
+        plan_discuss: "Let’s Discuss",
+        plan_proj: "/ your project",
+        most_pop: "Most popular",
+        plan1_title: "Starter",
+        plan1_f1: "1–3 page website",
+        plan1_f2: "Mobile responsive",
+        plan1_f3: "Contact section",
+        plan1_f4: "Modern design",
+        plan1_f5: "Basic SEO",
+        plan2_title: "Professional",
+        plan2_f1: "Up to 7 pages",
+        plan2_f2: "Premium custom design",
+        plan2_f3: "Mobile responsive",
+        plan2_f4: "Contact & booking",
+        plan2_f5: "SEO optimized",
+        plan3_title: "Premium",
+        plan3_f1: "Custom website",
+        plan3_f2: "Advanced animations",
+        plan3_f3: "Booking / forms",
+        plan3_f4: "SEO optimization",
+        plan3_f5: "Priority support",
+        reviews_sub: "Client Stories",
+        reviews_title: "Trusted by growing local brands.",
+        reviews_desc: "Here is what business owners say after launching with Webora.",
+        cta_title: "Ready to stand out?",
+        cta_desc: "Let's build a website your customers will remember.",
+        cta_btn: "Start Your Project →",
+        contact_title: "Let's build something great.",
+        contact_desc: "Have a business that needs a better website? We'd love to hear from you.",
+        contact_btn: "Contact Us →",
+        contact_wa: "WhatsApp Us →",
+        footer_tag: "Websites that make your business stand out."
+      },
+      hi: {
+        nav_services: "सेवाएं",
+        nav_work: "हमारा काम",
+        nav_pricing: "कीमतें",
+        nav_reviews: "रिव्यूज",
+        nav_cta: "शुरू करें",
+        hero_badge: "✦ महत्वाकांक्षी व्यवसायों के लिए आधुनिक वेबसाइटें",
+        hero_title: 'आपका व्यवसाय।<br><span class="gradient-text">एक बेहतर वेबसाइट।</span>',
+        hero_desc: "Webora सुंदर, तेज़ और मोबाइल-फ्रेंडली वेबसाइटें बनाता है जो आपके बिज़नेस को प्रोफेशनल बनाती हैं और ज़्यादा ग्राहक लाती हैं।",
+        hero_btn_explore: "हमारा काम देखें →",
+        hero_btn_start: "प्रोजेक्ट शुरू करें",
+        services_sub: "हम क्या करते हैं",
+        services_title: "ऑनलाइन बिज़नेस के लिए हर ज़रूरी चीज़।",
+        services_desc: "सरल, मॉडर्न वेबसाइट्स जो आने वाले ग्राहकों को आकर्षित करती हैं।",
+        card1_title: "आधुनिक डिज़ाइन",
+        card1_desc: "प्रीमियम और साफ़-सुथरा डिज़ाइन जो आपके ब्रांड और ग्राहकों के अनुरूप हो।",
+        card2_title: "सुपरफास्ट स्पीड",
+        card2_desc: "हल्की वेबसाइटें जो हर डिवाइस पर तुरंत खुलती हैं।",
+        card3_title: "मोबाइल फर्स्ट",
+        card3_desc: "फोन, टैबलेट या कंप्यूटर—आपकी वेबसाइट हर स्क्रीन पर शानदार दिखेगी।",
+        work_sub: "हमारा काम",
+        work_title: "देखें आपकी वेबसाइट कैसी दिख सकती है।",
+        work_desc: "विभिन्न प्रकार के बिज़नेस के लिए बनाए गए हमारे डेमो देखें।",
+        view_demo: "डेमो देखें →",
+        demo1_title: "रेस्टोरेंट वेबसाइट",
+        demo2_title: "वीडियो एडिटर वेबसाइट",
+        demo3_title: "सैलून वेबसाइट",
+        demo4_title: "जिम व फिटनेस वेबसाइट",
+        process_sub: "प्रक्रिया",
+        process_title: "विचार से लाइव वेबसाइट तक।",
+        step1_title: "हमें बताएं",
+        step1_desc: "अपने व्यवसाय और ज़रूरतों के बारे में बताएं।",
+        step2_title: "हम बनाएंगे",
+        step2_desc: "हम आपकी पसंद के अनुसार कस्टम वेबसाइट बनाएंगे।",
+        step3_title: "आप चेक करें",
+        step3_desc: "वेबसाइट देखें और कोई भी बदलाव बताएं।",
+        step4_title: "वेबसाइट लाइव",
+        step4_desc: "आपकी नई वेबसाइट पूरी दुनिया के लिए लाइव हो जाएगी।",
+        pricing_sub: "पारदर्शी कीमतें",
+        pricing_title: "अपने बिज़नेस के अनुसार प्लान चुनें।",
+        pricing_desc: "कोई उलझन नहीं, बस एक ऐसी वेबसाइट जो परिणाम दे।",
+        plan_discuss: "बातचीत करें",
+        plan_proj: "/ आपके प्रोजेक्ट पर",
+        most_pop: "सबसे लोकप्रिय",
+        plan1_title: "स्टार्टर",
+        plan1_f1: "1–3 पेज वेबसाइट",
+        plan1_f2: "मोबाइल रेस्पॉन्सिव",
+        plan1_f3: "कॉन्टैक्ट सेक्शन",
+        plan1_f4: "मॉडर्न डिज़ाइन",
+        plan1_f5: "बेसिक एसईओ (SEO)",
+        plan2_title: "प्रोफेशनल",
+        plan2_f1: "7 पेजों तक",
+        plan2_f2: "प्रीमियम कस्टम डिज़ाइन",
+        plan2_f3: "मोबाइल रेस्पॉन्सिव",
+        plan2_f4: "बुकिंग व कॉन्टैक्ट",
+        plan2_f5: "एसईओ ऑप्टिमाइज़्ड",
+        plan3_title: "प्रीमियम",
+        plan3_f1: "पूरी तरह कस्टम वेबसाइट",
+        plan3_f2: "एडवांस एनिमेशन्स",
+        plan3_f3: "ऑनलाइन फॉर्म्स व बुकिंग",
+        plan3_f4: "एडवांस एसईओ",
+        plan3_f5: "प्राथमिकता सपोर्ट",
+        reviews_sub: "ग्राहकों की राय",
+        reviews_title: "स्थानीय ब्रांड्स का भरोसा।",
+        reviews_desc: "Webora के साथ अपनी वेबसाइट लाइव करने वाले बिज़नेस ओनर्स का अनुभव।",
+        cta_title: "आगे बढ़ने के लिए तैयार हैं?",
+        cta_desc: "आइए ऐसी वेबसाइट बनाएं जिसे आपके ग्राहक याद रखें।",
+        cta_btn: "प्रोजेक्ट शुरू करें →",
+        contact_title: "आइए कुछ बेहतरीन बनाते हैं।",
+        contact_desc: "क्या आपके पास कोई बिज़नेस है जिसके लिए बेहतर वेबसाइट चाहिए? हमसे संपर्क करें।",
+        contact_btn: "संपर्क करें →",
+        contact_wa: "व्हाट्सएप करें →",
+        footer_tag: "वेबसाइटें जो आपके बिज़नेस को सबसे अलग बनाती हैं।"
+      }
+    };
+
+    let currentLang = "en";
+    const langBtn = document.getElementById("lang-switcher");
+    const currentLangText = document.getElementById("current-lang");
+
+    langBtn.addEventListener("click", () => {
+      currentLang = currentLang === "en" ? "hi" : "en";
+      currentLangText.textContent = currentLang.toUpperCase();
+      
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if(translations[currentLang][key]) {
+          el.innerHTML = translations[currentLang][key];
+        }
+      });
+    });
+  </script>
+
+  <!-- CHATBOT SCRIPT -->
+  <script>
   (function(){
     const launch = document.getElementById("webora-ai-launch");
     const windowBox = document.getElementById("webora-ai-window");
@@ -1561,43 +1937,16 @@
     let customerName = "";
     let nameAsked = false;
 
-    // Speech Bubble Animation Cycle (Every 5.5s interval)
     function triggerSpeechBubbleCycle() {
       setInterval(() => {
         if (windowBox.style.display === "flex") return;
-
         speechBubble.classList.add("bubble-show");
-
-        setTimeout(() => {
-          speechBubble.classList.remove("bubble-show");
-        }, 3500);
+        setTimeout(() => speechBubble.classList.remove("bubble-show"), 3500);
       }, 5500);
     }
-
     setTimeout(triggerSpeechBubbleCycle, 2000);
 
-    speechBubble.addEventListener("click", () => {
-      launch.click();
-    });
-
-    // Web Audio FX for Subtle Pop Sound
-    let audioCtx = null;
-    function playPopSound() {
-      try {
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(540, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(860, audioCtx.currentTime + 0.08);
-        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.08);
-      } catch(e) {}
-    }
+    speechBubble.addEventListener("click", () => launch.click());
 
     function escapeText(text){
       const div = document.createElement("div");
@@ -1614,15 +1963,12 @@
       return message;
     }
 
-    // Realistic Word-by-Word Streaming
     function streamBotReply(htmlContent, delay = 400){
       typing.style.display = "flex";
       chat.scrollTop = chat.scrollHeight;
 
       setTimeout(() => {
         typing.style.display = "none";
-        playPopSound();
-
         const message = document.createElement("div");
         message.className = "wa-message wa-bot";
         chat.appendChild(message);
@@ -1636,7 +1982,6 @@
         const words = htmlContent.split(" ");
         let index = 0;
         message.innerHTML = "";
-
         const interval = setInterval(() => {
           if (index < words.length) {
             message.innerHTML += (index === 0 ? "" : " ") + words[index];
@@ -1646,14 +1991,12 @@
             clearInterval(interval);
           }
         }, 35);
-
       }, delay);
     }
 
     launch.addEventListener("click", function(e){
       e.preventDefault();
       speechBubble.classList.remove("bubble-show");
-
       const isOpen = windowBox.style.display === "flex";
       if(isOpen){
         windowBox.style.display = "none";
@@ -1702,28 +2045,23 @@
 
     function respond(rawInput){
       const q = rawInput.toLowerCase();
-
       if(q.includes("service") || q.includes("offer") || q.includes("bana") || q.includes("build")){
         streamBotReply("We specialize in modern web experiences:<br><br>✦ <strong>Custom Business Websites</strong><br>✦ <strong>Restaurant & Cafe Portals</strong><br>✦ <strong>Salon & Gym Booking Sites</strong><br>✦ <strong>Speed Optimization & Mobile Design</strong><br><br>Would you like to see a demo or get an estimate?");
         return;
       }
-
       if(q.includes("price") || q.includes("cost") || q.includes("charge") || q.includes("kitna") || q.includes("pricing") || q.includes("rate")){
         streamBotReply("Every website is custom built around your goals. Our starter packages are very flexible and depend on the number of pages & features.<br><br>Let's share a customized proposal directly on WhatsApp.", 500);
         setTimeout(showContactActions, 1200);
         return;
       }
-
       if(q.includes("time") || q.includes("timeline") || q.includes("kitne din") || q.includes("duration")){
         streamBotReply("We value speed: Starter sites launch in <strong>3–4 days</strong>, while complete multi-page custom business portals typically take <strong>5–7 days</strong>.", 450);
         return;
       }
-
       if(q.includes("contact") || q.includes("whatsapp") || q.includes("phone") || q.includes("number") || q.includes("talk")){
         showContactActions();
         return;
       }
-
       streamBotReply("I understand your requirement. For exact customizations and fast delivery, you can directly talk with our team:", 400);
       setTimeout(showContactActions, 800);
     }
@@ -1739,7 +2077,5 @@
     }
   })();
   </script>
-  <!-- ================= END ADVANCED WEBORA AI ================= -->
-
 </body>
 </html>
