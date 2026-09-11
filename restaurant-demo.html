@@ -297,163 +297,316 @@ background-position: center;
 </head>
 
 <body>
+<style>
+.lm-page{
+  background:#0b0908;
+  color:#f4eee5;
+  font-family:Arial,sans-serif;
+}
+.lm-page *{box-sizing:border-box}
+.lm-wrap{max-width:1180px;margin:auto;padding:0 24px}
+.lm-nav{
+  position:sticky;top:0;z-index:20;
+  background:rgba(11,9,8,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.lm-nav-inner{
+  max-width:1180px;margin:auto;padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.lm-logo{
+  font-family:Georgia,serif;font-size:25px;
+  letter-spacing:3px;
+}
+.lm-links{display:flex;gap:28px}
+.lm-links a{color:#ddd5c8;text-decoration:none;font-size:14px}
+.lm-reserve{
+  border:1px solid #c9a66b;padding:12px 18px;
+  color:#e4c88e;text-decoration:none;font-size:13px;
+}
+.lm-hero{
+  min-height:680px;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:55px;
+  background:
+  linear-gradient(90deg,rgba(11,9,8,.98) 0%,rgba(11,9,8,.75) 48%,rgba(11,9,8,.15)),
+  url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=90");
+  background-size:cover;background-position:center;
+}
+.lm-eyebrow{
+  color:#c9a66b;letter-spacing:4px;font-size:12px;
+  margin-bottom:20px;
+}
+.lm-hero h1{
+  font-family:Georgia,serif;font-weight:400;
+  font-size:clamp(48px,7vw,82px);
+  line-height:1.02;margin:0 0 25px;
+}
+.lm-hero p{
+  max-width:500px;color:#c9c0b5;
+  font-size:17px;line-height:1.8;
+}
+.lm-btn{
+  display:inline-block;margin-top:18px;
+  background:#c9a66b;color:#17120d;
+  padding:15px 24px;text-decoration:none;
+  font-size:13px;font-weight:bold;
+}
+.lm-intro{
+  padding:110px 0;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:70px;align-items:center;
+}
+.lm-image{
+  width:100%;height:500px;object-fit:cover;
+  border-radius:2px;
+}
+.lm-label{
+  color:#c9a66b;letter-spacing:3px;font-size:11px;
+}
+.lm-title{
+  font-family:Georgia,serif;font-size:52px;
+  font-weight:400;line-height:1.1;margin:18px 0;
+}
+.lm-text{color:#aaa198;line-height:1.8;font-size:16px}
+.lm-menu{
+  padding:100px 0;background:#110e0c;
+}
+.lm-center{text-align:center}
+.lm-dishes{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:24px;margin-top:50px;
+}
+.lm-dish{
+  border:1px solid rgba(255,255,255,.1);
+  background:#0b0908;overflow:hidden;
+}
+.lm-dish img{
+  width:100%;height:270px;object-fit:cover;
+  display:block;
+}
+.lm-dish-info{padding:22px}
+.lm-dish h3{
+  font-family:Georgia,serif;font-size:23px;
+  font-weight:400;margin:0 0 9px;
+}
+.lm-dish p{margin:0;color:#948c83;font-size:14px}
+.lm-price{
+  color:#c9a66b!important;margin-top:13px!important;
+}
+.lm-gallery{
+  padding:110px 0;
+}
+.lm-gallery-grid{
+  display:grid;
+  grid-template-columns:1.3fr .7fr .7fr;
+  grid-template-rows:260px 260px;
+  gap:15px;margin-top:50px;
+}
+.lm-gallery-grid img{
+  width:100%;height:100%;object-fit:cover;
+}
+.lm-gallery-grid img:first-child{grid-row:span 2}
+.lm-hours{
+  padding:90px 0;background:#15110e;
+}
+.lm-hours-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:70px;align-items:center;
+}
+.lm-hours-row{
+  display:flex;justify-content:space-between;
+  padding:17px 0;border-bottom:1px solid rgba(255,255,255,.1);
+  color:#c0b8ae;
+}
+.lm-cta{
+  padding:110px 20px;text-align:center;
+  background:
+  linear-gradient(rgba(8,7,6,.78),rgba(8,7,6,.9)),
+  url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=90");
+  background-size:cover;background-position:center;
+}
+.lm-cta h2{
+  font-family:Georgia,serif;font-size:55px;
+  font-weight:400;margin:15px 0;
+}
+.lm-footer{
+  padding:45px 24px;border-top:1px solid rgba(255,255,255,.1);
+  text-align:center;color:#817970;font-size:13px;
+}
+@media(max-width:800px){
+  .lm-links{display:none}
+  .lm-hero{grid-template-columns:1fr;min-height:620px;padding:80px 24px}
+  .lm-intro,.lm-hours-grid{grid-template-columns:1fr;gap:40px}
+  .lm-dishes{grid-template-columns:1fr}
+  .lm-gallery-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:220px 220px 220px;
+  }
+  .lm-gallery-grid img:first-child{grid-row:auto;grid-column:span 2}
+  .lm-title{font-size:42px}
+}
+</style>
 
-  <nav>
-    <div class="nav-inner">
-      <div class="logo">LA MAISON</div>
+<div class="lm-page">
 
-      <div class="nav-links">
+  <nav class="lm-nav">
+    <div class="lm-nav-inner">
+      <div class="lm-logo">LA MAISON</div>
+      <div class="lm-links">
+        <a href="#home">Home</a>
         <a href="#menu">Menu</a>
         <a href="#about">About</a>
         <a href="#hours">Hours</a>
         <a href="#contact">Contact</a>
       </div>
+      <a class="lm-reserve" href="#contact">Reserve a Table</a>
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="eyebrow">MODERN EUROPEAN DINING</div>
-
+  <section class="lm-hero" id="home">
+    <div class="lm-wrap">
+      <div class="lm-eyebrow">MODERN EUROPEAN DINING</div>
       <h1>A taste worth remembering.</h1>
-
       <p>
-        Seasonal ingredients, thoughtful cooking and an intimate atmosphere
-        come together at La Maison.
+        Seasonal ingredients, thoughtful cooking and an intimate
+        atmosphere come together at La Maison.
       </p>
-
-      <a class="button" href="#contact">Reserve a Table →</a>
+      <a class="lm-btn" href="#contact">Reserve a Table →</a>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">The La Maison experience.</h2>
+  <section class="lm-intro" id="about">
+    <div class="lm-wrap">
+      <img class="lm-image"
+      src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=90"
+      alt="La Maison restaurant interior">
+    </div>
 
-    <p class="section-subtitle">
-      A relaxed dining experience built around exceptional ingredients,
-      elegant flavours and warm hospitality.
-    </p>
+    <div class="lm-wrap">
+      <div class="lm-label">ABOUT US</div>
+      <h2 class="lm-title">More than a restaurant.</h2>
+      <p class="lm-text">
+        La Maison is a modern European restaurant inspired by
+        traditional flavours and contemporary culinary techniques.
+        We believe in honest ingredients, beautiful presentation
+        and an experience that stays with you long after the last bite.
+      </p>
+      <a class="lm-btn" href="#menu">Explore Our Menu →</a>
+    </div>
+  </section>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Seasonal</h3>
-        <p>
-          Our menu changes with the seasons to showcase ingredients at their best.
+  <section class="lm-menu" id="menu">
+    <div class="lm-wrap">
+      <div class="lm-center">
+        <div class="lm-label">OUR SIGNATURE DISHES</div>
+        <h2 class="lm-title">A curated taste of La Maison.</h2>
+        <p class="lm-text">
+          Chef favourites prepared with seasonal ingredients
+          and a modern European touch.
         </p>
       </div>
 
-      <div class="card">
-        <h3>Handcrafted</h3>
-        <p>
-          Every plate is carefully prepared by our kitchen with attention to detail.
-        </p>
-      </div>
+      <div class="lm-dishes">
 
-      <div class="card">
-        <h3>Intimate</h3>
-        <p>
-          A warm, elegant space designed for memorable dinners and conversations.
-        </p>
+        <div class="lm-dish">
+          <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=90" alt="Truffle pasta">
+          <div class="lm-dish-info">
+            <h3>Truffle Tagliatelle</h3>
+            <p>Black truffle, parmesan, cream</p>
+            <p class="lm-price">$24</p>
+          </div>
+        </div>
+
+        <div class="lm-dish">
+          <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=90" alt="Grilled salmon">
+          <div class="lm-dish-info">
+            <h3>Grilled Salmon</h3>
+            <p>Herb crust, seasonal vegetables</p>
+            <p class="lm-price">$29</p>
+          </div>
+        </div>
+
+        <div class="lm-dish">
+          <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=90" alt="Wagyu steak">
+          <div class="lm-dish-info">
+            <h3>Wagyu Steak</h3>
+            <p>Red wine jus, roasted garlic</p>
+            <p class="lm-price">$38</p>
+          </div>
+        </div>
+
+        <div class="lm-dish">
+          <img src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=900&q=90" alt="Burrata salad">
+          <div class="lm-dish-info">
+            <h3>Burrata Salad</h3>
+            <p>Heirloom tomatoes, basil, olive oil</p>
+            <p class="lm-price">$18</p>
+          </div>
+        </div>
+
+        <div class="lm-dish">
+          <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=90" alt="Chocolate dessert">
+          <div class="lm-dish-info">
+            <h3>Chocolate Fondant</h3>
+            <p>Dark chocolate, vanilla ice cream</p>
+            <p class="lm-price">$14</p>
+          </div>
+        </div>
+
+        <div class="lm-dish">
+          <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=90" alt="Restaurant dessert">
+          <div class="lm-dish-info">
+            <h3>Chef's Selection</h3>
+            <p>A seasonal creation from our kitchen</p>
+            <p class="lm-price">$22</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="section" id="menu">
-    <h2 class="section-title">Our menu.</h2>
+  <section class="lm-gallery">
+    <div class="lm-wrap">
+      <div class="lm-center">
+        <div class="lm-label">THE EXPERIENCE</div>
+        <h2 class="lm-title">Good food. Great company.</h2>
+      </div>
 
-    <p class="section-subtitle">
-      A selection of favourites from our seasonal kitchen.
-    </p>
+      <div class="lm-gallery-grid">
+        <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=90" alt="Restaurant dining">
+        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=90" alt="Restaurant table">
+        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=90" alt="Restaurant interior">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=90" alt="Fine dining">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=90" alt="Fine dining food">
+      </div>
+    </div>
+  </section>
 
-    <div class="menu">
+  <section class="lm-hours" id="hours">
+    <div class="lm-wrap lm-hours-grid">
 
       <div>
-        <div class="menu-item">
-          <div>
-            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85" alt="Burrata & Heirloom Tomato">
-            <h3>Burrata & Heirloom Tomato</h3>
-            <p>Basil oil, sea salt, toasted sourdough</p>
-          </div>
-          <div class="price">$14</div>
-        </div>
-
-        <div class="menu-item">
-          <div>
-            <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=1000&q=85" alt="Wild Mushroom Risotto"><h3>Wild Mushroom Risotto</h3>
-            <p>Parmesan, herbs, roasted mushrooms</p>
-          </div>
-          <div class="price">$24</div>
-        </div>
-
-        <div class="menu-item">
-          <div>
-            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b2a1?auto=format&fit=crop&w=1000&q=85" alt="Grilled Sea Bass"><h3>Grilled Sea Bass</h3>
-            <p>Lemon butter, seasonal vegetables</p>
-          </div>
-          <div class="price">$29</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="menu-item">
-          <div>
-            <h3>French Onion Soup</h3>
-            <p>Caramelised onions, Gruyère, toasted bread</p>
-          </div>
-          <div class="price">$12</div>
-        </div>
-
-        <div class="menu-item">
-          <div>
-            <h3>Herb Roasted Chicken</h3>
-            <p>Garlic jus, potatoes, garden herbs</p>
-          </div>
-          <div class="price">$26</div>
-        </div>
-
-        <div class="menu-item">
-          <div>
-            <h3>Chocolate Tart</h3>
-            <p>Dark chocolate, vanilla cream, sea salt</p>
-          </div>
-          <div class="price">$11</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="about" id="about">
-    <div class="about-content">
-
-      <div class="about-text">
-        <h2 class="section-title">Made for good evenings.</h2>
-
-        <p>
-          La Maison is a modern European restaurant where classic techniques
-          meet contemporary flavours.
-        </p>
-
-        <p>
-          Whether it is a date night, a celebration or simply dinner with
+        <div class="lm-label">OPENING HOURS</div>
+        <h2 class="lm-title">Join us for dinner.</h2>
+        <p class="lm-text">
+          Whether it's a date night, celebration or dinner with
           friends, our table is ready for you.
         </p>
       </div>
 
-      <div class="hours" id="hours">
-        <h3>Opening Hours</h3>
-
-        <div class="hours-row">
+      <div>
+        <div class="lm-hours-row">
           <span>Monday – Thursday</span>
           <span>5pm – 10pm</span>
         </div>
-
-        <div class="hours-row">
+        <div class="lm-hours-row">
           <span>Friday – Saturday</span>
           <span>5pm – 11pm</span>
         </div>
-
-        <div class="hours-row">
+        <div class="lm-hours-row">
           <span>Sunday</span>
           <span>4pm – 9pm</span>
         </div>
@@ -462,20 +615,25 @@ background-position: center;
     </div>
   </section>
 
-  <section class="cta" id="contact">
+  <section class="lm-cta" id="contact">
+    <div class="lm-label">RESERVATIONS</div>
     <h2>Your table is waiting.</h2>
-
-    <p>
+    <p class="lm-text">
       125 Main Street · Downtown · Reservations recommended
     </p>
-
-    <a class="button" href="mailto:hello@lamaison.example">
+    <a class="lm-btn" href="mailto:hello@lamaison.example">
       Make a Reservation
     </a>
   </section>
 
-  <footer>
-    © 2026 La Maison · Modern European Restaurant
+  <footer class="lm-footer">
+    <div class="lm-logo">LA MAISON</div>
+    <p>Modern European Restaurant</p>
+    <p>© 2026 La Maison · Good Food · Great Company</p>
+  </footer>
+
+</div>
+ 
   </footer>
 
 </body>
