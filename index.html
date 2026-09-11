@@ -47,7 +47,7 @@
       left: 0;
       width: 100%;
       z-index: 100;
-      background: rgba(5, 5, 7, 0.72);
+      background: rgba(5, 5, 7, 0.75);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
     }
@@ -125,7 +125,7 @@
       transition: 0.3s;
     }
 
-    /* HERO */
+    /* HERO WITH AURORA MOTION & PERSPECTIVE GRID */
 
     .hero {
       min-height: 100vh;
@@ -136,16 +136,50 @@
       padding-top: 80px;
     }
 
+    /* Subtle Modern Tech Grid */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 55px 55px;
+      mask-image: radial-gradient(ellipse 65% 55% at 50% 48%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 48%, black 20%, transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Dynamic Aurora Glow */
     .glow {
       position: absolute;
-      width: 600px;
-      height: 600px;
+      width: 750px;
+      height: 750px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(74,76,255,0.22), transparent 68%);
-      top: 80px;
+      background: radial-gradient(circle, rgba(104, 76, 255, 0.35) 0%, rgba(21, 156, 255, 0.2) 35%, rgba(224, 107, 255, 0.08) 60%, transparent 72%);
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       pointer-events: none;
+      filter: blur(55px);
+      animation: auroraFloat 9s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes auroraFloat {
+      0% {
+        transform: translate(-50%, -52%) scale(0.95);
+        opacity: 0.75;
+      }
+      50% {
+        transform: translate(-48%, -48%) scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-52%, -50%) scale(1);
+        opacity: 0.85;
+      }
     }
 
     .hero-content {
@@ -156,15 +190,33 @@
       margin: auto;
     }
 
+    /* BADGE WITH RADAR PULSE */
     .badge {
       display: inline-flex;
-      padding: 8px 14px;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 16px;
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 100px;
       color: #bdbdc8;
       font-size: 13px;
       background: rgba(255,255,255,0.035);
       margin-bottom: 28px;
+    }
+
+    .badge::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #25D366;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #25D366;
+      animation: radarPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes radarPulse {
+      0%, 100% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px #25D366; }
     }
 
     h1 {
@@ -174,10 +226,19 @@
       font-weight: 800;
     }
 
+    /* SHIMMERING FLOWING TEXT GRADIENT */
     .gradient-text {
-      background: linear-gradient(100deg, #159cff, #7356ff, #df73ff);
+      background: linear-gradient(100deg, #159cff, #7356ff, #df73ff, #159cff);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
-      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 6s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero p {
@@ -201,11 +262,12 @@
       background: #fff;
       color: #050507;
       font-weight: 700;
-      transition: 0.25s;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .primary:hover {
       transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.35), 0 0 45px rgba(104, 76, 255, 0.25);
     }
 
     .secondary {
@@ -664,7 +726,7 @@
     <div class="container hero-content">
 
       <div class="badge">
-        ✦ Modern websites for ambitious businesses
+        Modern websites for ambitious businesses
       </div>
 
       <h1>
@@ -1120,7 +1182,7 @@
   #webora-ai {
     position: fixed;
     right: 24px;
-    bottom: 24px;   /* Shifted to bottom right */
+    bottom: 24px;
     top: auto;
     z-index: 99999;
     font-family: inherit;
