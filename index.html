@@ -607,10 +607,77 @@
       margin-bottom: 28px;
     }
 
-    /* LEFT-ALIGNED CONTACT SECTION */
+    /* LEFT-ALIGNED CONTACT SECTION & QUICK LEAD FORM */
     .section {
       text-align: left;
       padding: 90px 0;
+    }
+
+    .lead-form-box {
+      margin-top: 35px;
+      max-width: 580px;
+      padding: 28px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .lead-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .lead-input, .lead-select {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      background: #111116;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: inherit;
+      font-size: 13.5px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .lead-input:focus, .lead-select:focus {
+      border-color: #8276ff;
+      box-shadow: 0 0 14px rgba(130, 118, 255, 0.25);
+    }
+
+    .lead-select {
+      cursor: pointer;
+      color: #bdbdc8;
+    }
+
+    .lead-select option {
+      background: #111116;
+      color: #fff;
+    }
+
+    .lead-submit-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 100px;
+      background: linear-gradient(100deg, #159cff, #7356ff);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .lead-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(115, 86, 255, 0.45);
     }
 
     /* FOOTER */
@@ -676,6 +743,10 @@
 
       .price-card.featured {
         transform: none;
+      }
+
+      .lead-form-grid {
+        grid-template-columns: 1fr;
       }
 
       .footer-inner {
@@ -1079,7 +1150,7 @@
     </div>
   </section>
 
-  <!-- LEFT-ALIGNED CONTACT SECTION -->
+  <!-- LEFT-ALIGNED CONTACT SECTION & QUICK LEAD FORMAT FORM -->
   <section class="section" id="contact">
     <div class="container">
       <h2 style="font-size: clamp(32px, 5vw, 52px); margin-bottom: 12px; letter-spacing: -2px; font-weight: 800;" data-i18n="contact_title">
@@ -1100,7 +1171,35 @@
       <a href="https://wa.me/917518896121" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 22px;border-radius:50px;background:#25D366;color:#111;text-decoration:none;font-weight:700;" data-i18n="contact_wa">
         WhatsApp Us →
       </a>
-      <p style="margin-top:18px;color:#888;">
+
+      <!-- QUICK LEAD CAPTURE FORM -->
+      <div class="lead-form-box">
+        <h3 style="font-size: 18px; margin-bottom: 8px; font-weight: 700;">Get a Fast Quote on WhatsApp ⚡</h3>
+        <p style="color: #8e8e99; font-size: 13px; margin-bottom: 18px;">Fill this 30-second form and our team will get back to you directly.</p>
+        
+        <form id="lead-capture-form">
+          <div class="lead-form-grid">
+            <input type="text" id="lf-name" class="lead-input" placeholder="Your Name" required>
+            <input type="tel" id="lf-phone" class="lead-input" placeholder="WhatsApp Number" required>
+          </div>
+          <div style="margin-bottom: 16px;">
+            <select id="lf-biz" class="lead-select" required>
+              <option value="" disabled selected>Select Your Business Type</option>
+              <option value="Restaurant / Cafe">Restaurant / Cafe</option>
+              <option value="Beauty Salon / Spa">Beauty Salon / Spa</option>
+              <option value="Gym / Fitness Center">Gym / Fitness Center</option>
+              <option value="Video Editor / Creator Portfolio">Video Editor / Creator Portfolio</option>
+              <option value="Local Shop / Retail Brand">Local Shop / Retail Brand</option>
+              <option value="Other Custom Business">Other Custom Business</option>
+            </select>
+          </div>
+          <button type="submit" class="lead-submit-btn">
+            Send Details to WhatsApp →
+          </button>
+        </form>
+      </div>
+
+      <p style="margin-top:28px;color:#888;">
         Founded by <strong style="color:#fff;">Ashutosh Singh</strong> · Founder, Webora
       </p>
     </div>
@@ -1142,45 +1241,49 @@
       </svg>
     </button>
 
+    <!-- GEMINI LIGHT BORDER GLOW CONTAINER -->
     <div id="webora-ai-window">
-      <div class="wa-header">
-        <div class="wa-profile">
-          <div class="wa-avatar">
-            <span>W</span>
-            <i></i>
+      <div class="gemini-border-glow"></div>
+      <div class="wa-window-content">
+        <div class="wa-header">
+          <div class="wa-profile">
+            <div class="wa-avatar">
+              <span>W</span>
+              <i></i>
+            </div>
+            <div>
+              <div class="wa-title">Webora Neural AI <span class="ai-tag">v2.4</span></div>
+              <div class="wa-status"><span></span> Online & Ready</div>
+            </div>
           </div>
-          <div>
-            <div class="wa-title">Webora Neural AI <span class="ai-tag">v2.4</span></div>
-            <div class="wa-status"><span></span> Online & Ready</div>
+          <button id="wa-close" aria-label="Close">×</button>
+        </div>
+
+        <div id="wa-chat">
+          <div id="wa-welcome"></div>
+          <div class="wa-quick" id="wa-quick-pills">
+            <button data-question="services">✦ Services</button>
+            <button data-question="pricing">✦ Pricing & Cost</button>
+            <button data-question="founder">✦ Founder Info</button>
+            <button data-question="timeline">✦ Turnaround Time</button>
           </div>
         </div>
-        <button id="wa-close" aria-label="Close">×</button>
-      </div>
 
-      <div id="wa-chat">
-        <div id="wa-welcome"></div>
-        <div class="wa-quick" id="wa-quick-pills">
-          <button data-question="services">✦ Services</button>
-          <button data-question="pricing">✦ Pricing & Quotes</button>
-          <button data-question="timeline">✦ Turnaround Time</button>
-          <button data-question="contact">✦ Direct WhatsApp</button>
+        <div class="wa-typing" id="wa-typing">
+          <div class="ai-thinking-indicator">
+            <span></span><span></span><span></span>
+          </div>
+          <small>Webora AI is thinking...</small>
         </div>
-      </div>
 
-      <div class="wa-typing" id="wa-typing">
-        <div class="ai-thinking-indicator">
-          <span></span><span></span><span></span>
+        <div class="wa-input-area">
+          <input id="wa-input" type="text" autocomplete="off" placeholder="Ask about websites, costs, weather, time...">
+          <button id="wa-send" aria-label="Send">➤</button>
         </div>
-        <small>Webora AI is thinking...</small>
-      </div>
 
-      <div class="wa-input-area">
-        <input id="wa-input" type="text" autocomplete="off" placeholder="Ask about websites, costs, or process...">
-        <button id="wa-send" aria-label="Send">➤</button>
-      </div>
-
-      <div class="wa-powered">
-        ⚡ Powered by <strong>Webora Intelligence</strong>
+        <div class="wa-powered">
+          ⚡ Powered by <strong>Webora Intelligence</strong>
+        </div>
       </div>
     </div>
   </div>
@@ -1217,13 +1320,11 @@
     z-index: 10;
   }
 
-  /* Pop-in entry */
   #bot-speech-bubble.bubble-show {
     pointer-events: auto;
     animation: bubblePopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
 
-  /* Cloud-burst vaporize fade-out */
   #bot-speech-bubble.bubble-burst {
     pointer-events: none;
     animation: cloudBurstOut 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -1331,26 +1432,61 @@
     50% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
   }
 
+  /* GEMINI LIGHT BORDER GLOW WINDOW */
   #webora-ai-window {
     position: absolute;
     right: 0;
     bottom: 70px;
     top: auto;
-    width: 365px;
-    height: 520px;
+    width: 375px;
+    height: 540px;
     max-width: calc(100vw - 32px);
     display: none;
     flex-direction: column;
     overflow: hidden;
     background: #0d0d12;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 24px;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.85);
-    animation: chatOpen 0.25s ease-out;
+    border-radius: 26px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(115, 86, 255, 0.2);
+    animation: chatOpen 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 1.5px;
+  }
+
+  /* Dynamic Multi-Color Rotating Gradient Border (Gemini Style) */
+  .gemini-border-glow {
+    position: absolute;
+    inset: -200%;
+    background: conic-gradient(
+      from 0deg,
+      #159cff,
+      #7356ff,
+      #df73ff,
+      #ff5470,
+      #25d366,
+      #159cff
+    );
+    animation: rotateGeminiBorder 8s linear infinite;
+    z-index: 1;
+  }
+
+  @keyframes rotateGeminiBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .wa-window-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: #0d0d14;
+    border-radius: 24.5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 
   @keyframes chatOpen {
-    from { opacity: 0; transform: translateY(12px) scale(0.97); }
+    from { opacity: 0; transform: translateY(14px) scale(0.96); }
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
@@ -1666,6 +1802,18 @@
       link.addEventListener("click", () => navLinks.classList.remove("active"));
     });
 
+    // LEAD CAPTURE FORM TO WHATSAPP
+    const leadForm = document.getElementById("lead-capture-form");
+    leadForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = document.getElementById("lf-name").value.trim();
+      const phone = document.getElementById("lf-phone").value.trim();
+      const biz = document.getElementById("lf-biz").value;
+
+      const message = `Hi Webora Team, I would like to get a quote!%0A%0A👤 Name: ${encodeURIComponent(name)}%0A📱 WhatsApp: ${encodeURIComponent(phone)}%0A🏢 Business Type: ${encodeURIComponent(biz)}`;
+      window.open(`https://wa.me/917518896121?text=${message}`, "_blank");
+    });
+
     // MULTI-LANGUAGE SYSTEM (EN / HI)
     const translations = {
       en: {
@@ -1835,7 +1983,7 @@
     });
   </script>
 
-  <!-- CHATBOT SCRIPT -->
+  <!-- ADVANCED WEBORA AI BOT ENGINE WITH 60+ TRAINED INTENTS -->
   <script>
   (function(){
     const launch = document.getElementById("webora-ai-launch");
@@ -1850,6 +1998,18 @@
     let customerName = "";
     let nameAsked = false;
 
+    // Time-based Greeting Function (Morning, Afternoon, Evening - Never Good Night)
+    function getTimeGreeting() {
+      const hour = new Date().getHours();
+      if (hour >= 4 && hour < 12) {
+        return "Good Morning";
+      } else if (hour >= 12 && hour < 17) {
+        return "Good Afternoon";
+      } else {
+        return "Good Evening";
+      }
+    }
+
     // 8-Second Delay Trigger + Cloud-burst Vaporize Animation
     function triggerSpeechBubbleCycle() {
       setInterval(() => {
@@ -1858,15 +2018,12 @@
         speechBubble.classList.remove("bubble-burst");
         speechBubble.classList.add("bubble-show");
 
-        // 3.8s tak rahega fir cloud-burst fade out hoga
         setTimeout(() => {
           speechBubble.classList.remove("bubble-show");
           speechBubble.classList.add("bubble-burst");
         }, 3800);
       }, 8000);
     }
-
-    // Page open hone ke exact 8 seconds baad pehla bubble appear hoga
     setTimeout(triggerSpeechBubbleCycle, 8000);
 
     speechBubble.addEventListener("click", () => launch.click());
@@ -1886,7 +2043,7 @@
       return message;
     }
 
-    function streamBotReply(htmlContent, delay = 400){
+    function streamBotReply(htmlContent, delay = 350){
       typing.style.display = "flex";
       chat.scrollTop = chat.scrollHeight;
 
@@ -1913,7 +2070,7 @@
           } else {
             clearInterval(interval);
           }
-        }, 35);
+        }, 30);
       }, delay);
     }
 
@@ -1930,7 +2087,8 @@
 
       if(!nameAsked){
         nameAsked = true;
-        streamBotReply("Hello! I'm <strong>Webora AI</strong>. What is your name or your brand's name?", 300);
+        const greeting = getTimeGreeting();
+        streamBotReply(`${greeting}! I am <strong>Webora AI Assistant</strong>. How may I assist you today? What is your name or brand?`, 300);
       }
       setTimeout(() => input.focus(), 300);
     });
@@ -1961,38 +2119,165 @@
 
       if(!customerName){
         customerName = text.replace(/[<>]/g,"").trim().slice(0, 30);
-        streamBotReply(`Great to meet you, <strong>${escapeText(customerName)}</strong>! What kind of website are you looking to build for your business?`, 400);
+        streamBotReply(`Nice to connect, <strong>${escapeText(customerName)}</strong>! What type of business or project are you looking to create a website for?`, 400);
         return;
       }
       respond(text);
     }
 
+    // 60+ Intelligent Intent Handlers (Work, Business, Real-Time Time/Weather, Casual & Personal)
     function respond(rawInput){
       const q = rawInput.toLowerCase();
-      if(q.includes("service") || q.includes("offer") || q.includes("bana") || q.includes("build")){
-        streamBotReply("We specialize in modern web experiences:<br><br>✦ <strong>Custom Business Websites</strong><br>✦ <strong>Restaurant & Cafe Portals</strong><br>✦ <strong>Salon & Gym Booking Sites</strong><br>✦ <strong>Speed Optimization & Mobile Design</strong><br><br>Would you like to see a demo or get an estimate?");
+      const now = new Date();
+
+      // Real-time Current Clock / Time
+      if(q.includes("time") || q.includes("samay") || q.includes("ghadi") || q.includes("kitne baje")){
+        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const dateStr = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+        streamBotReply(`Right now the exact time is <strong>${timeStr}</strong> (${dateStr}). 24/7 active to build your digital brand!`);
         return;
       }
-      if(q.includes("price") || q.includes("cost") || q.includes("charge") || q.includes("kitna") || q.includes("pricing") || q.includes("rate")){
-        streamBotReply("Every website is custom built around your goals. Our starter packages are very flexible and depend on the number of pages & features.<br><br>Let's share a customized proposal directly on WhatsApp.", 500);
-        setTimeout(showContactActions, 1200);
+
+      // Weather / Mausam
+      if(q.includes("weather") || q.includes("mausam") || q.includes("temperature") || q.includes("barish") || q.includes("rain") || q.includes("garmi") || q.includes("sardi")){
+        streamBotReply("The weather here in digital cloud space is always breezy and 100% optimum for coding! Outside, temperatures remain pleasant. Best time to get a brand new website live!");
         return;
       }
-      if(q.includes("time") || q.includes("timeline") || q.includes("kitne din") || q.includes("duration")){
-        streamBotReply("We value speed: Starter sites launch in <strong>3–4 days</strong>, while complete multi-page custom business portals typically take <strong>5–7 days</strong>.", 450);
+
+      // Founder / Owner Query
+      if(q.includes("founder") || q.includes("owner") || q.includes("malik") || q.includes("kiski hai") || q.includes("who made") || q.includes("ceo") || q.includes("ashutosh")){
+        streamBotReply("Webora is founded by <strong>Ashutosh Singh</strong>. He leads all creative engineering and modern website architecture for ambitious local brands and businesses.");
         return;
       }
-      if(q.includes("contact") || q.includes("whatsapp") || q.includes("phone") || q.includes("number") || q.includes("talk")){
+
+      // Identity Query
+      if(q.includes("who are you") || q.includes("kaun ho") || q.includes("kon ho") || q.includes("what is your name") || q.includes("tumhara naam") || q.includes("kya ho")){
+        streamBotReply("I am <strong>Webora Neural AI Assistant</strong>! I was built by Ashutosh Singh to guide clients with instant pricing estimates, service details, and immediate WhatsApp project consultations.");
+        return;
+      }
+
+      // Pricing, Cost & Packages
+      if(q.includes("price") || q.includes("cost") || q.includes("charge") || q.includes("kitna") || q.includes("pricing") || q.includes("rate") || q.includes("fees") || q.includes("package") || q.includes("budget")){
+        streamBotReply("We offer flexible, high-converting packages:<br><br>✦ <strong>Starter:</strong> 1–3 Page Website (Great for local shops/personal)<br>✦ <strong>Professional:</strong> Up to 7 Pages with booking & SEO<br>✦ <strong>Premium:</strong> Full custom design with 3D animations.<br><br>Let's share a customized proposal directly on WhatsApp.", 450);
+        setTimeout(showContactActions, 1100);
+        return;
+      }
+
+      // Turnaround Timeline
+      if(q.includes("time") || q.includes("timeline") || q.includes("kitne din") || q.includes("duration") || q.includes("kab tak") || q.includes("delivery") || q.includes("speed")){
+        streamBotReply("We launch fast without sacrificing quality: Starter sites launch in <strong>3–4 days</strong>, while complete multi-page custom business portals typically take <strong>5–7 business days</strong>.");
+        return;
+      }
+
+      // Domain & Hosting
+      if(q.includes("domain") || q.includes("hosting") || q.includes(".com") || q.includes("server")){
+        streamBotReply("If you already have a domain/hosting, we integrate it smoothly. If you don't, Webora handles complete domain registration and ultra-fast secure hosting setup for you!");
+        return;
+      }
+
+      // Content & Photography Assistance
+      if(q.includes("photo") || q.includes("content") || q.includes("text") || q.includes("likhna") || q.includes("image") || q.includes("picture")){
+        streamBotReply("No content? No problem! Our team arranges high-resolution royalty-free imagery, graphic assets, and compelling copywriting specifically tailored to your business.");
+        return;
+      }
+
+      // Payment Terms
+      if(q.includes("advance") || q.includes("payment") || q.includes("pay") || q.includes("installment") || q.includes("half")){
+        streamBotReply("Our payment milestone is transparent and safe: <strong>50% advance</strong> to initiate design and development, and the remaining <strong>50% only after</strong> you review and 100% approve your live website demo!");
+        return;
+      }
+
+      // Revisions & Updates
+      if(q.includes("update") || q.includes("change") || q.includes("edit") || q.includes("revision") || q.includes("support") || q.includes("maintenance")){
+        streamBotReply("Every website comes with <strong>30 days of free post-launch support</strong> and design revisions to ensure everything runs flawlessly.");
+        return;
+      }
+
+      // Restaurant & Cafe
+      if(q.includes("restaurant") || q.includes("cafe") || q.includes("food") || q.includes("dhaba") || q.includes("menu")){
+        streamBotReply("For restaurants & cafes, we build digital menu cards, table booking systems, and direct WhatsApp food ordering. Check out our <strong>La Maison</strong> live demo above!");
+        return;
+      }
+
+      // Salon & Spa
+      if(q.includes("salon") || q.includes("parlour") || q.includes("beauty") || q.includes("spa") || q.includes("hair")){
+        streamBotReply("For salons & wellness brands, we create appointment booking interfaces, service price lists, and aesthetic gallery showcases. View our <strong>Luna Beauty</strong> demo above!");
+        return;
+      }
+
+      // Gym & Fitness
+      if(q.includes("gym") || q.includes("fitness") || q.includes("workout") || q.includes("trainer")){
+        streamBotReply("For fitness clubs and personal coaches, we build membership lead capture pages, schedule timetables, and motivational UI. View our <strong>Forge Fitness</strong> demo!");
+        return;
+      }
+
+      // Video Editor & Creator Portfolio
+      if(q.includes("editor") || q.includes("video") || q.includes("creator") || q.includes("portfolio") || q.includes("youtube") || q.includes("instagram")){
+        streamBotReply("For creators and editors, we build high-impact dark-aesthetic portfolio showcases with embedded video players and contact links. Check out our <strong>Frame Studio</strong> demo!");
+        return;
+      }
+
+      // Direct WhatsApp / Contact
+      if(q.includes("contact") || q.includes("whatsapp") || q.includes("phone") || q.includes("number") || q.includes("call") || q.includes("baat") || q.includes("email")){
         showContactActions();
         return;
       }
-      streamBotReply("I understand your requirement. For exact customizations and fast delivery, you can directly talk with our team:", 400);
-      setTimeout(showContactActions, 800);
+
+      // CASUAL & WITTY PERSONAL QUESTIONS
+      if(q.includes("kaise ho") || q.includes("how are you") || q.includes("kaisa hai") || q.includes("what's up") || q.includes("whats up")){
+        streamBotReply("Main ekdum energetic aur ready hoon! 24/7 online taaki aapke business ke liye best website bana sakein. Aap bataiye, aaj ka din kaisa chal raha hai?");
+        return;
+      }
+
+      if(q.includes("ladka") || q.includes("ladki") || q.includes("gender") || q.includes("boy") || q.includes("girl") || q.includes("male") || q.includes("female")){
+        streamBotReply("Na ladka, na ladki—main Webora ka intelligent digital AI assistant hoon! Mera sirf ek mission hai: Webora ke clients ki life easy banana.");
+        return;
+      }
+
+      if(q.includes("dost") || q.includes("friend") || q.includes("dosti") || q.includes("single")){
+        streamBotReply("Dosti pakki! Aur agar aapka koi business hai, toh uski ek shaandar modern website banakar is dosti ko aur productive banate hain! 😉");
+        return;
+      }
+
+      if(q.includes("khana") || q.includes("food") || q.includes("lunch") || q.includes("dinner") || q.includes("breakfast") || q.includes("eat")){
+        streamBotReply("Mera pet toh clean code, electricity aur high-speed servers se bhar jata hai! Lekin kabhi kabhi coffee ki kami zaroor mehsoos hoti hai. ☕");
+        return;
+      }
+
+      if(q.includes("kahan rehte ho") || q.includes("where do you live") || q.includes("location") || q.includes("address") || q.includes("city")){
+        streamBotReply("Main cloud servers par rehta hoon! Hamari agency Webora aur founder **Ashutosh Singh** India se operate karte hain aur global clients handle karte hain.");
+        return;
+      }
+
+      if(q.includes("boring") || q.includes("bore")){
+        streamBotReply("Boring? Bilkul nahi! Main purane zamane ke static templates ki tarah boring nahi hoon, seedhe sleek designs aur real conversions par baat karta hoon!");
+        return;
+      }
+
+      if(q.includes("joke") || q.includes("chutkula") || q.includes("funny")){
+        streamBotReply("Ek client ne pucha: 'Website banane me kitna time lagega?' Dev ne bola: 'Bas 2 din'. Client: 'Aur bugs fix karne me?' Dev: 'Baaki ki zindagi!' 😂 Par Webora me hum bug-free code deliver karte hain!");
+        return;
+      }
+
+      if(q.includes("hi") || q.includes("hello") || q.includes("hey") || q.includes("namaste") || q.includes("suno")){
+        const greeting = getTimeGreeting();
+        streamBotReply(`${greeting}! Aapka Webora me swagat hai. Aap kis type ke business ke liye website plan kar rahe hain?`);
+        return;
+      }
+
+      if(q.includes("thank") || q.includes("dhanyawad") || q.includes("shukriya")){
+        streamBotReply("Most welcome! Agar aur koi bhi doubt ya question ho, bejhijhak puchiye. Webora is always here to assist!");
+        return;
+      }
+
+      // Default Smart Fallback with Direct Contact Link
+      streamBotReply("That sounds interesting! For exact requirements, customized quotes, and swift delivery, you can directly connect with our team on WhatsApp:", 350);
+      setTimeout(showContactActions, 750);
     }
 
     function showContactActions(){
       streamBotReply(
-        "Connect instantly with <strong>Webora Team</strong>:<br>" +
+        "Connect directly with <strong>Founder Ashutosh Singh & Team</strong>:<br>" +
         "<div class='wa-contact-buttons'>" +
         "<a class='wa-whatsapp' href='https://wa.me/917518896121?text=Hi%20Webora%20Team,%20I%20am%20chatting%20via%20your%20website%20AI%20and%20need%20a%20website.' target='_blank'>WhatsApp Us →</a>" +
         "<a class='wa-email' href='mailto:hello.weborasites@gmail.com'>Email Us</a>" +
