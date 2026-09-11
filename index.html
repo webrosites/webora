@@ -2040,6 +2040,16 @@ opacity:1 !important;
 
 </script>
 
-<!-- ================= END WEBORA AI ================= -->     
+<!-- ================= END WEBORA AI ================= --> 
+ <script>
+const bot = document.getElementById("webora-ai-launch");
+const chatBox = document.getElementById("webora-ai-window");
+
+bot.onclick = function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  chatBox.style.display = "flex";
+};
+</script>       
 </body>
 </html>
