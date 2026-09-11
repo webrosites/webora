@@ -520,12 +520,6 @@
       margin-bottom: 28px;
     }
 
-    /* CONTACT SECTION */
-    .section {
-      text-align: center;
-      padding: 90px 20px;
-    }
-
     /* FOOTER */
 
     footer {
@@ -967,30 +961,33 @@
 
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Let's build something great.</h2>
+  <!-- OLD LEFT-ALIGNED CONTACT SECTION -->
+  <section class="section" id="contact" style="padding: 90px 0;">
+    <div class="container" style="text-align: left;">
+      <h2 style="font-size: clamp(32px, 5vw, 52px); margin-bottom: 12px; letter-spacing: -2px; font-weight: 800;">Let's build something great.</h2>
 
-    <p class="section-subtitle">
-      Have a business that needs a better website? We'd love to hear from you.
-    </p>
+      <p style="color: #8e8e99; font-size: 16px; margin-bottom: 25px;">
+        Have a business that needs a better website? We'd love to hear from you.
+      </p>
 
-    <a
-      href="mailto:hello.weborasites@gmail.com"
-      style="display:inline-block;padding:16px 28px;border-radius:50px;background:#fff;color:#111;font-weight:700;text-decoration:none;"
-    >
-      Contact Us →
+      <a
+        href="mailto:hello.weborasites@gmail.com"
+        style="display:inline-block;padding:15px 28px;border-radius:50px;background:#fff;color:#111;font-weight:700;text-decoration:none;"
+      >
+        Contact Us →
+      </a>
+
+      <p style="margin-top:20px;color:#888;">
+        hello.weborasites@gmail.com
+      </p>
+      <a href="https://wa.me/917518896121" target="_blank"
+    style="display:inline-block;margin-top:15px;padding:12px 22px;border-radius:50px;background:#25D366;color:#111;text-decoration:none;font-weight:700;">
+    WhatsApp Us →
     </a>
-
-    <p style="margin-top:20px;color:#888;">
-      hello.weborasites@gmail.com
+    <p style="margin-top:18px;color:#888;">
+      Founded by <strong style="color:#fff;">Ashutosh Singh</strong> · Founder, Webora
     </p>
-    <a href="https://wa.me/917518896121" target="_blank"
-  style="display:inline-block;margin-top:15px;padding:12px 22px;border-radius:50px;background:#25D366;color:#111;text-decoration:none;font-weight:700;">
-  WhatsApp Us →
-  </a>
-  <p style="margin-top:18px;color:#888;">
-    Founded by <strong style="color:#fff;">Ashutosh Singh</strong> · Founder, Webora
-  </p>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -1564,25 +1561,21 @@
     let customerName = "";
     let nameAsked = false;
 
-    // Speech Bubble Animation Cycle (Every 5 seconds interval)
+    // Speech Bubble Animation Cycle (Every 5.5s interval)
     function triggerSpeechBubbleCycle() {
       setInterval(() => {
-        // Agar chat window pehle se open hai toh bubble show nahi hoga
         if (windowBox.style.display === "flex") return;
 
         speechBubble.classList.add("bubble-show");
 
-        // 3.5 seconds tak dikhega fir smoothly fade-out ho jayega
         setTimeout(() => {
           speechBubble.classList.remove("bubble-show");
         }, 3500);
       }, 5500);
     }
 
-    // Page load ke 2 second baad cycle start hogi
     setTimeout(triggerSpeechBubbleCycle, 2000);
 
-    // Bubble par tap karne se bhi direct chat open ho jayegi
     speechBubble.addEventListener("click", () => {
       launch.click();
     });
@@ -1659,7 +1652,6 @@
 
     launch.addEventListener("click", function(e){
       e.preventDefault();
-      // Bubble open hone par turant hide kar dein
       speechBubble.classList.remove("bubble-show");
 
       const isOpen = windowBox.style.display === "flex";
