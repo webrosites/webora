@@ -960,6 +960,1080 @@ WhatsApp Us →
       observer.observe(item);
     });
   script>
+<!-- ================= WEBORA AI ASSISTANT ================= -->
 
+<div id="webora-ai">
+
+  <button id="webora-ai-launch" aria-label="Open Webora AI">
+    <span class="ai-glow"></span>
+    <span class="ai-logo">✦</span>
+  </button>
+
+  <div id="webora-ai-window">
+
+    <div class="wa-header">
+      <div class="wa-profile">
+        <div class="wa-avatar">
+          <span>W</span>
+          <i></i>
+        </div>
+
+        <div>
+          <div class="wa-title">Webora AI</div>
+          <div class="wa-status">
+            <span></span> Online
+          </div>
+        </div>
+      </div>
+
+      <button id="wa-close" aria-label="Close">×</button>
+    </div>
+
+    <div id="wa-chat">
+
+      <div id="wa-welcome"></div>
+
+      <div class="wa-quick">
+        <button data-question="services">What services do you offer?</button>
+        <button data-question="pricing">How does pricing work?</button>
+        <button data-question="process">How does it work?</button>
+        <button data-question="contact">Contact Webora</button>
+      </div>
+
+    </div>
+
+    <div class="wa-typing" id="wa-typing">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="wa-input-area">
+
+      <input
+        id="wa-input"
+        type="text"
+        autocomplete="off"
+        placeholder="Type your message..."
+      >
+
+      <button id="wa-send" aria-label="Send">
+        ➤
+      </button>
+
+    </div>
+
+    <div class="wa-powered">
+      Powered by <strong>Webora</strong>
+    </div>
+
+  </div>
+
+</div>
+
+
+<style>
+
+/* ================= WEBORA AI ================= */
+
+#webora-ai{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:99999;
+  font-family:inherit;
+}
+
+/* ---------- FLOATING BUTTON ---------- */
+
+#webora-ai-launch{
+  position:relative;
+  width:62px;
+  height:62px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffffff,#bdbdbd);
+  color:#111;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    0 12px 40px rgba(0,0,0,.5),
+    0 0 30px rgba(255,255,255,.08);
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+#webora-ai-launch:hover{
+  transform:translateY(-4px) scale(1.04);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.6),
+    0 0 35px rgba(255,255,255,.14);
+}
+
+.ai-logo{
+  position:relative;
+  z-index:2;
+  font-size:27px;
+  font-weight:900;
+}
+
+.ai-glow{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  animation:aiPulse 2.5s infinite;
+}
+
+@keyframes aiPulse{
+  0%,100%{
+    box-shadow:0 0 0 0 rgba(255,255,255,.18);
+  }
+  50%{
+    box-shadow:0 0 0 10px rgba(255,255,255,0);
+  }
+}
+
+
+/* ---------- CHAT WINDOW ---------- */
+
+#webora-ai-window{
+  position:absolute;
+  right:0;
+  bottom:76px;
+  width:365px;
+  height:555px;
+  max-width:calc(100vw - 30px);
+
+  display:none;
+  flex-direction:column;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(255,255,255,.07),
+      transparent 35%
+    ),
+    #0b0b0e;
+
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.7),
+    0 0 50px rgba(255,255,255,.04);
+
+  animation:chatOpen .28s ease;
+}
+
+@keyframes chatOpen{
+  from{
+    opacity:0;
+    transform:translateY(15px) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+
+/* ---------- HEADER ---------- */
+
+.wa-header{
+  height:76px;
+  flex-shrink:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 18px;
+
+  background:rgba(255,255,255,.035);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.wa-profile{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.wa-avatar{
+  position:relative;
+
+  width:43px;
+  height:43px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(135deg,#fff,#9d9d9d);
+
+  color:#111;
+
+  font-size:18px;
+  font-weight:900;
+
+  box-shadow:0 5px 20px rgba(255,255,255,.08);
+}
+
+.wa-avatar i{
+  position:absolute;
+  right:-2px;
+  bottom:-2px;
+
+  width:11px;
+  height:11px;
+
+  background:#45e58b;
+  border:2px solid #0b0b0e;
+  border-radius:50%;
+}
+
+.wa-title{
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+}
+
+.wa-status{
+  margin-top:3px;
+  color:#777;
+  font-size:11px;
+}
+
+.wa-status span{
+  display:inline-block;
+
+  width:6px;
+  height:6px;
+
+  margin-right:4px;
+
+  border-radius:50%;
+  background:#45e58b;
+}
+
+#wa-close{
+  width:34px;
+  height:34px;
+
+  border:0;
+  border-radius:50%;
+
+  background:rgba(255,255,255,.06);
+  color:#aaa;
+
+  font-size:22px;
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+#wa-close:hover{
+  background:rgba(255,255,255,.12);
+  color:#fff;
+}
+
+
+/* ---------- CHAT ---------- */
+
+#wa-chat{
+  flex:1;
+  overflow-y:auto;
+  padding:18px 15px 10px;
+
+  scrollbar-width:thin;
+}
+
+#wa-chat::-webkit-scrollbar{
+  width:4px;
+}
+
+#wa-chat::-webkit-scrollbar-thumb{
+  background:#333;
+  border-radius:20px;
+}
+
+
+/* ---------- MESSAGE ---------- */
+
+.wa-message{
+  max-width:84%;
+
+  padding:11px 13px;
+
+  margin-bottom:11px;
+
+  border-radius:15px;
+
+  font-size:13px;
+  line-height:1.55;
+
+  animation:messageIn .3s ease;
+}
+
+@keyframes messageIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.wa-bot{
+  background:#17171c;
+  color:#ddd;
+
+  border:1px solid rgba(255,255,255,.055);
+
+  border-bottom-left-radius:5px;
+}
+
+.wa-user{
+  margin-left:auto;
+
+  background:#fff;
+  color:#111;
+
+  border-bottom-right-radius:5px;
+}
+
+.wa-message strong{
+  color:#fff;
+}
+
+.wa-user strong{
+  color:#111;
+}
+
+
+/* ---------- QUICK BUTTONS ---------- */
+
+.wa-quick{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+
+  margin-top:4px;
+  margin-bottom:8px;
+}
+
+.wa-quick button{
+  border:1px solid rgba(255,255,255,.11);
+
+  background:#111116;
+  color:#aaa;
+
+  padding:8px 10px;
+
+  border-radius:20px;
+
+  font-size:11px;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.wa-quick button:hover{
+  background:#fff;
+  color:#111;
+}
+
+
+/* ---------- TYPING ---------- */
+
+.wa-typing{
+  display:none;
+
+  align-items:center;
+  gap:4px;
+
+  height:30px;
+
+  padding-left:18px;
+}
+
+.wa-typing span{
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:#777;
+
+  animation:typing 1.2s infinite;
+}
+
+.wa-typing span:nth-child(2){
+  animation-delay:.15s;
+}
+
+.wa-typing span:nth-child(3){
+  animation-delay:.3s;
+}
+
+@keyframes typing{
+  0%,60%,100%{
+    transform:translateY(0);
+    opacity:.4;
+  }
+
+  30%{
+    transform:translateY(-4px);
+    opacity:1;
+  }
+}
+
+
+/* ---------- INPUT ---------- */
+
+.wa-input-area{
+  display:flex;
+  gap:8px;
+
+  padding:10px;
+
+  border-top:1px solid rgba(255,255,255,.07);
+
+  background:#0b0b0e;
+}
+
+#wa-input{
+  flex:1;
+  min-width:0;
+
+  border:1px solid rgba(255,255,255,.08);
+  outline:none;
+
+  border-radius:13px;
+
+  padding:11px 13px;
+
+  background:#151519;
+  color:#fff;
+
+  font-family:inherit;
+  font-size:13px;
+}
+
+#wa-input::placeholder{
+  color:#666;
+}
+
+#wa-input:focus{
+  border-color:rgba(255,255,255,.2);
+}
+
+#wa-send{
+  width:43px;
+
+  border:0;
+  border-radius:13px;
+
+  background:#fff;
+  color:#111;
+
+  font-size:17px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+#wa-send:hover{
+  transform:scale(1.04);
+}
+
+
+/* ---------- CONTACT BUTTONS ---------- */
+
+.wa-contact-buttons{
+  display:flex;
+  gap:7px;
+  margin-top:10px;
+}
+
+.wa-contact-buttons a{
+  flex:1;
+
+  text-align:center;
+
+  padding:9px 8px;
+
+  border-radius:11px;
+
+  text-decoration:none;
+
+  font-size:11px;
+  font-weight:700;
+}
+
+.wa-whatsapp{
+  background:#25D366;
+  color:#07150c;
+}
+
+.wa-email{
+  background:#fff;
+  color:#111;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.wa-powered{
+  text-align:center;
+
+  padding:6px;
+
+  color:#4f4f55;
+
+  font-size:9px;
+
+  border-top:1px solid rgba(255,255,255,.035);
+}
+
+.wa-powered strong{
+  color:#777;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:500px){
+
+  #webora-ai{
+    right:15px;
+    bottom:15px;
+  }
+
+  #webora-ai-window{
+    right:-2px;
+    bottom:72px;
+
+    width:calc(100vw - 30px);
+    height:540px;
+
+    border-radius:22px;
+  }
+
+  #webora-ai-launch{
+    width:58px;
+    height:58px;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+(function(){
+
+  const launch = document.getElementById("webora-ai-launch");
+  const windowBox = document.getElementById("webora-ai-window");
+  const closeBtn = document.getElementById("wa-close");
+
+  const chat = document.getElementById("wa-chat");
+  const input = document.getElementById("wa-input");
+  const send = document.getElementById("wa-send");
+  const typing = document.getElementById("wa-typing");
+
+  let customerName = "";
+  let nameAsked = false;
+
+  /* ---------- TIME GREETING ---------- */
+
+  function getGreeting(name){
+
+    const hour = new Date().getHours();
+
+    let greeting;
+
+    if(hour >= 5 && hour < 12){
+      greeting = "Good morning";
+    }
+    else if(hour >= 12 && hour < 17){
+      greeting = "Good afternoon";
+    }
+    else if(hour >= 17 && hour < 21){
+      greeting = "Good evening";
+    }
+    else{
+      greeting = "Good night";
+    }
+
+    return greeting + (name ? " " + name : "");
+  }
+
+
+  /* ---------- SAFE TEXT ---------- */
+
+  function escapeText(text){
+
+    const div = document.createElement("div");
+    div.textContent = text;
+
+    return div.innerHTML;
+  }
+
+
+  /* ---------- ADD MESSAGE ---------- */
+
+  function addMessage(text,type){
+
+    const message = document.createElement("div");
+
+    message.className =
+      "wa-message " +
+      (type === "user" ? "wa-user" : "wa-bot");
+
+    message.innerHTML = text;
+
+    chat.appendChild(message);
+
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+
+  /* ---------- TYPING EFFECT ---------- */
+
+  function botReply(text,delay=550){
+
+    typing.style.display = "flex";
+
+    chat.scrollTop = chat.scrollHeight;
+
+    setTimeout(function(){
+
+      typing.style.display = "none";
+
+      addMessage(text,"bot");
+
+    },delay);
+  }
+
+
+  /* ---------- OPEN CHAT ---------- */
+
+  launch.addEventListener("click",function(){
+
+    const isOpen =
+      windowBox.style.display === "flex";
+
+    if(isOpen){
+
+      windowBox.style.display = "none";
+      return;
+
+    }
+
+    windowBox.style.display = "flex";
+
+    if(!nameAsked){
+
+      nameAsked = true;
+
+      botReply(
+        "Hi there! 👋<br><br>" +
+        "Before we get started, what should I call you?",
+        400
+      );
+
+    }
+
+    setTimeout(function(){
+
+      input.focus();
+
+    },450);
+
+  });
+
+
+  closeBtn.addEventListener("click",function(){
+
+    windowBox.style.display = "none";
+
+  });
+
+
+  /* ---------- QUICK QUESTIONS ---------- */
+
+  document.querySelectorAll(".wa-quick button")
+    .forEach(function(button){
+
+      button.addEventListener("click",function(){
+
+        const question = this.innerText;
+
+        addMessage(
+          escapeText(question),
+          "user"
+        );
+
+        respond(this.dataset.question);
+
+      });
+
+    });
+
+
+  /* ---------- SEND ---------- */
+
+  send.addEventListener("click",sendMessage);
+
+  input.addEventListener("keydown",function(event){
+
+    if(event.key === "Enter"){
+
+      event.preventDefault();
+
+      sendMessage();
+
+    }
+
+  });
+
+
+  function sendMessage(){
+
+    const text = input.value.trim();
+
+    if(!text) return;
+
+    addMessage(
+      escapeText(text),
+      "user"
+    );
+
+    input.value = "";
+
+    if(!customerName){
+
+      customerName = text
+        .replace(/[<>]/g,"")
+        .trim()
+        .slice(0,35);
+
+      botReply(
+        getGreeting(escapeText(customerName)) +
+        "! 👋<br><br>" +
+        "Welcome to <strong>Webora</strong>.<br>" +
+        "I'm your Webora AI assistant. How can I help you today?",
+        600
+      );
+
+      return;
+
+    }
+
+    respond(text);
+
+  }
+
+
+  /* ---------- RESPONSES ---------- */
+
+  function respond(question){
+
+    const q =
+      question.toLowerCase().trim();
+
+
+    /* SERVICES */
+
+    if(
+      q.includes("service") ||
+      q.includes("offer") ||
+      q.includes("website bana") ||
+      q.includes("website banate")
+    ){
+
+      botReply(
+        "We build modern, fast and mobile-friendly websites for businesses. 🚀<br><br>" +
+        "Our work includes:<br>" +
+        "• Business websites<br>" +
+        "• Restaurant websites<br>" +
+        "• Salon & beauty websites<br>" +
+        "• Fitness & gym websites<br>" +
+        "• Creator / portfolio websites<br>" +
+        "• Custom websites<br>" +
+        "• Mobile-first designs<br>" +
+        "• Basic SEO",
+        650
+      );
+
+      return;
+
+    }
+
+
+    /* PRICING */
+
+    if(
+      q.includes("price") ||
+      q.includes("pricing") ||
+      q.includes("cost") ||
+      q.includes("charge") ||
+      q.includes("kitne") ||
+      q.includes("paisa") ||
+      q.includes("budget")
+    ){
+
+      botReply(
+        "We don't use fixed public pricing. 💬<br><br>" +
+        "Every business has different requirements, so we discuss your project first and then suggest a suitable package and quote.<br><br>" +
+        "You can contact our team directly for a custom quote.",
+        650
+      );
+
+      return;
+
+    }
+
+
+    /* PROCESS */
+
+    if(
+      q.includes("process") ||
+      q.includes("how does it work") ||
+      q.includes("kaise") ||
+      q.includes("workflow")
+    ){
+
+      botReply(
+        "Our process is simple:<br><br>" +
+        "<strong>01 — Tell us</strong><br>" +
+        "Tell us about your business and what you need.<br><br>" +
+        "<strong>02 — We build</strong><br>" +
+        "We create the website around your brand.<br><br>" +
+        "<strong>03 — You approve</strong><br>" +
+        "You review the design and request changes.<br><br>" +
+        "<strong>04 — We launch</strong><br>" +
+        "Once everything is approved, your website goes live. 🚀",
+        700
+      );
+
+      return;
+
+    }
+
+
+    /* MOBILE */
+
+    if(
+      q.includes("mobile") ||
+      q.includes("phone") ||
+      q.includes("responsive")
+    ){
+
+      botReply(
+        "Yes. 📱<br><br>" +
+        "Our websites are designed to work smoothly across phones, tablets and desktops.",
+        550
+      );
+
+      return;
+
+    }
+
+
+    /* SEO */
+
+    if(
+      q.includes("seo") ||
+      q.includes("google") ||
+      q.includes("search")
+    ){
+
+      botReply(
+        "Our websites include basic SEO setup such as clean page structure, titles and descriptions.<br><br>" +
+        "For advanced SEO and ongoing growth, you can discuss your requirements with our team.",
+        650
+      );
+
+      return;
+
+    }
+
+
+    /* DOMAIN / HOSTING */
+
+    if(
+      q.includes("domain") ||
+      q.includes("hosting")
+    ){
+
+      botReply(
+        "We can help you understand the domain and hosting setup for your website. 🌐<br><br>" +
+        "For client projects, we recommend keeping the domain and hosting accounts under the client's ownership.",
+        650
+      );
+
+      return;
+
+    }
+
+
+    /* DEMOS */
+
+    if(
+      q.includes("demo") ||
+      q.includes("portfolio") ||
+      q.includes("work") ||
+      q.includes("example")
+    ){
+
+      botReply(
+        "You can explore our <strong>Our Work</strong> section to see Webora demos for restaurants, salons, fitness studios and creators. ✦",
+        550
+      );
+
+      return;
+
+    }
+
+
+    /* REVISION */
+
+    if(
+      q.includes("revision") ||
+      q.includes("change") ||
+      q.includes("edit")
+    ){
+
+      botReply(
+        "Yes. You can review the website and request changes before the final launch. 👍<br><br>" +
+        "The exact revision scope can be discussed when we plan your project.",
+        600
+      );
+
+      return;
+
+    }
+
+
+    /* TIME */
+
+    if(
+      q.includes("how long") ||
+      q.includes("time") ||
+      q.includes("days") ||
+      q.includes("kitna time") ||
+      q.includes("kab")
+    ){
+
+      botReply(
+        "Project time depends on the website size and requirements. ⏱️<br><br>" +
+        "Once we understand your project, we'll give you a realistic timeline.",
+        600
+      );
+
+      return;
+
+    }
+
+
+    /* HELLO */
+
+    if(
+      q === "hi" ||
+      q === "hello" ||
+      q === "hey" ||
+      q.includes("good morning") ||
+      q.includes("good afternoon") ||
+      q.includes("good evening") ||
+      q.includes("good night")
+    ){
+
+      botReply(
+        getGreeting(escapeText(customerName)) +
+        "! 👋<br><br>" +
+        "How can I help you with your website project?",
+        450
+      );
+
+      return;
+
+    }
+
+
+    /* CONTACT */
+
+    if(
+      q.includes("contact") ||
+      q.includes("whatsapp") ||
+      q.includes("email") ||
+      q.includes("number") ||
+      q.includes("call") ||
+      q.includes("reach")
+    ){
+
+      showContactReply();
+
+      return;
+
+    }
+
+
+    /* UNKNOWN */
+
+    showContactReply();
+
+  }
+
+
+  /* ---------- CONTACT FALLBACK ---------- */
+
+  function showContactReply(){
+
+    botReply(
+      "I don't have enough information to answer that accurately. 😊<br><br>" +
+      "<strong>For more information, contact Webora directly:</strong>" +
+
+      "<div class='wa-contact-buttons'>" +
+
+        "<a class='wa-whatsapp' " +
+        "href='https://wa.me/917518896121?text=Hi%20Webora%20I%27d%20like%20to%20know%20more%20about%20your%20website%20services.' " +
+        "target='_blank'>" +
+        "WhatsApp" +
+        "</a>" +
+
+        "<a class='wa-email' " +
+        "href='mailto:hello.weborasites@gmail.com'>" +
+        "Email" +
+        "</a>" +
+
+      "</div>",
+
+      650
+    );
+
+  }
+
+})();
+
+</script>
+
+<!-- ================= END WEBORA AI ================= -->
 </body>
 </html>
