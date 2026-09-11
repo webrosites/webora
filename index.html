@@ -30,6 +30,9 @@
       --cta-bg: radial-gradient(circle at 50% 0%, rgba(103, 82, 255, 0.2), transparent 55%), #0a0a0e;
       --footer-border: rgba(255, 255, 255, 0.07);
       --glow-opacity: 0.22;
+      --glass-btn-bg: rgba(255, 255, 255, 0.06);
+      --glass-btn-border: rgba(255, 255, 255, 0.15);
+      --glass-thumb-bg: rgba(255, 255, 255, 0.25);
     }
 
     body.light-mode {
@@ -50,6 +53,9 @@
       --cta-bg: radial-gradient(circle at 50% 0%, rgba(103, 82, 255, 0.15), transparent 60%), #ebedf5;
       --footer-border: rgba(0, 0, 0, 0.08);
       --glow-opacity: 0.12;
+      --glass-btn-bg: rgba(0, 0, 0, 0.05);
+      --glass-btn-border: rgba(0, 0, 0, 0.12);
+      --glass-thumb-bg: #0b0b12;
     }
 
     * {
@@ -80,49 +86,6 @@
       margin: auto;
     }
 
-    /* HANGING LAMP (PULL CORD THEME SWITCHER) */
-    .hanging-lamp {
-      position: fixed;
-      top: 0;
-      right: 90px;
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transform-origin: top center;
-      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .lamp-string {
-      width: 2px;
-      height: 70px;
-      background: linear-gradient(to bottom, #888, #bbb);
-      position: relative;
-    }
-
-    .lamp-bulb {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #ffd644;
-      box-shadow: 0 0 16px #ffbe0b, 0 0 30px rgba(255, 190, 11, 0.6);
-      position: relative;
-      border: 1px solid rgba(0,0,0,0.2);
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    body.light-mode .lamp-bulb {
-      background: #717382;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-
-    .hanging-lamp:active {
-      transform: translateY(18px) scale(0.96);
-    }
-
     /* NAVIGATION */
     nav {
       position: fixed;
@@ -132,6 +95,7 @@
       z-index: 100;
       background: var(--nav-bg);
       backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--nav-border);
     }
 
@@ -167,7 +131,7 @@
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       align-items: center;
       color: var(--text-muted);
       font-size: 14px;
@@ -185,6 +149,43 @@
       font-weight: 700;
     }
 
+    /* IPHONE LIQUID GLASS THEME TOGGLE */
+    .glass-theme-btn {
+      position: relative;
+      width: 62px;
+      height: 32px;
+      border-radius: 100px;
+      background: var(--glass-btn-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-btn-border);
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.1), 0 4px 15px rgba(0,0,0,0.15);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      outline: none;
+    }
+
+    .glass-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--glass-thumb-bg);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transform: translateX(0);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    body.light-mode .glass-thumb {
+      transform: translateX(30px);
+      color: #fff;
+    }
+
     /* LANGUAGE BUTTON PILL */
     .lang-btn {
       display: inline-flex;
@@ -194,6 +195,8 @@
       border-radius: 100px;
       border: 1px solid var(--btn-sec-border);
       background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       color: var(--text-main);
       font-size: 12px;
       font-weight: 700;
@@ -273,7 +276,6 @@
       font-weight: 800;
     }
 
-    /* FLOWING SHIMMER TEXT GRADIENT */
     .gradient-text {
       background: linear-gradient(100deg, #159cff, #7356ff, #df73ff, #159cff);
       background-size: 300% 300%;
@@ -594,7 +596,7 @@
       font-size: 14px;
     }
 
-    /* MARQUEE REVIEWS / TESTIMONIALS */
+    /* REVIEWS MARQUEE CAROUSEL */
     .reviews-section {
       padding: 90px 0;
       overflow: hidden;
@@ -690,6 +692,78 @@
       margin-bottom: 28px;
     }
 
+    /* LEFT-ALIGNED CONTACT & SKETCH BOY ANIMATION */
+    .founder-credit-wrapper {
+      display: inline-block;
+      position: relative;
+      margin-top: 36px;
+      padding-top: 24px;
+    }
+
+    .founder-highlight {
+      position: relative;
+      display: inline-block;
+      font-weight: 800;
+      color: var(--text-main);
+      padding: 2px 6px;
+      border-bottom: 2px dashed rgba(130, 118, 255, 0.45);
+    }
+
+    /* Hand-Drawn Sketch Coder Mascot */
+    .sketch-boy-mascot {
+      position: absolute;
+      top: -34px;
+      left: 6px;
+      width: 44px;
+      height: 44px;
+      pointer-events: none;
+      z-index: 10;
+      animation: boyWorkflow 11s infinite ease-in-out;
+      transform-origin: bottom center;
+    }
+
+    /* Isometric 3D Laptop */
+    .mascot-laptop {
+      transform-origin: 22px 28px;
+      animation: laptopTyping 0.3s infinite alternate;
+    }
+
+    @keyframes laptopTyping {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05) translateY(-0.5px); }
+    }
+
+    /* 3D Jump, Hurry, Code, and Relocate Animation */
+    @keyframes boyWorkflow {
+      /* State 1: Sitting and Coding on Ashutosh */
+      0%, 25% {
+        transform: translate(6px, 0) scale(1) rotate(0deg);
+      }
+      /* State 2: Surprised / Jumping off the name */
+      28% {
+        transform: translate(24px, -18px) scale(1.15) rotate(-10deg);
+      }
+      /* State 3: Landing in hurry near 'Singh' */
+      33% {
+        transform: translate(95px, 0) scale(1) rotate(0deg);
+      }
+      /* State 4: Hardcoding on Singh with laptop */
+      35%, 60% {
+        transform: translate(95px, 0) scale(1) rotate(3deg);
+      }
+      /* State 5: Big acrobatic vault / flip back */
+      64% {
+        transform: translate(60px, -26px) scale(1.25) rotate(-18deg);
+      }
+      /* State 6: Land back smoothly on 'Ashutosh' */
+      69% {
+        transform: translate(6px, 0) scale(0.95, 1.05) rotate(0deg);
+      }
+      72%, 100% {
+        transform: translate(6px, 0) scale(1) rotate(0deg);
+      }
+    }
+
     /* FOOTER */
     footer {
       padding: 35px 0;
@@ -704,19 +778,8 @@
       align-items: center;
     }
 
-    /* MOBILE */
+    /* MOBILE RESPONSIVE */
     @media (max-width: 800px) {
-      .hanging-lamp {
-        right: 68px;
-      }
-      .lamp-string {
-        height: 52px;
-      }
-      .lamp-bulb {
-        width: 18px;
-        height: 18px;
-      }
-
       .menu-toggle {
         display: flex;
       }
@@ -807,12 +870,6 @@
 
 <body>
 
-  <!-- HANGING LAMP (THEME SWITCH PULL-CORD) -->
-  <div class="hanging-lamp" id="lamp-pull" title="Pull cord to toggle Day/Night Mode">
-    <div class="lamp-string"></div>
-    <div class="lamp-bulb"></div>
-  </div>
-
   <!-- NAVIGATION -->
   <nav>
     <div class="container nav-inner">
@@ -834,7 +891,15 @@
         <a href="#work" data-i18n="nav_work">Our Work</a>
         <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
         <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
+        
+        <!-- Language Switcher -->
         <button class="lang-btn" id="lang-switcher">🌐 <span id="current-lang">EN</span></button>
+
+        <!-- iPhone Frosted Glass Light/Dark Mode Switcher -->
+        <button class="glass-theme-btn" id="theme-toggle" aria-label="Toggle Light/Dark Theme" title="Toggle Day/Night Mode">
+          <div class="glass-thumb" id="theme-thumb">🌙</div>
+        </button>
+
         <a href="#contact" class="nav-button" data-i18n="nav_cta">Get Started</a>
       </div>
 
@@ -1132,7 +1197,7 @@
         </div>
       </div>
 
-      <!-- Duplicates for continuous loop -->
+      <!-- Duplicates for seamless looping -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">"Webora delivered our fine-dining cafe website in just 4 days. Table inquiries on WhatsApp doubled within the first weekend!"</p>
@@ -1174,7 +1239,7 @@
     </div>
   </section>
 
-  <!-- LEFT-ALIGNED CONTACT SECTION -->
+  <!-- LEFT-ALIGNED CONTACT SECTION WITH SKETCH BOY CODER -->
   <section class="section" id="contact" style="padding: 90px 0;">
     <div class="container" style="text-align: left;">
       <h2 style="font-size: clamp(32px, 5vw, 52px); margin-bottom: 12px; letter-spacing: -2px; font-weight: 800;" data-i18n="contact_title">
@@ -1195,9 +1260,50 @@
       <a href="https://wa.me/917518896121" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 22px;border-radius:50px;background:#25D366;color:#111;text-decoration:none;font-weight:700;" data-i18n="contact_wa">
         WhatsApp Us →
       </a>
-      <p style="margin-top:18px;color:var(--text-muted);">
-        Founded by <strong style="color:var(--text-main);">Ashutosh Singh</strong> · Founder, Webora
-      </p>
+
+      <!-- FOUNDER CREDIT WITH ANIMATED SKETCH BOY CODER -->
+      <div class="founder-credit-wrapper">
+        <!-- SVG Sketch Coder Boy Jumping & Working on Laptop -->
+        <svg class="sketch-boy-mascot" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Boy Head (Pencil sketch style) -->
+          <circle cx="20" cy="14" r="7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <!-- Messy Anime Hair -->
+          <path d="M14 12 C14 8, 20 5, 26 10 C28 12, 26 16, 26 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M15 10 C18 6, 24 7, 25 11" stroke="currentColor" stroke-width="1.8"/>
+          <!-- Face Eyes & Smile -->
+          <circle cx="18" cy="14" r="1" fill="currentColor"/>
+          <circle cx="22" cy="14" r="1" fill="currentColor"/>
+          <path d="M19 17 Q20 19 22 17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+
+          <!-- Body / Hoodie -->
+          <path d="M15 21 L13 34 C13 36, 27 36, 27 34 L25 21 Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" fill="none"/>
+
+          <!-- Legs Sitting on Top of Text -->
+          <path d="M14 34 L9 39 L14 41" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M26 34 L31 39 L26 41" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Arms holding Laptop -->
+          <path d="M15 24 L22 28" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M25 24 L23 28" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+
+          <!-- Isometric Laptop with Glowing Code Screen -->
+          <g class="mascot-laptop">
+            <!-- Laptop Base -->
+            <polygon points="18,31 34,31 30,35 14,35" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <!-- Open Screen -->
+            <polygon points="20,22 34,20 34,30 20,31" fill="#159cff" stroke="currentColor" stroke-width="1.8" opacity="0.85"/>
+            <!-- Miniature Code Lines on Laptop -->
+            <line x1="22" y1="24" x2="30" y2="23" stroke="#fff" stroke-width="1"/>
+            <line x1="22" y1="26" x2="28" y2="25" stroke="#fff" stroke-width="1"/>
+            <line x1="22" y1="28" x2="31" y2="27" stroke="#fff" stroke-width="1"/>
+          </g>
+        </svg>
+
+        <p style="color:var(--text-muted); font-size: 14px;">
+          Founded by <span class="founder-highlight">Ashutosh Singh</span> · Founder, Webora
+        </p>
+      </div>
+
     </div>
   </section>
 
@@ -1722,38 +1828,31 @@
       link.addEventListener("click", () => navLinks.classList.remove("active"));
     });
 
-    // HANGING LAMP PULL SOUND & THEME SWITCH
-    let audioContext = null;
-    function playClickSound() {
-      try {
-        if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(800, audioContext.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.05);
-        gain.gain.setValueAtTime(0.08, audioContext.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
-        osc.connect(gain);
-        gain.connect(audioContext.destination);
-        osc.start();
-        osc.stop(audioContext.currentTime + 0.05);
-      } catch(e) {}
+    // IPHONE LIQUID GLASS THEME TOGGLE (DAY/NIGHT)
+    const themeBtn = document.getElementById("theme-toggle");
+    const themeThumb = document.getElementById("theme-thumb");
+
+    function updateThemeUI(isLight) {
+      if(isLight) {
+        document.body.classList.add("light-mode");
+        themeThumb.textContent = "☀️";
+      } else {
+        document.body.classList.remove("light-mode");
+        themeThumb.textContent = "🌙";
+      }
     }
 
-    const lampPull = document.getElementById("lamp-pull");
-    lampPull.addEventListener("click", () => {
-      playClickSound();
-      document.body.classList.toggle("light-mode");
-      const isLight = document.body.classList.contains("light-mode");
-      localStorage.setItem("webora_theme", isLight ? "light" : "dark");
+    themeBtn.addEventListener("click", () => {
+      const isNowLight = !document.body.classList.contains("light-mode");
+      updateThemeUI(isNowLight);
+      localStorage.setItem("webora_theme", isNowLight ? "light" : "dark");
     });
 
     if(localStorage.getItem("webora_theme") === "light") {
-      document.body.classList.add("light-mode");
+      updateThemeUI(true);
     }
 
-    // MULTI-LANGUAGE SYSTEM (EN / HI / HINGLISH)
+    // MULTI-LANGUAGE SYSTEM (EN / HI)
     const translations = {
       en: {
         nav_services: "Services",
