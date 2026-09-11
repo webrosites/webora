@@ -67,6 +67,7 @@
       font-size: 21px;
       font-weight: 800;
       letter-spacing: -1px;
+      cursor: pointer;
     }
 
     .brand-icon {
@@ -80,6 +81,47 @@
       color: #fff;
       background: linear-gradient(135deg, #159cff, #684cff, #e66bff);
       box-shadow: 0 0 25px rgba(93, 90, 255, 0.35);
+    }
+
+    /* WEBORA TEXT: SILVER SHIMMER + NEON BREATHING + GENTLE COMPACT-EXPAND MOTION */
+    .brand-text {
+      display: inline-block;
+      position: relative;
+      font-weight: 800;
+      background: linear-gradient(110deg, #ffffff 32%, #d7d0ff 48%, #ffffff 64%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: weboraKinetic 7s infinite ease-in-out;
+      will-change: letter-spacing, filter, background-position;
+    }
+
+    @keyframes weboraKinetic {
+      0% {
+        letter-spacing: -0.6px;
+        filter: drop-shadow(0 0 6px rgba(115, 86, 255, 0.25));
+        background-position: 180% 0;
+      }
+      28% {
+        /* Fasna / Tight compact kerning */
+        letter-spacing: -2.2px;
+        filter: drop-shadow(0 0 10px rgba(115, 86, 255, 0.45));
+      }
+      52% {
+        /* Sulajhna / Smooth relax float & gentle shimmer passage */
+        letter-spacing: 0.8px;
+        filter: drop-shadow(0 0 18px rgba(21, 156, 255, 0.7));
+        background-position: 0% 0;
+      }
+      76% {
+        letter-spacing: -0.3px;
+        filter: drop-shadow(0 0 8px rgba(115, 86, 255, 0.3));
+      }
+      100% {
+        letter-spacing: -0.6px;
+        filter: drop-shadow(0 0 6px rgba(115, 86, 255, 0.25));
+        background-position: -180% 0;
+      }
     }
 
     .nav-links {
@@ -796,7 +838,8 @@
 
       <a href="#" class="brand">
         <div class="brand-icon">W</div>
-        Webora
+        <!-- GENTLE KINETIC TEXT -->
+        <span class="brand-text">Webora</span>
       </a>
 
       <!-- Mobile Hamburger Button -->
@@ -1638,34 +1681,54 @@
     color: #000;
   }
 
-  /* RATING STARS BOX (POST-CONVERSATION) */
+  /* ELEGANT ANIMATED RATING BOX (NO REDIRECT) */
   .wa-rating-box {
-    background: #161622;
-    border: 1px solid rgba(130, 118, 255, 0.3);
-    border-radius: 16px;
-    padding: 14px;
+    background: #151520;
+    border: 1px solid rgba(130, 118, 255, 0.25);
+    border-radius: 18px;
+    padding: 16px 14px;
     margin-top: 10px;
     text-align: center;
-    animation: messageIn 0.25s ease;
+    animation: ratingBoxIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes ratingBoxIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .wa-rating-stars {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    margin: 10px 0;
+    gap: 10px;
+    margin: 12px 0 6px;
   }
 
   .wa-star-btn {
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 26px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    animation: starBounce 0.5s ease-in-out both;
+  }
+
+  .wa-star-btn:nth-child(1) { animation-delay: 0.05s; }
+  .wa-star-btn:nth-child(2) { animation-delay: 0.1s; }
+  .wa-star-btn:nth-child(3) { animation-delay: 0.15s; }
+  .wa-star-btn:nth-child(4) { animation-delay: 0.2s; }
+  .wa-star-btn:nth-child(5) { animation-delay: 0.25s; }
+
+  @keyframes starBounce {
+    0% { transform: scale(0.4) rotate(-20deg); opacity: 0; }
+    70% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
   }
 
   .wa-star-btn:hover {
-    transform: scale(1.25);
+    transform: scale(1.3) translateY(-3px);
+    filter: drop-shadow(0 0 10px #ffd166);
   }
 
   .wa-typing {
@@ -2009,7 +2072,7 @@
     });
   </script>
 
-  <!-- ================= ADVANCED HINGLISH BOT + WHATSAPP RATING ================= -->
+  <!-- ================= ADVANCED HINGLISH BOT WITH LOCAL ANIMATED RATING ================= -->
   <script>
   (function(){
     const launch = document.getElementById("webora-ai-launch");
@@ -2025,6 +2088,7 @@
     let nameAsked = false;
     let interactionCount = 0;
     let ratingShown = false;
+    let botLang = ""; // 'hinglish' or 'english'
 
     // Time-based Greeting Function (Morning, Afternoon, Evening - Never Good Night)
     function getTimeGreeting() {
@@ -2116,9 +2180,9 @@
         if(callback) callback();
 
         interactionCount++;
-        // Agar 4 interaction ho chuki hai toh rating maango
+        // 4 interactions ke baad polite animated rating box popup karega
         if(interactionCount >= 4 && !ratingShown) {
-          setTimeout(showRatingSystem, 1400);
+          setTimeout(showRatingSystem, 1200);
         }
       }, delay);
     }
@@ -2134,12 +2198,38 @@
       }
       windowBox.style.display = "flex";
 
+      // START DIALOGUE: INITIAL LANGUAGE SELECTION PROMPT
       if(!nameAsked){
         nameAsked = true;
         const greeting = getTimeGreeting();
-        streamBotReply(`${greeting}! Main <strong>Webora AI Assistant</strong> hoon. Aaj aapki kya help kar sakta hoon? Aapka ya aapke business ka kya naam hai?`, 300, () => {
-          renderInitialPills();
-        });
+        streamBotReply(
+          `${greeting}! Welcome to Webora. Please choose your preferred language to continue:<br><br>` +
+          `कृपया अपनी भाषा चुनें:`, 
+          300, 
+          () => {
+            const langPills = document.createElement("div");
+            langPills.className = "wa-quick-pills";
+            langPills.innerHTML = `
+              <button id="set-hindi-btn" style="background:#8276ff; color:#fff; border-color:#8276ff; font-weight:700;">🇮🇳 हिन्दी / Hinglish</button>
+              <button id="set-eng-btn">🌐 English</button>
+            `;
+            chat.appendChild(langPills);
+
+            document.getElementById("set-hindi-btn").addEventListener("click", function(){
+              botLang = "hinglish";
+              langPills.remove();
+              addMessage("हिन्दी / Hinglish", "user");
+              streamBotReply("नमस्ते! Main Webora ka intelligent AI assistant hoon. Aapka ya aapke business ka kya naam hai?", 300);
+            });
+
+            document.getElementById("set-eng-btn").addEventListener("click", function(){
+              botLang = "english";
+              langPills.remove();
+              addMessage("English", "user");
+              streamBotReply("Hello! I am Webora AI Assistant. What is your name or your brand's name?", 300);
+            });
+          }
+        );
       }
       setTimeout(() => input.focus(), 300);
     });
@@ -2162,7 +2252,11 @@
 
       if(!customerName){
         customerName = text.replace(/[<>]/g,"").trim().slice(0, 30);
-        streamBotReply(`Aapse milkar bohot khushi hui, <strong>${escapeText(customerName)}</strong> ji! Aap apne business ke liye kis type ki website plan kar rahe hain?`, 350);
+        if(botLang === "english") {
+          streamBotReply(`Great to meet you, <strong>${escapeText(customerName)}</strong>! What kind of website are you planning for your business?`, 350, () => renderInitialPills());
+        } else {
+          streamBotReply(`Aapse milkar bohot khushi hui, <strong>${escapeText(customerName)}</strong> ji! Aap apne business ke liye kis type ki website plan kar rahe hain?`, 350, () => renderInitialPills());
+        }
         return;
       }
       respond(text);
@@ -2182,7 +2276,7 @@
         .replace(/[^a-zA-Z0-9\s]/g, " ");
     }
 
-    // Intelligent Matching Engine
+    // Comprehensive Natural Response Engine
     function respond(rawInput){
       const q = rawInput.toLowerCase();
       const nq = normalizeHinglish(rawInput);
@@ -2192,62 +2286,102 @@
       if(nq.includes("time") || nq.includes("samay") || nq.includes("ghadi") || nq.includes("baje")){
         const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         const dateStr = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
-        streamBotReply(`Abhi theek <strong>${timeStr}</strong> (${dateStr}) ho rahe hain. Hamara platform 24/7 active hai aapke liye!`);
+        if(botLang === "english") {
+          streamBotReply(`The current time is <strong>${timeStr}</strong> (${dateStr}). We are active 24/7!`);
+        } else {
+          streamBotReply(`Abhi theek <strong>${timeStr}</strong> (${dateStr}) ho rahe hain. Hamara platform 24/7 active hai aapke liye!`);
+        }
         return;
       }
 
       // Weather / Mausam
       if(nq.includes("weather") || nq.includes("mausam") || nq.includes("barish") || nq.includes("rain") || nq.includes("garmi") || nq.includes("sardi") || nq.includes("temperature")){
-        streamBotReply("Server cloud space me bilkul mast mausam hai! Web development aur nayi business website launch karne ke liye aaj ka din ekdum perfect hai!");
+        if(botLang === "english") {
+          streamBotReply("The weather here in digital cloud servers is 100% optimum for coding! Great time to launch your new website.");
+        } else {
+          streamBotReply("Server cloud space me bilkul mast mausam hai! Web development aur nayi business website launch karne ke liye aaj ka din ekdum perfect hai!");
+        }
         return;
       }
 
       // Founder / Owner Query
       if(nq.includes("founder") || nq.includes("owner") || nq.includes("malik") || nq.includes("kiski") || nq.includes("ashutosh")){
-        streamBotReply("Webora ke founder <strong>Ashutosh Singh</strong> hain. Unhone Webora ko local businesses aur creators ko modern, ultra-fast web presence dene ke mission se banaya hai.");
+        if(botLang === "english") {
+          streamBotReply("Webora is founded by <strong>Ashutosh Singh</strong>. He leads all creative web engineering and performance design.");
+        } else {
+          streamBotReply("Webora ke founder <strong>Ashutosh Singh</strong> hain. Unhone Webora ko local businesses aur creators ko modern, ultra-fast web presence dene ke mission se banaya hai.");
+        }
         return;
       }
 
       // Identity Query
       if(nq.includes("kaun") && (nq.includes("hai") || nq.includes("ho")) || nq.includes("who are you") || nq.includes("naam") || nq.includes("tum")){
-        streamBotReply("Main <strong>Webora Neural AI</strong> assistant hoon. Main clients ko quotes, packages, aur business website consultation dene ke liye trained hoon!");
+        if(botLang === "english") {
+          streamBotReply("I am <strong>Webora Neural AI</strong> assistant! Trained to provide pricing estimates, services consultation, and instant support.");
+        } else {
+          streamBotReply("Main <strong>Webora Neural AI</strong> assistant hoon. Main clients ko quotes, packages, aur business website consultation dene ke liye trained hoon!");
+        }
         return;
       }
 
       // Pricing, Cost & Kharcha (Hinglish Supported)
       if(nq.includes("cost") || nq.includes("pricing") || nq.includes("charge") || nq.includes("package") || nq.includes("budget") || nq.includes("kharcha") || nq.includes("paisa")){
-        streamBotReply("Hamari pricing har business ke liye bohot flexible hai:<br><br>✦ <strong>Starter:</strong> 1–3 Pages (Small business / Portfolio)<br>✦ <strong>Professional:</strong> Up to 7 Pages with booking & SEO<br>✦ <strong>Premium:</strong> Full Custom 3D & Business Automation.<br><br>WhatsApp par direct discount aur quote le sakte hain.", 400);
+        if(botLang === "english") {
+          streamBotReply("Our pricing is very flexible:<br><br>✦ <strong>Starter:</strong> 1–3 Pages (Small business / Portfolio)<br>✦ <strong>Professional:</strong> Up to 7 Pages with booking & SEO<br>✦ <strong>Premium:</strong> Full Custom 3D & Automation.<br><br>Let's share a customized proposal directly on WhatsApp.", 400);
+        } else {
+          streamBotReply("Hamari pricing har business ke liye bohot flexible hai:<br><br>✦ <strong>Starter:</strong> 1–3 Pages (Small business / Portfolio)<br>✦ <strong>Professional:</strong> Up to 7 Pages with booking & SEO<br>✦ <strong>Premium:</strong> Full Custom 3D & Business Automation.<br><br>WhatsApp par direct discount aur quote le sakte hain.", 400);
+        }
         setTimeout(showContactActions, 900);
         return;
       }
 
       // Timeline / Duration
       if(nq.includes("din") || nq.includes("duration") || nq.includes("kab tak") || nq.includes("speed") || nq.includes("timeline") || nq.includes("delivery")){
-        streamBotReply("Hum superfast deliver karte hain: Starter websites <strong>3–4 din</strong> me live ho jati hain, aur heavy custom business sites typically <strong>5–7 business days</strong> leti hain.");
+        if(botLang === "english") {
+          streamBotReply("We deliver rapidly: Starter websites launch in <strong>3–4 days</strong>, while complete custom business portals typically take <strong>5–7 business days</strong>.");
+        } else {
+          streamBotReply("Hum superfast deliver karte hain: Starter websites <strong>3–4 din</strong> me live ho jati hain, aur heavy custom business sites typically <strong>5–7 business days</strong> leti hain.");
+        }
         return;
       }
 
       // Domain & Hosting
       if(nq.includes("domain") || nq.includes("hosting") || nq.includes("server") || nq.includes("com")){
-        streamBotReply("Agar aapke paas domain/hosting hai toh hum free me integrate kar denge. Agar nahi hai, toh domain purchase se lekar secure cloud hosting setup tak hum pura manage karte hain!");
+        if(botLang === "english") {
+          streamBotReply("If you already have a domain/hosting, we integrate it smoothly. If not, Webora handles complete domain registration and secure cloud hosting setup for you!");
+        } else {
+          streamBotReply("Agar aapke paas domain/hosting hai toh hum free me integrate kar denge. Agar nahi hai, toh domain purchase se lekar secure cloud hosting setup tak hum pura manage karte hain!");
+        }
         return;
       }
 
       // Payment Terms
       if(nq.includes("advance") || nq.includes("payment") || nq.includes("pay") || nq.includes("installment") || nq.includes("half")){
-        streamBotReply("Payment terms bilkul safe aur transparent hain: <strong>50% advance</strong> project shuru hone par, aur bacha hua <strong>50% payment tab</strong> jab aap live demo dekh kar 100% approve kar denge!");
+        if(botLang === "english") {
+          streamBotReply("Our payment milestone is transparent: <strong>50% advance</strong> to initiate design, and remaining <strong>50% only after</strong> you 100% approve your live website demo!");
+        } else {
+          streamBotReply("Payment terms bilkul safe aur transparent hain: <strong>50% advance</strong> project shuru hone par, aur bacha hua <strong>50% payment tab</strong> jab aap live demo dekh kar 100% approve kar denge!");
+        }
         return;
       }
 
       // Revisions & Updates
       if(nq.includes("update") || nq.includes("change") || nq.includes("badal") || nq.includes("support")){
-        streamBotReply("Website live hone ke baad bhi aapko <strong>30 days ka free technical support aur updates</strong> milte hain, taaki business me koi rukawat na aaye!");
+        if(botLang === "english") {
+          streamBotReply("Every website comes with <strong>30 days of free post-launch support</strong> and design revisions to ensure everything runs smoothly!");
+        } else {
+          streamBotReply("Website live hone ke baad bhi aapko <strong>30 days ka free technical support aur updates</strong> milte hain, taaki business me koi rukawat na aaye!");
+        }
         return;
       }
 
       // Content / Photos
       if(nq.includes("photo") || nq.includes("content") || nq.includes("text") || nq.includes("likhna") || nq.includes("image")){
-        streamBotReply("Agar aapke paas images ya written content nahi hai, toh chinta mat kijiye! Webora ki team premium royalty-free images aur conversion copy khud arrange karti hai.");
+        if(botLang === "english") {
+          streamBotReply("No photos or content? No worries! Our creative team arranges high-resolution royalty-free imagery and conversion copywriting for you.");
+        } else {
+          streamBotReply("Agar aapke paas images ya written content nahi hai, toh chinta mat kijiye! Webora ki team premium royalty-free images aur conversion copy khud arrange karti hai.");
+        }
         return;
       }
 
@@ -2309,18 +2443,22 @@
 
       if(nq.includes("bye") || nq.includes("alvida") || nq.includes("tata") || nq.includes("chalo") || nq.includes("ok thanks")){
         streamBotReply("Aap se baat karke bohot accha laga! Jane se pehle please hamari conversation ko rate zaroor karke jaiye.");
-        setTimeout(showRatingSystem, 600);
+        setTimeout(showRatingSystem, 500);
         return;
       }
 
       if(nq.includes("thank") || nq.includes("shukriya") || nq.includes("dhanyawad")){
         streamBotReply("Bohot bohot shukriya! Webora is always here for your business growth.");
-        setTimeout(showRatingSystem, 800);
+        setTimeout(showRatingSystem, 600);
         return;
       }
 
       // Smart Fallback
-      streamBotReply("Main aapki baat samajh raha hoon! Is project ke exact details aur best discount ke liye aap direct founder Ashutosh Singh se WhatsApp par connect kar sakte hain:", 350);
+      if(botLang === "english") {
+        streamBotReply("I understand your goal! For exact details, custom quotes, and swift delivery, you can directly talk with founder Ashutosh Singh on WhatsApp:", 350);
+      } else {
+        streamBotReply("Main aapki baat samajh raha hoon! Is project ke exact details aur best discount ke liye aap direct founder Ashutosh Singh se WhatsApp par connect kar sakte hain:", 350);
+      }
       setTimeout(showContactActions, 700);
     }
 
@@ -2332,10 +2470,10 @@
         "<a class='wa-email' href='mailto:hello.weborasites@gmail.com'>Email Us</a>" +
         "</div>", "bot"
       );
-      setTimeout(showRatingSystem, 1500);
+      setTimeout(showRatingSystem, 1400);
     }
 
-    // CONVERSATION RATING SYSTEM WITH DIRECT WHATSAPP REDIRECT
+    // IN-CHAT ANIMATED RATING SYSTEM (STAYS INSIDE CHAT, NO WHATSAPP REDIRECT)
     function showRatingSystem(){
       if(ratingShown) return;
       ratingShown = true;
@@ -2343,16 +2481,16 @@
       const ratingBox = document.createElement("div");
       ratingBox.className = "wa-rating-box";
       ratingBox.innerHTML = `
-        <div style="font-weight: 700; font-size: 13px; color: #fff;">Rate this conversation ⭐</div>
-        <div style="font-size: 11px; color: #8e8e99; margin-top: 2px;">Aapka experience kaisa raha Webora AI ke sath?</div>
+        <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Rate this conversation ⭐</div>
+        <div style="font-size: 11px; color: #8e8e99; margin-top: 3px;">Aapka experience kaisa raha Webora AI ke sath?</div>
         <div class="wa-rating-stars">
-          <button class="wa-star-btn" data-star="1">⭐</button>
-          <button class="wa-star-btn" data-star="2">⭐</button>
-          <button class="wa-star-btn" data-star="3">⭐</button>
-          <button class="wa-star-btn" data-star="4">⭐</button>
-          <button class="wa-star-btn" data-star="5">⭐</button>
+          <button class="wa-star-btn" data-star="1" aria-label="1 star">⭐</button>
+          <button class="wa-star-btn" data-star="2" aria-label="2 stars">⭐</button>
+          <button class="wa-star-btn" data-star="3" aria-label="3 stars">⭐</button>
+          <button class="wa-star-btn" data-star="4" aria-label="4 stars">⭐</button>
+          <button class="wa-star-btn" data-star="5" aria-label="5 stars">⭐</button>
         </div>
-        <div style="font-size: 10px; color: #8276ff;">Clicking sends instant feedback to Founder</div>
+        <div id="wa-rating-status" style="font-size: 11px; color: #8276ff; min-height: 16px;">Tap a star to rate</div>
       `;
       chat.appendChild(ratingBox);
       chat.scrollTop = chat.scrollHeight;
@@ -2360,14 +2498,14 @@
       ratingBox.querySelectorAll(".wa-star-btn").forEach(btn => {
         btn.addEventListener("click", function(){
           const stars = this.dataset.star;
-          const name = customerName || "Website Visitor";
           
-          ratingBox.innerHTML = `<div style="color:#25D366; font-weight:700; font-size:13px;">Thank you for ${stars} Star Rating! ❤️ Redirecting to WhatsApp...</div>`;
-
-          const reviewText = `Hi Ashutosh, I just rated Webora AI Bot on your website!%0A%0A👤 User: ${encodeURIComponent(name)}%0A⭐ Rating: ${stars} / 5 Stars%0A💬 Status: Conversation Completed`;
-          setTimeout(() => {
-            window.open(`https://wa.me/917518896121?text=${reviewText}`, "_blank");
-          }, 800);
+          // Animate confirmation inside the box itself cleanly
+          ratingBox.innerHTML = `
+            <div style="font-size: 24px; margin-bottom: 6px; animation: starBounce 0.4s ease;">🎉</div>
+            <div style="color:#25D366; font-weight:700; font-size:13.5px;">Thank you for ${stars}-Star Rating! ❤️</div>
+            <div style="color:#8e8e99; font-size:11px; margin-top:4px;">Aapka feedback record kar liya gaya hai.</div>
+          `;
+          chat.scrollTop = chat.scrollHeight;
         });
       });
     }
