@@ -1186,7 +1186,7 @@
         <p class="review-text">"The mobile view looks insane. Our clients book hair salon appointments directly from the website now. 10/10 service."</p>
         <div class="review-author">
           <div class="author-avatar">P</div>
-          <div class="review-author-info">
+          <div class="author-info">
             <h4>Pooja Sharma</h4>
             <span>Founder, Aura Salon</span>
           </div>
@@ -1210,7 +1210,7 @@
     </div>
   </section>
 
-  <!-- LEFT-ALIGNED CONTACT SECTION & QUICK LEAD FORMAT FORM -->
+  <!-- LEFT-ALIGNED CONTACT SECTION & QUICK LEAD FORM -->
   <section class="section" id="contact">
     <div class="container">
       <h2 style="font-size: clamp(32px, 5vw, 52px); margin-bottom: 12px; letter-spacing: -2px; font-weight: 800;" data-i18n="contact_title">
@@ -2089,7 +2089,7 @@
     });
   </script>
 
-  <!-- ================= AUTOMATIC FESTIVE THEME & ANIMATION ENGINE ================= -->
+  <!-- ================= STRICT EXACT-DAY ST STRICT FESTIVE ENGINE ================= -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const now = new Date();
@@ -2100,62 +2100,36 @@
       const heroGlow = document.getElementById("hero-glow-bg");
       const emblem = document.getElementById("brand-emblem");
 
-      // 1. Republic Day (Jan 24 - Jan 27)
-      if (month === 1 && day >= 24 && day <= 27) {
+      // 1. Republic Day (Exact Day: Jan 26)
+      if (month === 1 && day === 26) {
         badge.innerHTML = "🇮🇳 Happy Republic Day — Empowering Digital India";
         heroGlow.style.background = "radial-gradient(circle, rgba(255,153,51,0.2), rgba(19,136,8,0.15), transparent 70%)";
         emblem.style.background = "linear-gradient(135deg, #FF9933, #FFFFFF, #138808)";
         createParticles(["🇮🇳", "✨", "🌟"], 12);
       }
-      // 2. Holi (March 1 to March 20 - Spring Gulal theme)
-      else if (month === 3 && day >= 1 && day <= 20) {
-        badge.innerHTML = "🎨 Happy Holi — Splash Vibrant Colors Into Your Brand";
-        heroGlow.style.background = "radial-gradient(circle, rgba(255,20,147,0.2), rgba(0,255,255,0.18), rgba(255,215,0,0.15))";
-        emblem.style.background = "linear-gradient(135deg, #ff1493, #ffd700, #00ffff)";
-        createParticles(["🎨", "✨", "🌸", "💧"], 15);
-      }
-      // 3. Independence Day (August 13 - August 17)
-      else if (month === 8 && day >= 13 && day <= 17) {
+      // 2. Independence Day (Exact Day: August 15)
+      else if (month === 8 && day === 15) {
         badge.innerHTML = "🇮🇳 Happy Independence Day — Build Your Digital Freedom";
         heroGlow.style.background = "radial-gradient(circle, rgba(255,153,51,0.22), rgba(255,255,255,0.1), rgba(19,136,8,0.2))";
         emblem.style.background = "linear-gradient(135deg, #FF9933, #000080, #138808)";
         createParticles(["🇮🇳", "🚀", "⭐"], 12);
       }
-      // 4. Raksha Bandhan (August full moon window or late August)
-      else if (month === 8 && day >= 18 && day <= 31) {
-        badge.innerHTML = "🧵 Happy Raksha Bandhan — Complete Digital Security For Your Brand";
-        heroGlow.style.background = "radial-gradient(circle, rgba(219,112,147,0.22), rgba(255,215,0,0.15), transparent 65%)";
-        emblem.style.background = "linear-gradient(135deg, #db7093, #ffd700)";
-        createParticles(["💖", "✨", "🎀"], 10);
-      }
-      // 5. Ganesh Chaturthi (September window)
-      else if (month === 9 && day >= 1 && day <= 15) {
-        badge.innerHTML = "🙏 Happy Ganesh Chaturthi — Auspicious Starts For New Ventures";
-        heroGlow.style.background = "radial-gradient(circle, rgba(255,140,0,0.22), rgba(255,215,0,0.18), transparent 70%)";
-        emblem.style.background = "linear-gradient(135deg, #ff8c00, #ffd700)";
-        createParticles(["🌼", "✨", "🌟"], 12);
-      }
-      // 6. Navratri & Dussehra (October)
-      else if (month === 10 && day >= 1 && day <= 25) {
-        badge.innerHTML = "✨ Happy Navratri & Dussehra — Victory & Growth In Business";
-        heroGlow.style.background = "radial-gradient(circle, rgba(220,20,60,0.22), rgba(255,215,0,0.18), transparent 70%)";
-        emblem.style.background = "linear-gradient(135deg, #dc143c, #ffd700)";
-        createParticles(["✨", "🔱", "⭐"], 12);
-      }
-      // 7. Diwali (Late October to mid November)
-      else if ((month === 10 && day >= 26) || (month === 11 && day <= 15)) {
-        badge.innerHTML = "🪔 Happy Diwali — Bring Prosperity & Light To Your Business";
-        heroGlow.style.background = "radial-gradient(circle, rgba(255,183,3,0.28), rgba(251,133,0,0.2), transparent 70%)";
-        emblem.style.background = "linear-gradient(135deg, #ffb703, #fb8500, #ffd166)";
-        createParticles(["🪔", "✨", "⭐", "🎇"], 18);
-      }
-      // 8. Christmas & New Year (Dec 20 - Jan 2)
-      else if ((month === 12 && day >= 20) || (month === 1 && day <= 2)) {
-        badge.innerHTML = "🎄 Merry Christmas & Happy New Year — Ready For 2026 Growth";
+      // 3. Christmas Day (Exact Day: December 25)
+      else if (month === 12 && day === 25) {
+        badge.innerHTML = "🎄 Merry Christmas — Wishing You Joy & Growth";
         heroGlow.style.background = "radial-gradient(circle, rgba(230,57,70,0.2), rgba(69,123,157,0.2), transparent 70%)";
         emblem.style.background = "linear-gradient(135deg, #e63946, #457b9d, #f1faee)";
-        createParticles(["❄️", "🎄", "⭐", "🎁"], 20);
+        createParticles(["❄️", "🎄", "⭐"], 15);
       }
+      // 4. New Year's Day (Exact Day: January 1)
+      else if (month === 1 && day === 1) {
+        badge.innerHTML = "🎉 Happy New Year 2026 — New Goals, New Growth";
+        heroGlow.style.background = "radial-gradient(circle, rgba(255,215,0,0.2), rgba(21,156,255,0.2), transparent 70%)";
+        emblem.style.background = "linear-gradient(135deg, #ffd700, #159cff)";
+        createParticles(["🎉", "✨", "🌟", "🚀"], 15);
+      }
+      // Note: For lunar/flexible calendar festivals like Diwali or Holi, 
+      // you can drop them in directly on their exact calendar date each year.
     });
 
     function createParticles(symbols, count) {
