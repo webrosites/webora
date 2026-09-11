@@ -47,7 +47,7 @@
       left: 0;
       width: 100%;
       z-index: 100;
-      background: rgba(5, 5, 7, 0.75);
+      background: rgba(5, 5, 7, 0.72);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
     }
@@ -125,7 +125,7 @@
       transition: 0.3s;
     }
 
-    /* HERO WITH AURORA MOTION & PERSPECTIVE GRID */
+    /* HERO */
 
     .hero {
       min-height: 100vh;
@@ -136,50 +136,16 @@
       padding-top: 80px;
     }
 
-    /* Subtle Modern Tech Grid */
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-      background-size: 55px 55px;
-      mask-image: radial-gradient(ellipse 65% 55% at 50% 48%, black 20%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 48%, black 20%, transparent 75%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Dynamic Aurora Glow */
     .glow {
       position: absolute;
-      width: 750px;
-      height: 750px;
+      width: 600px;
+      height: 600px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(104, 76, 255, 0.35) 0%, rgba(21, 156, 255, 0.2) 35%, rgba(224, 107, 255, 0.08) 60%, transparent 72%);
-      top: 50%;
+      background: radial-gradient(circle, rgba(74,76,255,0.22), transparent 68%);
+      top: 80px;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       pointer-events: none;
-      filter: blur(55px);
-      animation: auroraFloat 9s ease-in-out infinite alternate;
-      z-index: 1;
-    }
-
-    @keyframes auroraFloat {
-      0% {
-        transform: translate(-50%, -52%) scale(0.95);
-        opacity: 0.75;
-      }
-      50% {
-        transform: translate(-48%, -48%) scale(1.1);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(-52%, -50%) scale(1);
-        opacity: 0.85;
-      }
     }
 
     .hero-content {
@@ -190,33 +156,15 @@
       margin: auto;
     }
 
-    /* BADGE WITH RADAR PULSE */
     .badge {
       display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 16px;
+      padding: 8px 14px;
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 100px;
       color: #bdbdc8;
       font-size: 13px;
       background: rgba(255,255,255,0.035);
       margin-bottom: 28px;
-    }
-
-    .badge::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      background: #25D366;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #25D366;
-      animation: radarPulse 2s infinite ease-in-out;
-    }
-
-    @keyframes radarPulse {
-      0%, 100% { transform: scale(0.9); opacity: 0.6; }
-      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px #25D366; }
     }
 
     h1 {
@@ -226,7 +174,7 @@
       font-weight: 800;
     }
 
-    /* SHIMMERING FLOWING TEXT GRADIENT */
+    /* FLOWING SHIMMER TEXT GRADIENT */
     .gradient-text {
       background: linear-gradient(100deg, #159cff, #7356ff, #df73ff, #159cff);
       background-size: 300% 300%;
@@ -262,12 +210,11 @@
       background: #fff;
       color: #050507;
       font-weight: 700;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: 0.25s;
     }
 
     .primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.35), 0 0 45px rgba(104, 76, 255, 0.25);
     }
 
     .secondary {
@@ -726,7 +673,7 @@
     <div class="container hero-content">
 
       <div class="badge">
-        Modern websites for ambitious businesses
+        ✦ Modern websites for ambitious businesses
       </div>
 
       <h1>
@@ -1102,6 +1049,12 @@
 
   <!-- ================= ADVANCED WEBORA AI ASSISTANT ================= -->
   <div id="webora-ai">
+    <!-- Pop-up Speech Bubble Raised by Bot -->
+    <div id="bot-speech-bubble">
+      <span>May I help you? 👋</span>
+      <div class="bubble-arrow"></div>
+    </div>
+
     <button id="webora-ai-launch" aria-label="Open Webora AI">
       <span class="ai-glow"></span>
       <!-- Cute Animated Waving Bot SVG -->
@@ -1178,7 +1131,7 @@
   </div>
 
   <style>
-  /* ================= ADVANCED AI STYLING (CORNER & ANIMATION FIX) ================= */
+  /* ================= ADVANCED AI STYLING ================= */
   #webora-ai {
     position: fixed;
     right: 24px;
@@ -1186,6 +1139,45 @@
     top: auto;
     z-index: 99999;
     font-family: inherit;
+  }
+
+  /* Pop-up Speech Bubble Raised by Bot */
+  #bot-speech-bubble {
+    position: absolute;
+    bottom: 68px;
+    right: 0;
+    background: #161722;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px rgba(0, 210, 255, 0.2);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px) scale(0.9);
+    transition: opacity 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+  }
+
+  #bot-speech-bubble.bubble-show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .bubble-arrow {
+    position: absolute;
+    bottom: -6px;
+    right: 22px;
+    width: 10px;
+    height: 10px;
+    background: #161722;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    transform: rotate(45deg);
   }
 
   #webora-ai-launch {
@@ -1541,6 +1533,14 @@
       width: 36px;
       height: 36px;
     }
+    #bot-speech-bubble {
+      bottom: 58px;
+      font-size: 11px;
+      padding: 6px 12px;
+    }
+    .bubble-arrow {
+      right: 18px;
+    }
     #webora-ai-window {
       right: 0;
       bottom: 60px;
@@ -1559,9 +1559,33 @@
     const input = document.getElementById("wa-input");
     const send = document.getElementById("wa-send");
     const typing = document.getElementById("wa-typing");
+    const speechBubble = document.getElementById("bot-speech-bubble");
 
     let customerName = "";
     let nameAsked = false;
+
+    // Speech Bubble Animation Cycle (Every 5 seconds interval)
+    function triggerSpeechBubbleCycle() {
+      setInterval(() => {
+        // Agar chat window pehle se open hai toh bubble show nahi hoga
+        if (windowBox.style.display === "flex") return;
+
+        speechBubble.classList.add("bubble-show");
+
+        // 3.5 seconds tak dikhega fir smoothly fade-out ho jayega
+        setTimeout(() => {
+          speechBubble.classList.remove("bubble-show");
+        }, 3500);
+      }, 5500);
+    }
+
+    // Page load ke 2 second baad cycle start hogi
+    setTimeout(triggerSpeechBubbleCycle, 2000);
+
+    // Bubble par tap karne se bhi direct chat open ho jayegi
+    speechBubble.addEventListener("click", () => {
+      launch.click();
+    });
 
     // Web Audio FX for Subtle Pop Sound
     let audioCtx = null;
@@ -1635,6 +1659,9 @@
 
     launch.addEventListener("click", function(e){
       e.preventDefault();
+      // Bubble open hone par turant hide kar dein
+      speechBubble.classList.remove("bubble-show");
+
       const isOpen = windowBox.style.display === "flex";
       if(isOpen){
         windowBox.style.display = "none";
