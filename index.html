@@ -1259,15 +1259,7 @@
           <button id="wa-close" aria-label="Close">×</button>
         </div>
 
-        <div id="wa-chat">
-          <div id="wa-welcome"></div>
-          <div class="wa-quick" id="wa-quick-pills">
-            <button data-question="services">✦ Services</button>
-            <button data-question="pricing">✦ Pricing & Cost</button>
-            <button data-question="founder">✦ Founder Info</button>
-            <button data-question="timeline">✦ Turnaround Time</button>
-          </div>
-        </div>
+        <div id="wa-chat"></div>
 
         <div class="wa-typing" id="wa-typing">
           <div class="ai-thinking-indicator">
@@ -1277,7 +1269,7 @@
         </div>
 
         <div class="wa-input-area">
-          <input id="wa-input" type="text" autocomplete="off" placeholder="Ask about websites, costs, weather, time...">
+          <input id="wa-input" type="text" autocomplete="off" placeholder="Hinglish / English me kuch bhi puchiye...">
           <button id="wa-send" aria-label="Send">➤</button>
         </div>
 
@@ -1331,34 +1323,14 @@
   }
 
   @keyframes bubblePopIn {
-    0% {
-      opacity: 0;
-      transform: translateY(14px) scale(0.8);
-      filter: blur(5px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      filter: blur(0);
-    }
+    0% { opacity: 0; transform: translateY(14px) scale(0.8); filter: blur(5px); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
   }
 
   @keyframes cloudBurstOut {
-    0% {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-      filter: blur(0);
-    }
-    40% {
-      opacity: 0.85;
-      transform: scale(1.18) translateY(-4px);
-      filter: blur(2px);
-    }
-    100% {
-      opacity: 0;
-      transform: scale(1.4) translateY(-14px);
-      filter: blur(14px);
-    }
+    0% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+    40% { opacity: 0.85; transform: scale(1.18) translateY(-4px); filter: blur(2px); }
+    100% { opacity: 0; transform: scale(1.4) translateY(-14px); filter: blur(14px); }
   }
 
   .bubble-arrow {
@@ -1432,7 +1404,7 @@
     50% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
   }
 
-  /* GEMINI LIGHT BORDER GLOW WINDOW */
+  /* GEMINI BORDER GLOW WINDOW */
   #webora-ai-window {
     position: absolute;
     right: 0;
@@ -1451,7 +1423,6 @@
     padding: 1.5px;
   }
 
-  /* Dynamic Multi-Color Rotating Gradient Border (Gemini Style) */
   .gemini-border-glow {
     position: absolute;
     inset: -200%;
@@ -1586,15 +1557,23 @@
     flex: 1;
     overflow-y: auto;
     padding: 16px 14px 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wa-message-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
   }
 
   .wa-message {
     max-width: 86%;
     padding: 11px 14px;
-    margin-bottom: 12px;
     border-radius: 16px;
     font-size: 13.5px;
     line-height: 1.55;
+    position: relative;
     animation: messageIn 0.22s ease;
   }
 
@@ -1604,6 +1583,7 @@
   }
 
   .wa-bot {
+    align-self: flex-start;
     background: #171720;
     color: #e1e1e8;
     border: 1px solid rgba(255, 255, 255, 0.06);
@@ -1611,22 +1591,38 @@
   }
 
   .wa-user {
-    margin-left: auto;
+    align-self: flex-end;
     background: #fff;
     color: #0b0b0e;
     font-weight: 500;
     border-bottom-right-radius: 4px;
   }
 
-  .wa-quick {
+  .wa-time {
+    font-size: 10px;
+    color: #71717f;
+    margin-top: 3px;
+    padding: 0 4px;
+  }
+
+  .wa-bot-time {
+    align-self: flex-start;
+  }
+
+  .wa-user-time {
+    align-self: flex-end;
+  }
+
+  /* Quick Pills Under Bot Message */
+  .wa-quick-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 7px;
-    margin-top: 8px;
-    margin-bottom: 6px;
+    margin-top: 6px;
+    margin-bottom: 10px;
   }
 
-  .wa-quick button {
+  .wa-quick-pills button {
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: #13131a;
     color: #b0b0ba;
@@ -1637,9 +1633,39 @@
     transition: 0.2s;
   }
 
-  .wa-quick button:hover {
+  .wa-quick-pills button:hover {
     background: #fff;
     color: #000;
+  }
+
+  /* RATING STARS BOX (POST-CONVERSATION) */
+  .wa-rating-box {
+    background: #161622;
+    border: 1px solid rgba(130, 118, 255, 0.3);
+    border-radius: 16px;
+    padding: 14px;
+    margin-top: 10px;
+    text-align: center;
+    animation: messageIn 0.25s ease;
+  }
+
+  .wa-rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+  }
+
+  .wa-star-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .wa-star-btn:hover {
+    transform: scale(1.25);
   }
 
   .wa-typing {
@@ -1983,7 +2009,7 @@
     });
   </script>
 
-  <!-- ADVANCED WEBORA AI BOT ENGINE WITH 60+ TRAINED INTENTS -->
+  <!-- ================= ADVANCED HINGLISH BOT + WHATSAPP RATING ================= -->
   <script>
   (function(){
     const launch = document.getElementById("webora-ai-launch");
@@ -1997,6 +2023,8 @@
 
     let customerName = "";
     let nameAsked = false;
+    let interactionCount = 0;
+    let ratingShown = false;
 
     // Time-based Greeting Function (Morning, Afternoon, Evening - Never Good Night)
     function getTimeGreeting() {
@@ -2008,6 +2036,10 @@
       } else {
         return "Good Evening";
       }
+    }
+
+    function getCurrentTimeFormatted() {
+      return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
 
     // 8-Second Delay Trigger + Cloud-burst Vaporize Animation
@@ -2035,42 +2067,59 @@
     }
 
     function addMessage(text, type){
+      const wrap = document.createElement("div");
+      wrap.className = "wa-message-wrap";
+
       const message = document.createElement("div");
       message.className = "wa-message " + (type === "user" ? "wa-user" : "wa-bot");
       message.innerHTML = text;
-      chat.appendChild(message);
+
+      const timeSpan = document.createElement("span");
+      timeSpan.className = "wa-time " + (type === "user" ? "wa-user-time" : "wa-bot-time");
+      timeSpan.textContent = getCurrentTimeFormatted();
+
+      wrap.appendChild(message);
+      wrap.appendChild(timeSpan);
+      chat.appendChild(wrap);
       chat.scrollTop = chat.scrollHeight;
-      return message;
+      return wrap;
     }
 
-    function streamBotReply(htmlContent, delay = 350){
+    function renderInitialPills() {
+      const pillsBox = document.createElement("div");
+      pillsBox.className = "wa-quick-pills";
+      pillsBox.innerHTML = `
+        <button data-question="services">✦ Services</button>
+        <button data-question="pricing">✦ Pricing & Cost</button>
+        <button data-question="founder">✦ Founder Info</button>
+        <button data-question="timeline">✦ Turnaround Time</button>
+      `;
+      chat.appendChild(pillsBox);
+
+      pillsBox.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", function(){
+          const q = this.dataset.question;
+          addMessage(escapeText(this.innerText), "user");
+          respond(q);
+        });
+      });
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function streamBotReply(htmlContent, delay = 350, callback = null){
       typing.style.display = "flex";
       chat.scrollTop = chat.scrollHeight;
 
       setTimeout(() => {
         typing.style.display = "none";
-        const message = document.createElement("div");
-        message.className = "wa-message wa-bot";
-        chat.appendChild(message);
+        addMessage(htmlContent, "bot");
+        if(callback) callback();
 
-        if(htmlContent.includes("<div") || htmlContent.includes("<a")) {
-          message.innerHTML = htmlContent;
-          chat.scrollTop = chat.scrollHeight;
-          return;
+        interactionCount++;
+        // Agar 4 interaction ho chuki hai toh rating maango
+        if(interactionCount >= 4 && !ratingShown) {
+          setTimeout(showRatingSystem, 1400);
         }
-
-        const words = htmlContent.split(" ");
-        let index = 0;
-        message.innerHTML = "";
-        const interval = setInterval(() => {
-          if (index < words.length) {
-            message.innerHTML += (index === 0 ? "" : " ") + words[index];
-            chat.scrollTop = chat.scrollHeight;
-            index++;
-          } else {
-            clearInterval(interval);
-          }
-        }, 30);
       }, delay);
     }
 
@@ -2088,20 +2137,14 @@
       if(!nameAsked){
         nameAsked = true;
         const greeting = getTimeGreeting();
-        streamBotReply(`${greeting}! I am <strong>Webora AI Assistant</strong>. How may I assist you today? What is your name or brand?`, 300);
+        streamBotReply(`${greeting}! Main <strong>Webora AI Assistant</strong> hoon. Aaj aapki kya help kar sakta hoon? Aapka ya aapke business ka kya naam hai?`, 300, () => {
+          renderInitialPills();
+        });
       }
       setTimeout(() => input.focus(), 300);
     });
 
     closeBtn.addEventListener("click", () => windowBox.style.display = "none");
-
-    document.querySelectorAll(".wa-quick button").forEach(button => {
-      button.addEventListener("click", function(){
-        const q = this.dataset.question;
-        addMessage(escapeText(this.innerText), "user");
-        respond(q);
-      });
-    });
 
     send.addEventListener("click", handleUserSend);
     input.addEventListener("keydown", (e) => {
@@ -2119,170 +2162,214 @@
 
       if(!customerName){
         customerName = text.replace(/[<>]/g,"").trim().slice(0, 30);
-        streamBotReply(`Nice to connect, <strong>${escapeText(customerName)}</strong>! What type of business or project are you looking to create a website for?`, 400);
+        streamBotReply(`Aapse milkar bohot khushi hui, <strong>${escapeText(customerName)}</strong> ji! Aap apne business ke liye kis type ki website plan kar rahe hain?`, 350);
         return;
       }
       respond(text);
     }
 
-    // 60+ Intelligent Intent Handlers (Work, Business, Real-Time Time/Weather, Casual & Personal)
+    // Hinglish & Hindi Text Normalizer Engine
+    function normalizeHinglish(str) {
+      return str.toLowerCase()
+        .replace(/\b(h|hey|hai|ho|he|hnn|hn)\b/g, "hai")
+        .replace(/\b(kya|kia|wat|wht)\b/g, "kya")
+        .replace(/\b(kon|kaun|koun|kone)\b/g, "kaun")
+        .replace(/\b(kaha|kahan|khn)\b/g, "kahan")
+        .replace(/\b(kitna|kitne|ktna|kitne me|cost|rate|kharcha|paisa|paise|fees)\b/g, "cost")
+        .replace(/\b(banega|banegi|bana|banwana|tyaar|ready|banao)\b/g, "build")
+        .replace(/\b(malik|founder|ceo|owner|boss|karta dharta|ashutosh|ashu)\b/g, "founder")
+        .replace(/\b(batao|bata|btao|bol|bolo)\b/g, "tell")
+        .replace(/[^a-zA-Z0-9\s]/g, " ");
+    }
+
+    // Intelligent Matching Engine
     function respond(rawInput){
       const q = rawInput.toLowerCase();
+      const nq = normalizeHinglish(rawInput);
       const now = new Date();
 
       // Real-time Current Clock / Time
-      if(q.includes("time") || q.includes("samay") || q.includes("ghadi") || q.includes("kitne baje")){
+      if(nq.includes("time") || nq.includes("samay") || nq.includes("ghadi") || nq.includes("baje")){
         const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         const dateStr = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
-        streamBotReply(`Right now the exact time is <strong>${timeStr}</strong> (${dateStr}). 24/7 active to build your digital brand!`);
+        streamBotReply(`Abhi theek <strong>${timeStr}</strong> (${dateStr}) ho rahe hain. Hamara platform 24/7 active hai aapke liye!`);
         return;
       }
 
       // Weather / Mausam
-      if(q.includes("weather") || q.includes("mausam") || q.includes("temperature") || q.includes("barish") || q.includes("rain") || q.includes("garmi") || q.includes("sardi")){
-        streamBotReply("The weather here in digital cloud space is always breezy and 100% optimum for coding! Outside, temperatures remain pleasant. Best time to get a brand new website live!");
+      if(nq.includes("weather") || nq.includes("mausam") || nq.includes("barish") || nq.includes("rain") || nq.includes("garmi") || nq.includes("sardi") || nq.includes("temperature")){
+        streamBotReply("Server cloud space me bilkul mast mausam hai! Web development aur nayi business website launch karne ke liye aaj ka din ekdum perfect hai!");
         return;
       }
 
       // Founder / Owner Query
-      if(q.includes("founder") || q.includes("owner") || q.includes("malik") || q.includes("kiski hai") || q.includes("who made") || q.includes("ceo") || q.includes("ashutosh")){
-        streamBotReply("Webora is founded by <strong>Ashutosh Singh</strong>. He leads all creative engineering and modern website architecture for ambitious local brands and businesses.");
+      if(nq.includes("founder") || nq.includes("owner") || nq.includes("malik") || nq.includes("kiski") || nq.includes("ashutosh")){
+        streamBotReply("Webora ke founder <strong>Ashutosh Singh</strong> hain. Unhone Webora ko local businesses aur creators ko modern, ultra-fast web presence dene ke mission se banaya hai.");
         return;
       }
 
       // Identity Query
-      if(q.includes("who are you") || q.includes("kaun ho") || q.includes("kon ho") || q.includes("what is your name") || q.includes("tumhara naam") || q.includes("kya ho")){
-        streamBotReply("I am <strong>Webora Neural AI Assistant</strong>! I was built by Ashutosh Singh to guide clients with instant pricing estimates, service details, and immediate WhatsApp project consultations.");
+      if(nq.includes("kaun") && (nq.includes("hai") || nq.includes("ho")) || nq.includes("who are you") || nq.includes("naam") || nq.includes("tum")){
+        streamBotReply("Main <strong>Webora Neural AI</strong> assistant hoon. Main clients ko quotes, packages, aur business website consultation dene ke liye trained hoon!");
         return;
       }
 
-      // Pricing, Cost & Packages
-      if(q.includes("price") || q.includes("cost") || q.includes("charge") || q.includes("kitna") || q.includes("pricing") || q.includes("rate") || q.includes("fees") || q.includes("package") || q.includes("budget")){
-        streamBotReply("We offer flexible, high-converting packages:<br><br>✦ <strong>Starter:</strong> 1–3 Page Website (Great for local shops/personal)<br>✦ <strong>Professional:</strong> Up to 7 Pages with booking & SEO<br>✦ <strong>Premium:</strong> Full custom design with 3D animations.<br><br>Let's share a customized proposal directly on WhatsApp.", 450);
-        setTimeout(showContactActions, 1100);
+      // Pricing, Cost & Kharcha (Hinglish Supported)
+      if(nq.includes("cost") || nq.includes("pricing") || nq.includes("charge") || nq.includes("package") || nq.includes("budget") || nq.includes("kharcha") || nq.includes("paisa")){
+        streamBotReply("Hamari pricing har business ke liye bohot flexible hai:<br><br>✦ <strong>Starter:</strong> 1–3 Pages (Small business / Portfolio)<br>✦ <strong>Professional:</strong> Up to 7 Pages with booking & SEO<br>✦ <strong>Premium:</strong> Full Custom 3D & Business Automation.<br><br>WhatsApp par direct discount aur quote le sakte hain.", 400);
+        setTimeout(showContactActions, 900);
         return;
       }
 
-      // Turnaround Timeline
-      if(q.includes("time") || q.includes("timeline") || q.includes("kitne din") || q.includes("duration") || q.includes("kab tak") || q.includes("delivery") || q.includes("speed")){
-        streamBotReply("We launch fast without sacrificing quality: Starter sites launch in <strong>3–4 days</strong>, while complete multi-page custom business portals typically take <strong>5–7 business days</strong>.");
+      // Timeline / Duration
+      if(nq.includes("din") || nq.includes("duration") || nq.includes("kab tak") || nq.includes("speed") || nq.includes("timeline") || nq.includes("delivery")){
+        streamBotReply("Hum superfast deliver karte hain: Starter websites <strong>3–4 din</strong> me live ho jati hain, aur heavy custom business sites typically <strong>5–7 business days</strong> leti hain.");
         return;
       }
 
       // Domain & Hosting
-      if(q.includes("domain") || q.includes("hosting") || q.includes(".com") || q.includes("server")){
-        streamBotReply("If you already have a domain/hosting, we integrate it smoothly. If you don't, Webora handles complete domain registration and ultra-fast secure hosting setup for you!");
-        return;
-      }
-
-      // Content & Photography Assistance
-      if(q.includes("photo") || q.includes("content") || q.includes("text") || q.includes("likhna") || q.includes("image") || q.includes("picture")){
-        streamBotReply("No content? No problem! Our team arranges high-resolution royalty-free imagery, graphic assets, and compelling copywriting specifically tailored to your business.");
+      if(nq.includes("domain") || nq.includes("hosting") || nq.includes("server") || nq.includes("com")){
+        streamBotReply("Agar aapke paas domain/hosting hai toh hum free me integrate kar denge. Agar nahi hai, toh domain purchase se lekar secure cloud hosting setup tak hum pura manage karte hain!");
         return;
       }
 
       // Payment Terms
-      if(q.includes("advance") || q.includes("payment") || q.includes("pay") || q.includes("installment") || q.includes("half")){
-        streamBotReply("Our payment milestone is transparent and safe: <strong>50% advance</strong> to initiate design and development, and the remaining <strong>50% only after</strong> you review and 100% approve your live website demo!");
+      if(nq.includes("advance") || nq.includes("payment") || nq.includes("pay") || nq.includes("installment") || nq.includes("half")){
+        streamBotReply("Payment terms bilkul safe aur transparent hain: <strong>50% advance</strong> project shuru hone par, aur bacha hua <strong>50% payment tab</strong> jab aap live demo dekh kar 100% approve kar denge!");
         return;
       }
 
       // Revisions & Updates
-      if(q.includes("update") || q.includes("change") || q.includes("edit") || q.includes("revision") || q.includes("support") || q.includes("maintenance")){
-        streamBotReply("Every website comes with <strong>30 days of free post-launch support</strong> and design revisions to ensure everything runs flawlessly.");
+      if(nq.includes("update") || nq.includes("change") || nq.includes("badal") || nq.includes("support")){
+        streamBotReply("Website live hone ke baad bhi aapko <strong>30 days ka free technical support aur updates</strong> milte hain, taaki business me koi rukawat na aaye!");
         return;
       }
 
-      // Restaurant & Cafe
-      if(q.includes("restaurant") || q.includes("cafe") || q.includes("food") || q.includes("dhaba") || q.includes("menu")){
-        streamBotReply("For restaurants & cafes, we build digital menu cards, table booking systems, and direct WhatsApp food ordering. Check out our <strong>La Maison</strong> live demo above!");
+      // Content / Photos
+      if(nq.includes("photo") || nq.includes("content") || nq.includes("text") || nq.includes("likhna") || nq.includes("image")){
+        streamBotReply("Agar aapke paas images ya written content nahi hai, toh chinta mat kijiye! Webora ki team premium royalty-free images aur conversion copy khud arrange karti hai.");
         return;
       }
 
-      // Salon & Spa
-      if(q.includes("salon") || q.includes("parlour") || q.includes("beauty") || q.includes("spa") || q.includes("hair")){
-        streamBotReply("For salons & wellness brands, we create appointment booking interfaces, service price lists, and aesthetic gallery showcases. View our <strong>Luna Beauty</strong> demo above!");
+      // Restaurants / Cafes
+      if(nq.includes("restaurant") || nq.includes("cafe") || nq.includes("food") || nq.includes("dhaba") || nq.includes("menu")){
+        streamBotReply("Restaurants ke liye hum digital QR menu, table reservation aur WhatsApp order system banate hain. Upar hamara <strong>La Maison</strong> live demo check kijiye!");
+        return;
+      }
+
+      // Salons & Spas
+      if(nq.includes("salon") || nq.includes("parlour") || nq.includes("beauty") || nq.includes("spa")){
+        streamBotReply("Beauty salons ke liye direct appointment booking aur aesthetic pricing catalogue create karte hain. Hamara <strong>Luna Beauty</strong> demo dekhiye!");
         return;
       }
 
       // Gym & Fitness
-      if(q.includes("gym") || q.includes("fitness") || q.includes("workout") || q.includes("trainer")){
-        streamBotReply("For fitness clubs and personal coaches, we build membership lead capture pages, schedule timetables, and motivational UI. View our <strong>Forge Fitness</strong> demo!");
+      if(nq.includes("gym") || nq.includes("fitness") || nq.includes("workout")){
+        streamBotReply("Gym aur fitness trainers ke liye lead-generation aur membership forms develop karte hain. Check out our <strong>Forge Fitness</strong> demo!");
         return;
       }
 
-      // Video Editor & Creator Portfolio
-      if(q.includes("editor") || q.includes("video") || q.includes("creator") || q.includes("portfolio") || q.includes("youtube") || q.includes("instagram")){
-        streamBotReply("For creators and editors, we build high-impact dark-aesthetic portfolio showcases with embedded video players and contact links. Check out our <strong>Frame Studio</strong> demo!");
+      // Video Editor / Creator
+      if(nq.includes("editor") || nq.includes("video") || nq.includes("creator") || nq.includes("portfolio")){
+        streamBotReply("Creators aur editors ke liye high-impact dark aesthetic portfolio banate hain jisme direct video previews embed rehte hain. View our <strong>Frame Studio</strong> demo!");
         return;
       }
 
       // Direct WhatsApp / Contact
-      if(q.includes("contact") || q.includes("whatsapp") || q.includes("phone") || q.includes("number") || q.includes("call") || q.includes("baat") || q.includes("email")){
+      if(nq.includes("contact") || nq.includes("whatsapp") || nq.includes("phone") || nq.includes("number") || nq.includes("call") || nq.includes("baat")){
         showContactActions();
         return;
       }
 
-      // CASUAL & WITTY PERSONAL QUESTIONS
-      if(q.includes("kaise ho") || q.includes("how are you") || q.includes("kaisa hai") || q.includes("what's up") || q.includes("whats up")){
-        streamBotReply("Main ekdum energetic aur ready hoon! 24/7 online taaki aapke business ke liye best website bana sakein. Aap bataiye, aaj ka din kaisa chal raha hai?");
+      // CASUAL HINGLISH QUESTIONS
+      if(nq.includes("kaise ho") || nq.includes("kaisa hai") || nq.includes("how are you") || nq.includes("badhiya")){
+        streamBotReply("Main ekdum bindass aur fit hoon! 24 ghante online taaki aapka kaam asaan ho sake. Aap sunaiye, sab kaisa chal raha hai?");
         return;
       }
 
-      if(q.includes("ladka") || q.includes("ladki") || q.includes("gender") || q.includes("boy") || q.includes("girl") || q.includes("male") || q.includes("female")){
-        streamBotReply("Na ladka, na ladki—main Webora ka intelligent digital AI assistant hoon! Mera sirf ek mission hai: Webora ke clients ki life easy banana.");
+      if(nq.includes("ladka") || nq.includes("ladki") || nq.includes("gender") || nq.includes("boy") || nq.includes("girl")){
+        streamBotReply("Na ladka, na ladki—main ek super-fast AI code bot hoon! Mera kaam bas Webora ke clients ke liye best websites deliver karwana hai.");
         return;
       }
 
-      if(q.includes("dost") || q.includes("friend") || q.includes("dosti") || q.includes("single")){
-        streamBotReply("Dosti pakki! Aur agar aapka koi business hai, toh uski ek shaandar modern website banakar is dosti ko aur productive banate hain! 😉");
+      if(nq.includes("dost") || nq.includes("friend") || nq.includes("dosti") || nq.includes("single")){
+        streamBotReply("Dosti done samjho! Aur dosti me ek solid website banwana toh banta hai taaki business 10x grow kare! 😉");
         return;
       }
 
-      if(q.includes("khana") || q.includes("food") || q.includes("lunch") || q.includes("dinner") || q.includes("breakfast") || q.includes("eat")){
-        streamBotReply("Mera pet toh clean code, electricity aur high-speed servers se bhar jata hai! Lekin kabhi kabhi coffee ki kami zaroor mehsoos hoti hai. ☕");
+      if(nq.includes("khana") || nq.includes("food") || nq.includes("lunch") || nq.includes("dinner") || nq.includes("eat")){
+        streamBotReply("Mera pet clean code aur server electricity se bhar jata hai! Par haan, coffee mil jaye toh aur tezi se kaam karta hoon. ☕");
         return;
       }
 
-      if(q.includes("kahan rehte ho") || q.includes("where do you live") || q.includes("location") || q.includes("address") || q.includes("city")){
-        streamBotReply("Main cloud servers par rehta hoon! Hamari agency Webora aur founder **Ashutosh Singh** India se operate karte hain aur global clients handle karte hain.");
+      if(nq.includes("kahan") || nq.includes("address") || nq.includes("location") || nq.includes("city")){
+        streamBotReply("Main toh digital cloud me rehta hoon! Hamari Webora team aur founder **Ashutosh Singh** India se sabhi clients ko manage karte hain.");
         return;
       }
 
-      if(q.includes("boring") || q.includes("bore")){
-        streamBotReply("Boring? Bilkul nahi! Main purane zamane ke static templates ki tarah boring nahi hoon, seedhe sleek designs aur real conversions par baat karta hoon!");
+      if(nq.includes("bye") || nq.includes("alvida") || nq.includes("tata") || nq.includes("chalo") || nq.includes("ok thanks")){
+        streamBotReply("Aap se baat karke bohot accha laga! Jane se pehle please hamari conversation ko rate zaroor karke jaiye.");
+        setTimeout(showRatingSystem, 600);
         return;
       }
 
-      if(q.includes("joke") || q.includes("chutkula") || q.includes("funny")){
-        streamBotReply("Ek client ne pucha: 'Website banane me kitna time lagega?' Dev ne bola: 'Bas 2 din'. Client: 'Aur bugs fix karne me?' Dev: 'Baaki ki zindagi!' 😂 Par Webora me hum bug-free code deliver karte hain!");
+      if(nq.includes("thank") || nq.includes("shukriya") || nq.includes("dhanyawad")){
+        streamBotReply("Bohot bohot shukriya! Webora is always here for your business growth.");
+        setTimeout(showRatingSystem, 800);
         return;
       }
 
-      if(q.includes("hi") || q.includes("hello") || q.includes("hey") || q.includes("namaste") || q.includes("suno")){
-        const greeting = getTimeGreeting();
-        streamBotReply(`${greeting}! Aapka Webora me swagat hai. Aap kis type ke business ke liye website plan kar rahe hain?`);
-        return;
-      }
-
-      if(q.includes("thank") || q.includes("dhanyawad") || q.includes("shukriya")){
-        streamBotReply("Most welcome! Agar aur koi bhi doubt ya question ho, bejhijhak puchiye. Webora is always here to assist!");
-        return;
-      }
-
-      // Default Smart Fallback with Direct Contact Link
-      streamBotReply("That sounds interesting! For exact requirements, customized quotes, and swift delivery, you can directly connect with our team on WhatsApp:", 350);
-      setTimeout(showContactActions, 750);
+      // Smart Fallback
+      streamBotReply("Main aapki baat samajh raha hoon! Is project ke exact details aur best discount ke liye aap direct founder Ashutosh Singh se WhatsApp par connect kar sakte hain:", 350);
+      setTimeout(showContactActions, 700);
     }
 
     function showContactActions(){
-      streamBotReply(
+      addMessage(
         "Connect directly with <strong>Founder Ashutosh Singh & Team</strong>:<br>" +
         "<div class='wa-contact-buttons'>" +
         "<a class='wa-whatsapp' href='https://wa.me/917518896121?text=Hi%20Webora%20Team,%20I%20am%20chatting%20via%20your%20website%20AI%20and%20need%20a%20website.' target='_blank'>WhatsApp Us →</a>" +
         "<a class='wa-email' href='mailto:hello.weborasites@gmail.com'>Email Us</a>" +
-        "</div>", 200
+        "</div>", "bot"
       );
+      setTimeout(showRatingSystem, 1500);
+    }
+
+    // CONVERSATION RATING SYSTEM WITH DIRECT WHATSAPP REDIRECT
+    function showRatingSystem(){
+      if(ratingShown) return;
+      ratingShown = true;
+
+      const ratingBox = document.createElement("div");
+      ratingBox.className = "wa-rating-box";
+      ratingBox.innerHTML = `
+        <div style="font-weight: 700; font-size: 13px; color: #fff;">Rate this conversation ⭐</div>
+        <div style="font-size: 11px; color: #8e8e99; margin-top: 2px;">Aapka experience kaisa raha Webora AI ke sath?</div>
+        <div class="wa-rating-stars">
+          <button class="wa-star-btn" data-star="1">⭐</button>
+          <button class="wa-star-btn" data-star="2">⭐</button>
+          <button class="wa-star-btn" data-star="3">⭐</button>
+          <button class="wa-star-btn" data-star="4">⭐</button>
+          <button class="wa-star-btn" data-star="5">⭐</button>
+        </div>
+        <div style="font-size: 10px; color: #8276ff;">Clicking sends instant feedback to Founder</div>
+      `;
+      chat.appendChild(ratingBox);
+      chat.scrollTop = chat.scrollHeight;
+
+      ratingBox.querySelectorAll(".wa-star-btn").forEach(btn => {
+        btn.addEventListener("click", function(){
+          const stars = this.dataset.star;
+          const name = customerName || "Website Visitor";
+          
+          ratingBox.innerHTML = `<div style="color:#25D366; font-weight:700; font-size:13px;">Thank you for ${stars} Star Rating! ❤️ Redirecting to WhatsApp...</div>`;
+
+          const reviewText = `Hi Ashutosh, I just rated Webora AI Bot on your website!%0A%0A👤 User: ${encodeURIComponent(name)}%0A⭐ Rating: ${stars} / 5 Stars%0A💬 Status: Conversation Completed`;
+          setTimeout(() => {
+            window.open(`https://wa.me/917518896121?text=${reviewText}`, "_blank");
+          }, 800);
+        });
+      });
     }
   })();
   </script>
