@@ -1273,7 +1273,7 @@
     </div>
   </footer>
 
-  <!-- ================= ADVANCED GEMINI PRO AI ASSISTANT ================= -->
+  <!-- ================= ADVANCED WEBORA AI ASSISTANT ================= -->
   <div id="webora-ai">
     <!-- Pop-up Speech Bubble Raised by Bot -->
     <div id="bot-speech-bubble">
@@ -1301,7 +1301,7 @@
       </svg>
     </button>
 
-    <!-- GEMINI LIGHT BORDER GLOW CONTAINER -->
+    <!-- WEBORA AI BORDER GLOW CONTAINER -->
     <div id="webora-ai-window">
       <div class="gemini-border-glow"></div>
       <div class="wa-window-content">
@@ -1312,7 +1312,7 @@
               <i></i>
             </div>
             <div>
-              <div class="wa-title">Webora Gemini Pro <span class="ai-tag">v3.0</span></div>
+              <div class="wa-title">Webora AI <span class="ai-tag">v3.0</span></div>
               <div class="wa-status"><span></span> Neural Live AI</div>
             </div>
           </div>
@@ -1325,7 +1325,7 @@
           <div class="ai-thinking-indicator">
             <span></span><span></span><span></span>
           </div>
-          <small>Gemini Pro is thinking...</small>
+          <small>Webora AI is thinking...</small>
         </div>
 
         <div class="wa-input-area">
@@ -1334,7 +1334,7 @@
         </div>
 
         <div class="wa-powered">
-          ⚡ Powered by <strong>Google Gemini Pro API</strong>
+          ⚡ Powered by <strong>Webora AI Engine</strong>
         </div>
       </div>
     </div>
@@ -1464,7 +1464,7 @@
     50% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
   }
 
-  /* GEMINI BORDER GLOW WINDOW */
+  /* WEBORA AI BORDER GLOW WINDOW */
   #webora-ai-window {
     position: absolute;
     right: 0;
@@ -2136,7 +2136,7 @@
     }
   </script>
 
-  <!-- ================= ADVANCED GEMINI PRO AI CHATBOT + TYPEWRITER + AUDIO SOUNDS ================= -->
+  <!-- ================= ADVANCED WEBORA AI CHATBOT + TYPEWRITER + AUDIO SOUNDS ================= -->
   <script>
   (function(){
     const launch = document.getElementById("webora-ai-launch");
@@ -2233,7 +2233,7 @@
       return wrap;
     }
 
-    // Typewriter effect for Gemini Pro responses
+    // Typewriter effect for AI responses
     function typeWriterEffect(fullText, callback){
       const wrap = document.createElement("div");
       wrap.className = "wa-message-wrap";
@@ -2263,12 +2263,7 @@
     }
 
     // ============ WEBORA SMART REPLY ENGINE ============
-    // Local, rule-based conversation engine. No external API key needed,
-    // so it never breaks and never leaks a key. Picks from several
-    // varied, professional responses per topic so it doesn't repeat
-    // itself like a script.
-
-    const lastUsedIndex = {}; // avoids repeating same line twice in a row per topic
+    const lastUsedIndex = {};
 
     function pickResponse(topic, list) {
       let idx = Math.floor(Math.random() * list.length);
@@ -2304,7 +2299,7 @@
         keywords: ["founder","owner","kisne banaya","ashutosh","who made","who created","malik","proprietor","ceo"],
         responses: [
           "Webora ko Ashutosh Singh ne start kiya tha — unka goal hai local businesses ko affordable, professional websites dena jo actually results laayein.",
-          "Ashutosh Singh, Webora के founder hain. Wo khud design aur strategy dekhte hain taaki website sirf achhi na lage, kaam bhi aaye.",
+          "Ashutosh Singh, Webora ke founder hain. Wo khud design aur strategy dekhte hain taaki website sirf achhi na lage, kaam bhi aaye.",
           "Founder ka naam Ashutosh Singh hai. Chahen toh unse seedha WhatsApp pe baat kar sakte ho — https://wa.me/917518896121"
         ]
       },
@@ -2455,16 +2450,13 @@
       return pickResponse("fallback", fallbackResponses);
     }
 
-    // Local Smart Reply "engine call" — keeps the same natural typing
-    // delay + typewriter + sound experience, just without any external
-    // API dependency (so it never breaks).
-    async function callGeminiAPI(userMessage) {
+    async function callAI(userMessage) {
       typing.style.display = "flex";
       chat.scrollTop = chat.scrollHeight;
 
       chatHistory.push({ role: "user", text: userMessage });
 
-      const thinkDelay = 650 + Math.random() * 900; // feels natural, not instant
+      const thinkDelay = 650 + Math.random() * 900;
 
       setTimeout(() => {
         typing.style.display = "none";
@@ -2493,7 +2485,7 @@
 
       if(chatHistory.length === 0) {
         const greeting = getTimeGreeting();
-        typeWriterEffect(`${greeting}! Main Webora Gemini Pro AI assistant hoon. Aaj main aapke business ya website project me kaise help kar sakta hoon?`);
+        typeWriterEffect(`${greeting}! Main Webora AI assistant hoon. Aaj main aapke business ya website project me kaise help kar sakta hoon?`);
       }
       setTimeout(() => input.focus(), 300);
     });
@@ -2513,7 +2505,7 @@
       if(!text) return;
       addMessage(text, "user");
       input.value = "";
-      callGeminiAPI(text);
+      callAI(text);
     }
 
     function showContactActions(){
@@ -2534,7 +2526,7 @@
       ratingBox.className = "wa-rating-box";
       ratingBox.innerHTML = `
         <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Rate this conversation ⭐</div>
-        <div style="font-size: 11px; color: #8e8e99; margin-top: 3px;">Aapka experience kaisa raha Gemini Pro ke sath?</div>
+        <div style="font-size: 11px; color: #8e8e99; margin-top: 3px;">Aapka experience kaisa raha Webora AI ke sath?</div>
         <div class="wa-rating-stars">
           <button class="wa-star-btn" data-star="1">⭐</button>
           <button class="wa-star-btn" data-star="2">⭐</button>
