@@ -1186,7 +1186,7 @@
         <p class="review-text">"The mobile view looks insane. Our clients book hair salon appointments directly from the website now. 10/10 service."</p>
         <div class="review-author">
           <div class="author-avatar">P</div>
-          <div class="author-info">
+          <div class="author-author-info">
             <h4>Pooja Sharma</h4>
             <span>Founder, Aura Salon</span>
           </div>
@@ -1312,7 +1312,7 @@
               <i></i>
             </div>
             <div>
-              <div class="wa-title">Webora Gemini Pro <span class="ai-tag">v3.0</span></div>
+              <div class="wa-title">Webora Gemini Pro <span class="ai-tag">v3.5</span></div>
               <div class="wa-status"><span></span> Neural Live AI</div>
             </div>
           </div>
@@ -1329,12 +1329,12 @@
         </div>
 
         <div class="wa-input-area">
-          <input id="wa-input" type="text" autocomplete="off" placeholder="Hinglish / English me kuch bhi puchiye...">
+          <input id="wa-input" type="text" autocomplete="off" placeholder="Puchiye ya type karein...">
           <button id="wa-send" aria-label="Send">➤</button>
         </div>
 
         <div class="wa-powered">
-          ⚡ Powered by <strong>Google Gemini Pro API</strong>
+          ⚡ Powered by <strong>Webora Intelligence</strong>
         </div>
       </div>
     </div>
@@ -1351,7 +1351,6 @@
     font-family: inherit;
   }
 
-  /* POP-IN & CLOUD-BURST FADE-OUT SPEECH BUBBLE */
   #bot-speech-bubble {
     position: absolute;
     bottom: 68px;
@@ -1464,7 +1463,6 @@
     50% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
   }
 
-  /* GEMINI BORDER GLOW WINDOW */
   #webora-ai-window {
     position: absolute;
     right: 0;
@@ -1730,7 +1728,7 @@
   }
 
   .wa-star-btn:nth-child(1) { animation-delay: 0.05s; }
-  .wa-star-btn:nth-child(2) { animation-delay: 0.1s; }
+  .wa-star-btn:nth-child(2) { animation-delay: 0.10s; }
   .wa-star-btn:nth-child(3) { animation-delay: 0.15s; }
   .wa-star-btn:nth-child(4) { animation-delay: 0.20s; }
   .wa-star-btn:nth-child(5) { animation-delay: 0.25s; }
@@ -1878,7 +1876,6 @@
   </style>
 
   <script>
-    // Reveal animation
     const items = document.querySelectorAll(".card, .demo, .step, .price-card");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -1896,7 +1893,6 @@
       observer.observe(item);
     });
 
-    // Mobile Hamburger
     const menuBtn = document.getElementById("menu-toggle");
     const navLinks = document.getElementById("nav-links");
     menuBtn.addEventListener("click", () => {
@@ -1906,7 +1902,6 @@
       link.addEventListener("click", () => navLinks.classList.remove("active"));
     });
 
-    // LEAD CAPTURE FORM TO WHATSAPP
     const leadForm = document.getElementById("lead-capture-form");
     leadForm.addEventListener("submit", function(e){
       e.preventDefault();
@@ -1918,155 +1913,60 @@
       window.open(`https://wa.me/917518896121?text=${message}`, "_blank");
     });
 
-    // MULTI-LANGUAGE SYSTEM (EN / HI)
     const translations = {
       en: {
-        nav_services: "Services",
-        nav_work: "Our Work",
-        nav_pricing: "Pricing",
-        nav_reviews: "Reviews",
-        nav_cta: "Get Started",
+        nav_services: "Services", nav_work: "Our Work", nav_pricing: "Pricing", nav_reviews: "Reviews", nav_cta: "Get Started",
         hero_badge: "✦ Modern websites for ambitious businesses",
         hero_title: 'Your business.<br><span class="gradient-text">A better website.</span>',
         hero_desc: "Webora creates beautiful, fast and mobile-friendly websites that help local businesses look professional and get more customers.",
-        hero_btn_explore: "Explore Our Work →",
-        hero_btn_start: "Start a Project",
-        services_sub: "What we do",
-        services_title: "Everything your business needs online.",
-        services_desc: "Simple, modern websites designed to turn visitors into customers.",
-        card1_title: "Modern Design",
-        card1_desc: "Clean and premium designs built around your brand and your customers.",
-        card2_title: "Fast Websites",
-        card2_desc: "Lightweight websites that load quickly and work smoothly on every device.",
-        card3_title: "Mobile First",
-        card3_desc: "Your website will look great whether customers use a phone, tablet or computer.",
-        work_sub: "Our work",
-        work_title: "See what your business could look like.",
-        work_desc: "Explore our website concepts created for different types of businesses.",
-        view_demo: "View Demo →",
-        demo1_title: "Restaurant Website",
-        demo2_title: "Editor Website",
-        demo3_title: "Salon Website",
-        demo4_title: "Gym Website",
-        process_sub: "How it works",
-        process_title: "From idea to live website.",
-        step1_title: "Tell us",
-        step1_desc: "Tell us about your business and what you need.",
-        step2_title: "We build",
-        step2_desc: "We create a custom website around your business.",
-        step3_title: "You approve",
-        step3_desc: "Review the website and request any changes.",
-        step4_title: "We launch",
-        step4_desc: "Your new website goes live for the world to see.",
-        pricing_sub: "Simple pricing",
-        pricing_title: "Choose what fits your business.",
-        pricing_desc: "No complicated packages. Just a website that works.",
-        plan_discuss: "Let’s Discuss",
-        plan_proj: "/ your project",
-        most_pop: "Most popular",
-        plan1_title: "Starter",
-        plan1_f1: "1–3 page website",
-        plan1_f2: "Mobile responsive",
-        plan1_f3: "Contact section",
-        plan1_f4: "Modern design",
-        plan1_f5: "Basic SEO",
-        plan2_title: "Professional",
-        plan2_f1: "Up to 7 pages",
-        plan2_f2: "Premium custom design",
-        plan2_f3: "Mobile responsive",
-        plan2_f4: "Contact & booking",
-        plan2_f5: "SEO optimized",
-        plan3_title: "Premium",
-        plan3_f1: "Custom website",
-        plan3_f2: "Advanced animations",
-        plan3_f3: "Booking / forms",
-        plan3_f4: "SEO optimization",
-        plan3_f5: "Priority support",
-        reviews_sub: "Client Stories",
-        reviews_title: "Trusted by growing local brands.",
-        reviews_desc: "Here is what business owners say after launching with Webora.",
-        cta_title: "Ready to stand out?",
-        cta_desc: "Let's build a website your customers will remember.",
-        cta_btn: "Start Your Project →",
-        contact_title: "Let's build something great.",
-        contact_desc: "Have a business that needs a better website? We'd love to hear from you.",
-        contact_btn: "Contact Us →",
-        contact_wa: "WhatsApp Us →",
-        footer_tag: "Websites that make your business stand out."
+        hero_btn_explore: "Explore Our Work →", hero_btn_start: "Start a Project",
+        services_sub: "What we do", services_title: "Everything your business needs online.", services_desc: "Simple, modern websites designed to turn visitors into customers.",
+        card1_title: "Modern Design", card1_desc: "Clean and premium designs built around your brand and your customers.",
+        card2_title: "Fast Websites", card2_desc: "Lightweight websites that load quickly and work smoothly on every device.",
+        card3_title: "Mobile First", card3_desc: "Your website will look great whether customers use a phone, tablet or computer.",
+        work_sub: "Our work", work_title: "See what your business could look like.", work_desc: "Explore our website concepts created for different types of businesses.",
+        view_demo: "View Demo →", demo1_title: "Restaurant Website", demo2_title: "Editor Website", demo3_title: "Salon Website", demo4_title: "Gym Website",
+        process_sub: "How it works", process_title: "From idea to live website.",
+        step1_title: "Tell us", step1_desc: "Tell us about your business and what you need.",
+        step2_title: "We build", step2_desc: "We create a custom website around your business.",
+        step3_title: "You approve", step3_desc: "Review the website and request any changes.",
+        step4_title: "We launch", step4_desc: "Your new website goes live for the world to see.",
+        pricing_sub: "Simple pricing", pricing_title: "Choose what fits your business.", pricing_desc: "No complicated packages. Just a website that works.",
+        plan_discuss: "Let’s Discuss", plan_proj: "/ your project", most_pop: "Most popular",
+        plan1_title: "Starter", plan1_f1: "1–3 page website", plan1_f2: "Mobile responsive", plan1_f3: "Contact section", plan1_f4: "Modern design", plan1_f5: "Basic SEO",
+        plan2_title: "Professional", plan2_f1: "Up to 7 pages", plan2_f2: "Premium custom design", plan2_f3: "Mobile responsive", plan2_f4: "Contact & booking", plan2_f5: "SEO optimized",
+        plan3_title: "Premium", plan3_f1: "Custom website", plan3_f2: "Advanced animations", plan3_f3: "Booking / forms", plan3_f4: "SEO optimization", plan3_f5: "Priority support",
+        reviews_sub: "Client Stories", reviews_title: "Trusted by growing local brands.", reviews_desc: "Here is what business owners say after launching with Webora.",
+        cta_title: "Ready to stand out?", cta_desc: "Let's build a website your customers will remember.", cta_btn: "Start Your Project →",
+        contact_title: "Let's build something great.", contact_desc: "Have a business that needs a better website? We'd love to hear from you.",
+        contact_btn: "Contact Us →", contact_wa: "WhatsApp Us →", footer_tag: "Websites that make your business stand out."
       },
       hi: {
-        nav_services: "सेवाएं",
-        nav_work: "हमारा काम",
-        nav_pricing: "कीमतें",
-        nav_reviews: "रिव्यूज",
-        nav_cta: "शुरू करें",
+        nav_services: "सेवाएं", nav_work: "हमारा काम", nav_pricing: "कीमतें", nav_reviews: "रिव्यूज", nav_cta: "शुरू करें",
         hero_badge: "✦ महत्वाकांक्षी व्यवसायों के लिए आधुनिक वेबसाइटें",
         hero_title: 'आपका व्यवसाय।<br><span class="gradient-text">एक बेहतर वेबसाइट।</span>',
         hero_desc: "Webora सुंदर, तेज़ और मोबाइल-फ्रेंडली वेबसाइटें बनाता है जो आपके बिज़नेस को प्रोफेशनल बनाती हैं और ज़्यादा ग्राहक लाती हैं।",
-        hero_btn_explore: "हमारा काम देखें →",
-        hero_btn_start: "प्रोजेक्ट शुरू करें",
-        services_sub: "हम क्या करते हैं",
-        services_title: "ऑनलाइन बिज़नेस के लिए हर ज़रूरी चीज़।",
-        services_desc: "सरल, मॉडर्न वेबसाइट्स जो आने वाले ग्राहकों को आकर्षित करती हैं।",
-        card1_title: "आधुनिक डिज़ाइन",
-        card1_desc: "प्रीमियम और साफ़-सुथरा डिज़ाइन जो आपके ब्रांड और ग्राहकों के अनुरूप हो।",
-        card2_title: "सुपरफास्ट स्पीड",
-        card2_desc: "हल्की वेबसाइटें जो हर डिवाइस पर तुरंत खुलती हैं।",
-        card3_title: "मोबाइल फर्स्ट",
-        card3_desc: "फोन, टैबलेट या कंप्यूटर—आपकी वेबसाइट हर स्क्रीन पर शानदार दिखेगी।",
-        work_sub: "हमारा काम",
-        work_title: "देखें आपकी वेबसाइट कैसी दिख सकती है।",
-        work_desc: "विभिन्न प्रकार के बिज़नेस के लिए बनाए गए हमारे डेमो देखें।",
-        view_demo: "डेमो देखें →",
-        demo1_title: "रेस्टोरेंट वेबसाइट",
-        demo2_title: "वीडियो एडिटर वेबसाइट",
-        demo3_title: "सैलून वेबसाइट",
-        demo4_title: "जिम व फिटनेस वेबसाइट",
-        process_sub: "प्रक्रिया",
-        process_title: "विचार से लाइव वेबसाइट तक।",
-        step1_title: "हमें बताएं",
-        step1_desc: "अपने व्यवसाय और ज़रूरतों के बारे में बताएं।",
-        step2_title: "हम बनाएंगे",
-        step2_desc: "हम आपकी पसंद के अनुसार कस्टम वेबसाइट बनाएंगे।",
-        step3_title: "आप चेक करें",
-        step3_desc: "वेबसाइट देखें और कोई भी बदलाव बताएं।",
-        step4_title: "वेबसाइट लाइव",
-        step4_desc: "आपकी नई वेबसाइट पूरी दुनिया के लिए लाइव हो जाएगी।",
-        pricing_sub: "पारदर्शी कीमतें",
-        pricing_title: "अपने बिज़नेस के अनुसार प्लान चुनें।",
-        pricing_desc: "कोई उलझन नहीं, बस एक ऐसी वेबसाइट जो परिणाम दे।",
-        plan_discuss: "बातचीत करें",
-        plan_proj: "/ आपके प्रोजेक्ट पर",
-        most_pop: "सबसे लोकप्रिय",
-        plan1_title: "स्टार्टर",
-        plan1_f1: "1–3 पेज वेबसाइट",
-        plan1_f2: "मोबाइल रेस्पॉन्सिव",
-        plan1_f3: "कॉन्टैक्ट सेक्शन",
-        plan1_f4: "मॉडर्न डिज़ाइन",
-        plan1_f5: "बेसिक एसईओ (SEO)",
-        plan2_title: "प्रोफेशनल",
-        plan2_f1: "7 पेजों तक",
-        plan2_f2: "प्रीमियम कस्टम डिज़ाइन",
-        plan2_f3: "मोबाइल रेस्पॉन्सिव",
-        plan2_f4: "बुकिंग व कॉन्टैक्ट",
-        plan2_f5: "एसईओ ऑप्टिमाइज़्ड",
-        plan3_title: "प्रीमियम",
-        plan3_f1: "पूरी तरह कस्टम वेबसाइट",
-        plan3_f2: "एडवांस एनिमेशन्स",
-        plan3_f3: "ऑनलाइन फॉर्म्स व बुकिंग",
-        plan3_f4: "एडवांस एसईओ",
-        plan3_f5: "प्राथमिकता सपोर्ट",
-        reviews_sub: "ग्राहकों की राय",
-        reviews_title: "स्थानीय ब्रांड्स का भरोसा।",
-        reviews_desc: "Webora के साथ अपनी वेबसाइट लाइव करने वाले बिज़नेस ओनर्स का अनुभव।",
-        cta_title: "आगे बढ़ने के लिए तैयार हैं?",
-        cta_desc: "आइए ऐसी वेबसाइट बनाएं जिसे आपके ग्राहक याद रखें।",
-        cta_btn: "प्रोजेक्ट शुरू करें →",
-        contact_title: "आइए कुछ बेहतरीन बनाते हैं।",
-        contact_desc: "क्या आपके पास कोई बिज़नेस है जिसके लिए बेहतर वेबसाइट चाहिए? हमसे संपर्क करें।",
-        contact_btn: "संपर्क करें →",
-        contact_wa: "व्हाट्सएप करें →",
-        footer_tag: "वेबसाइटें जो आपके बिज़नेस को सबसे अलग बनाती हैं।"
+        hero_btn_explore: "हमारा काम देखें →", hero_btn_start: "प्रोजेक्ट शुरू करें",
+        services_sub: "हम क्या करते हैं", services_title: "ऑनलाइन बिज़नेस के लिए हर ज़रूरी चीज़।", services_desc: "सरल, मॉडर्न वेबसाइट्स जो आने वाले ग्राहकों को आकर्षित करती हैं।",
+        card1_title: "आधुनिक डिज़ाइन", card1_desc: "प्रीमियम और साफ़-सुथरा डिज़ाइन जो आपके ब्रांड और ग्राहकों के अनुरूप हो।",
+        card2_title: "सुपरफास्ट स्पीड", card2_desc: "हल्की वेबसाइटें जो हर डिवाइस पर तुरंत खुलती हैं।",
+        card3_title: "मोबाइल फर्स्ट", card3_desc: "फोन, टैबलेट या कंप्यूटर—आपकी वेबसाइट हर स्क्रीन पर शानदार दिखेगी।",
+        work_sub: "हमारा काम", work_title: "देखें आपकी वेबसाइट कैसी दिख सकती है।", work_desc: "विभिन्न प्रकार के बिज़नेस के लिए बनाए गए हमारे डेमो देखें।",
+        view_demo: "डेमो देखें →", demo1_title: "रेस्टोरेंट वेबसाइट", demo2_title: "वीडियो एडिटर वेबसाइट", demo3_title: "सैलून वेबसाइट", demo4_title: "जिम व फिटनेस वेबसाइट",
+        process_sub: "प्रक्रिया", process_title: "विचार से लाइव वेबसाइट तक।",
+        step1_title: "हमें बताएं", step1_desc: "अपने व्यवसाय और ज़रूरतों के बारे में बताएं।",
+        step2_title: "हम बनाएंगे", step2_desc: "हम आपकी पसंद के अनुसार कस्टम वेबसाइट बनाएंगे।",
+        step3_title: "आप चेक करें", step3_desc: "वेबसाइट देखें और कोई भी बदलाव बताएं।",
+        step4_title: "वेबसाइट लाइव", step4_desc: "आपकी नई वेबसाइट पूरी दुनिया के लिए लाइव हो जाएगी।",
+        pricing_sub: "पारदर्शी कीमतें", pricing_title: "अपने बिज़नेस के अनुसार प्लान चुनें।", pricing_desc: "कोई उलझन नहीं, बस एक ऐसी वेबसाइट जो परिणाम दे।",
+        plan_discuss: "बातचीत करें", plan_proj: "/ आपके प्रोजेक्ट पर", most_pop: "सबसे लोकप्रिय",
+        plan1_title: "स्टार्टर", plan1_f1: "1–3 पेज वेबसाइट", plan1_f2: "मोबाइल रेस्पॉन्सिव", plan1_f3: "कॉन्टैक्ट सेक्शन", plan1_f4: "मॉडर्न डिज़ाइन", plan1_f5: "बेसिक एसईओ (SEO)",
+        plan2_title: "प्रोफेशनल", plan2_f1: "7 पेजों तक", plan2_f2: "प्रीमियम कस्टम डिज़ाइन", plan2_f3: "मोबाइल रेस्पॉन्सिव", plan2_f4: "बुकिंग व कॉन्टैक्ट", plan2_f5: "एसईओ ऑप्टिमाइज़्ड",
+        plan3_title: "प्रीमियम", plan3_f1: "पूरी तरह कस्टम वेबसाइट", plan3_f2: "एडवांस एनिमेशन्स", plan3_f3: "ऑनलाइन फॉर्म्स व बुकिंग", plan3_f4: "एडवांस एसईओ", plan3_f5: "प्राथमिकता सपोर्ट",
+        reviews_sub: "ग्राहकों की राय", reviews_title: "स्थानीय ब्रांड्स का भरोसा।", reviews_desc: "Webora के साथ अपनी वेबसाइट लाइव करने वाले बिज़नेस ओनर्स का अनुभव।",
+        cta_title: "आगे बढ़ने के लिए तैयार हैं?", cta_desc: "आइए ऐसी वेबसाइट बनाएं जिसे आपके ग्राहक याद रखें।", cta_btn: "प्रोजेक्ट शुरू करें →",
+        contact_title: "आइए कुछ बेहतरीन बनाते हैं।", contact_desc: "क्या आपके पास कोई बिज़नेस है जिसके लिए बेहतर वेबसाइट चाहिए? हमसे संपर्क करें।",
+        contact_btn: "संपर्क करें →", contact_wa: "व्हाट्सएप करें →", footer_tag: "वेबसाइटें जो आपके बिज़नेस को सबसे अलग बनाती हैं।"
       }
     };
 
@@ -2077,7 +1977,6 @@
     langBtn.addEventListener("click", () => {
       currentLang = currentLang === "en" ? "hi" : "en";
       currentLangText.textContent = currentLang.toUpperCase();
-      
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         if(translations[currentLang][key]) {
@@ -2102,41 +2001,23 @@
         badge.innerHTML = "🇮🇳 Happy Republic Day — Empowering Digital India";
         heroGlow.style.background = "radial-gradient(circle, rgba(255,153,51,0.2), rgba(19,136,8,0.15), transparent 70%)";
         emblem.style.background = "linear-gradient(135deg, #FF9933, #FFFFFF, #138808)";
-        createParticles(["🇮🇳", "✨", "🌟"], 12);
       } else if (month === 8 && day === 15) {
         badge.innerHTML = "🇮🇳 Happy Independence Day — Build Your Digital Freedom";
         heroGlow.style.background = "radial-gradient(circle, rgba(255,153,51,0.22), rgba(255,255,255,0.1), rgba(19,136,8,0.2))";
         emblem.style.background = "linear-gradient(135deg, #FF9933, #000080, #138808)";
-        createParticles(["🇮🇳", "🚀", "⭐"], 12);
       } else if (month === 12 && day === 25) {
         badge.innerHTML = "🎄 Merry Christmas — Wishing You Joy & Growth";
         heroGlow.style.background = "radial-gradient(circle, rgba(230,57,70,0.2), rgba(69,123,157,0.2), transparent 70%)";
         emblem.style.background = "linear-gradient(135deg, #e63946, #457b9d, #f1faee)";
-        createParticles(["❄️", "🎄", "⭐"], 15);
       } else if (month === 1 && day === 1) {
         badge.innerHTML = "🎉 Happy New Year 2026 — New Goals, New Growth";
         heroGlow.style.background = "radial-gradient(circle, rgba(255,215,0,0.2), rgba(21,156,255,0.2), transparent 70%)";
         emblem.style.background = "linear-gradient(135deg, #ffd700, #159cff)";
-        createParticles(["🎉", "✨", "🌟", "🚀"], 15);
       }
     });
-
-    function createParticles(symbols, count) {
-      for (let i = 0; i < count; i++) {
-        const p = document.createElement("div");
-        p.className = "festive-particle";
-        p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-        p.style.left = Math.random() * 100 + "vw";
-        p.style.top = -50 + "px";
-        p.style.fontSize = (Math.random() * 12 + 14) + "px";
-        p.style.animationDuration = (Math.random() * 6 + 5) + "s";
-        p.style.animationDelay = (Math.random() * 5) + "s";
-        document.body.appendChild(p);
-      }
-    }
   </script>
 
-  <!-- ================= ADVANCED GEMINI PRO AI CHATBOT + TYPEWRITER + AUDIO SOUNDS ================= -->
+  <!-- ================= ADVANCED GEMINI PRO CLASSIFIED CHAT ENGINE ================= -->
   <script>
   (function(){
     const launch = document.getElementById("webora-ai-launch");
@@ -2148,17 +2029,15 @@
     const typing = document.getElementById("wa-typing");
     const speechBubble = document.getElementById("bot-speech-bubble");
 
-    let chatHistory = []; // Memory for conversation
+    let userPreferredLang = null; // 'hinglish', 'english', 'hindi'
     let interactionCount = 0;
     let ratingShown = false;
 
-    // Soft Synthesized Sound Effects (No external audio files needed)
+    // Synthesized Audio Tones
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     function playSoftPop(type) {
       if (!audioCtx) return;
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.connect(gain);
@@ -2169,30 +2048,21 @@
         osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08);
         gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.08);
-      } else if (type === 'receive') {
+        osc.start(); osc.stop(audioCtx.currentTime + 0.08);
+      } else {
         osc.frequency.setValueAtTime(650, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(320, audioCtx.currentTime + 0.12);
         gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.12);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.12);
       }
-    }
-
-    function getTimeGreeting() {
-      const hour = new Date().getHours();
-      if (hour >= 4 && hour < 12) return "Good Morning";
-      if (hour >= 12 && hour < 17) return "Good Afternoon";
-      return "Good Evening";
     }
 
     function getCurrentTimeFormatted() {
       return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
 
-    // Speech bubble loop
+    // Speech bubble periodic popup
     setInterval(() => {
       if (windowBox.style.display === "flex") return;
       speechBubble.classList.remove("bubble-burst");
@@ -2208,15 +2078,10 @@
     function addMessage(text, type, isHtml = false){
       const wrap = document.createElement("div");
       wrap.className = "wa-message-wrap";
-
       const message = document.createElement("div");
       message.className = "wa-message " + (type === "user" ? "wa-user" : "wa-bot");
-      
-      if(isHtml) {
-        message.innerHTML = text;
-      } else {
-        message.textContent = text;
-      }
+      if(isHtml) message.innerHTML = text;
+      else message.textContent = text;
 
       const timeSpan = document.createElement("span");
       timeSpan.className = "wa-time " + (type === "user" ? "wa-user-time" : "wa-bot-time");
@@ -2229,17 +2094,14 @@
 
       if(type === 'user') playSoftPop('send');
       else playSoftPop('receive');
-
       return wrap;
     }
 
-    // Typewriter effect for Gemini Pro responses
     function typeWriterEffect(fullText, callback){
       const wrap = document.createElement("div");
       wrap.className = "wa-message-wrap";
       const message = document.createElement("div");
       message.className = "wa-message wa-bot";
-      
       const timeSpan = document.createElement("span");
       timeSpan.className = "wa-time wa-bot-time";
       timeSpan.textContent = getCurrentTimeFormatted();
@@ -2259,59 +2121,7 @@
           clearInterval(timer);
           if(callback) callback();
         }
-      }, 15);
-    }
-
-    // Google Gemini Pro API Call with Conversation Memory
-    async function callGeminiAPI(userMessage) {
-      typing.style.display = "flex";
-      chat.scrollTop = chat.scrollHeight;
-
-      chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
-
-      try {
-        // Using Google Gemini Free Public Inference Endpoint / Fallback
-        const systemPrompt = "You are Webora Gemini Pro, an elite, friendly AI assistant for Webora Web Development Agency founded by Ashutosh Singh. You speak fluent Hinglish and English. You help local businesses, restaurants, gyms, salons, and creators build ultra-fast zero-investment websites. Keep answers crisp, smart, and professional.";
-        
-        // Payload for Gemini Model
-        const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=YOUR_GEMINI_API_KEY", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [
-              { role: "user", parts: [{ text: systemPrompt }] },
-              ...chatHistory
-            ]
-          })
-        });
-
-        const data = await response.json();
-        typing.style.display = "none";
-
-        let botReply = "Main aapki baat samajh raha hoon! Webora agency ke sath website banane ke liye aap direct WhatsApp par founder Ashutosh Singh se connect kar sakte hain: https://wa.me/917518896121";
-        
-        if (data && data.candidates && data.candidates[0].content) {
-          botReply = data.candidates[0].content.parts[0].text;
-        }
-
-        chatHistory.push({ role: "model", parts: [{ text: botReply }] });
-        
-        typeWriterEffect(botReply, () => {
-          interactionCount++;
-          if(interactionCount >= 4 && !ratingShown) {
-            setTimeout(showRatingSystem, 1200);
-          }
-        });
-
-      } catch (err) {
-        // Fallback intelligent response if offline or key is pending
-        typing.style.display = "none";
-        let fallbackReply = `Aapke project ke liye Webora par zero investment website aur custom features (jaise WhatsApp order ya booking) easily set ho jayenge! Maze ki baat ye hai ki hosting bilkul free hai. Aur details ke liye aap WhatsApp par baat kar sakte hain.`;
-        
-        typeWriterEffect(fallbackReply, () => {
-          showContactActions();
-        });
-      }
+      }, 14);
     }
 
     launch.addEventListener("click", function(e){
@@ -2324,9 +2134,8 @@
       }
       windowBox.style.display = "flex";
 
-      if(chatHistory.length === 0) {
-        const greeting = getTimeGreeting();
-        typeWriterEffect(`${greeting}! Main Webora Gemini Pro AI assistant hoon. Aaj main aapke business ya website project me kaise help kar sakta hoon?`);
+      if(!userPreferredLang) {
+        askLanguagePreference();
       }
       setTimeout(() => input.focus(), 300);
     });
@@ -2341,12 +2150,130 @@
       }
     });
 
+    function askLanguagePreference() {
+      typeWriterEffect("Welcome to Webora! To give you the best experience, please select your preferred language / कृपया अपनी भाषा चुनें:");
+      setTimeout(() => {
+        const langBox = document.createElement("div");
+        langBox.className = "wa-quick-pills";
+        langBox.innerHTML = `
+          <button id="lang-hi">🇮🇳 Hinglish</button>
+          <button id="lang-en">🌐 English</button>
+          <button id="lang-purehi">🙏 शुद्ध हिन्दी</button>
+        `;
+        chat.appendChild(langBox);
+        chat.scrollTop = chat.scrollHeight;
+
+        document.getElementById("lang-hi").addEventListener("click", () => {
+          userPreferredLang = "hinglish";
+          langBox.remove();
+          addMessage("Hinglish", "user");
+          typeWriterEffect("Aapne Hinglish select kiya hai! Main Webora ka Gemini Pro AI assistant hoon. Hamare agency ke founder **Ashutosh Singh** hain, jo local businesses aur creators ke liye zero-investment ultra-fast websites banate hain. Aaj main aapki kya madad karoon?");
+        });
+
+        document.getElementById("lang-en").addEventListener("click", () => {
+          userPreferredLang = "english";
+          langBox.remove();
+          addMessage("English", "user");
+          typeWriterEffect("English selected! I am Webora Gemini Pro AI assistant. Our agency was founded by **Ashutosh Singh**, specializing in high-performance zero-investment websites for ambitious brands. How can I assist you today?");
+        });
+
+        document.getElementById("lang-purehi").addEventListener("click", () => {
+          userPreferredLang = "hindi";
+          langBox.remove();
+          addMessage("शुद्ध हिन्दी", "user");
+          typeWriterEffect("आपने हिन्दी चुनी है! मैं Webora का एआई सहायक हूँ। हमारी एजेंसी की स्थापना **आशुतोष सिंह** जी ने की है। हम स्थानीय व्यवसायों के लिए आधुनिक वेबसाइट बनाते हैं। आज मैं आपकी क्या सहायता कर सकता हूँ?");
+        });
+      }, 700);
+    }
+
     function handleUserSend(){
       const text = input.value.trim();
       if(!text) return;
       addMessage(text, "user");
       input.value = "";
-      callGeminiAPI(text);
+
+      if(!userPreferredLang) {
+        userPreferredLang = "hinglish";
+      }
+
+      processSmartResponse(text);
+    }
+
+    // CLASSIFIED PROCESSOR: BUSINESS VS NORMAL CHAT
+    function processSmartResponse(rawQuery) {
+      typing.style.display = "flex";
+      chat.scrollTop = chat.scrollHeight;
+
+      setTimeout(() => {
+        typing.style.display = "none";
+        const q = rawQuery.toLowerCase();
+
+        // 1. NORMAL CONVERSATION CLASSIFICATION (Kaise ho, weather, time, jokes, greetings)
+        const isNormalChat = q.includes("kaise ho") || q.includes("how are you") || q.includes("weather") || q.includes("mausam") || q.includes("time") || q.includes("samay") || q.includes("joke") || q.includes("kya haal") || q.includes("hello") || q.includes("hi ");
+
+        if (isNormalChat) {
+          handleNormalConversation(q);
+          return;
+        }
+
+        // 2. BUSINESS CONSULTATION CLASSIFICATION (Pricing, Website, Restaurant, Gym, Founder, Contact)
+        handleBusinessConversation(q);
+
+      }, 600);
+    }
+
+    function handleNormalConversation(q) {
+      let reply = "";
+      const now = new Date();
+
+      if (q.includes("kaise ho") || q.includes("how are you") || q.includes("kya haal")) {
+        if (userPreferredLang === 'english') reply = "I'm doing fantastic, fully energized by cloud servers! How are you doing today?";
+        else if (userPreferredLang === 'hindi') reply = "मैं पूरी तरह स्वस्थ और ऊर्जावान हूँ! आप बताइए, आज आपका दिन कैसा चल रहा है?";
+        else reply = "Main ekdum fit aur bindass hoon! Aap sunaiye, sab kaisa chal raha hai?";
+      } 
+      else if (q.includes("weather") || q.includes("mausam")) {
+        reply = "Digital server cloud me mausam ekdum coding-friendly aur shandar hai! 🌤️";
+      }
+      else if (q.includes("time") || q.includes("samay")) {
+        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        reply = `Abhi theek ${timeStr} ho rahe hain. Hamara system 24/7 active hai!`;
+      }
+      else {
+        if (userPreferredLang === 'english') reply = "That's interesting! By the way, if you are looking to build a high-performance website for your brand, I can help you with all the details.";
+        else reply = "Bohot sahi! Waise agar aap apne business ya brand ke liye koi zabardast website banwana chahte hain, toh aap mujhse bejhijhak puch sakte hain.";
+      }
+
+      typeWriterEffect(reply, checkRatingTrigger);
+    }
+
+    function handleBusinessConversation(q) {
+      let reply = "";
+
+      if (q.includes("founder") || q.includes("owner") || q.includes("malik") || q.includes("ashutosh") || q.includes("kisne banaya")) {
+        reply = "Webora agency ke founder **Ashutosh Singh** hain. Unka mission local businesses, restaurants, gyms aur creators ko zero financial investment par ultra-fast, professional websites provide karwana hai.";
+      }
+      else if (q.includes("cost") || q.includes("price") || q.includes("paisa") || q.includes("kharcha") || q.includes("budget") || q.includes("fees")) {
+        reply = "Webora par aapka development investment **100% Zero** rehta hai! Hum free hosting (GitHub/Vercel) use karte hain aur client apne domain ka khud pay karta hai. Custom project quotes ke liye aap direct WhatsApp par bat kar sakte hain.";
+      }
+      else if (q.includes("restaurant") || q.includes("cafe") || q.includes("food")) {
+        reply = "Restaurants aur cafes ke liye hum digital menu, table booking aur WhatsApp order system integrate karte hain jisse sales double ho jati hain. Upar hamara **La Maison** demo check kar sakte hain!";
+      }
+      else if (q.includes("gym") || q.includes("fitness")) {
+        reply = "Fitness centers aur gyms ke liye high-converting lead forms aur membership booking pages banaye jate hain. Check out our **Forge Fitness** demo!";
+      }
+      else if (q.includes("salon") || q.includes("spa")) {
+        reply = "Beauty salons ke liye appointment booking aur aesthetic pricing catalogue ready kiya jata hai. Look at our **Luna Beauty** demo!";
+      }
+      else {
+        reply = "Aapke business ke liye ek professional website zero investment par banane ke liye hamari team ready hai. Exact proposal aur instant discount ke liye aap direct founder **Ashutosh Singh** se WhatsApp par connect kar sakte hain:";
+      }
+
+      typeWriterEffect(reply, () => {
+        if (q.includes("whatsapp") || q.includes("contact") || q.includes("quote") || q.includes("price") || q.includes("founder") || !q.includes("restaurant")) {
+          showContactActions();
+        }
+        checkRatingTrigger();
+      });
     }
 
     function showContactActions(){
@@ -2359,6 +2286,13 @@
       );
     }
 
+    function checkRatingTrigger() {
+      interactionCount++;
+      if(interactionCount >= 4 && !ratingShown) {
+        setTimeout(showRatingSystem, 1200);
+      }
+    }
+
     function showRatingSystem(){
       if(ratingShown) return;
       ratingShown = true;
@@ -2367,7 +2301,7 @@
       ratingBox.className = "wa-rating-box";
       ratingBox.innerHTML = `
         <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Rate this conversation ⭐</div>
-        <div style="font-size: 11px; color: #8e8e99; margin-top: 3px;">Aapka experience kaisa raha Gemini Pro ke sath?</div>
+        <div style="font-size: 11px; color: #8e8e99; margin-top: 3px;">Aapka experience kaisa raha Webora AI ke sath?</div>
         <div class="wa-rating-stars">
           <button class="wa-star-btn" data-star="1">⭐</button>
           <button class="wa-star-btn" data-star="2">⭐</button>
