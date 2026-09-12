@@ -753,12 +753,61 @@
       align-items: center;
     }
 
+    /* ================= SPIDER-MAN STALKER MASCOT STYLES ================= */
+    #spidey-mascot {
+      position: absolute;
+      top: -55px;
+      right: 12px;
+      width: 48px;
+      height: 60px;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(-30px) rotate(-15deg);
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    }
+
+    #spidey-mascot.spidey-active {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg);
+      animation: spideyPeek 4s infinite ease-in-out;
+    }
+
+    @keyframes spideyPeek {
+      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+      30% { transform: translateY(-8px) rotate(-8deg) scale(1.05); }
+      60% { transform: translateY(-4px) rotate(6deg) scale(1.02); }
+    }
+
+    /* SPIDER-MAN SVG CHARACTER */
+    .spidey-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 5px 12px rgba(0,0,0,0.8));
+    }
+
+    /* WEB LINE FROM TOP */
+    #spidey-web-line {
+      position: absolute;
+      top: -45px;
+      right: 32px;
+      width: 1.5px;
+      height: 0px;
+      background: rgba(255, 255, 255, 0.6);
+      pointer-events: none;
+      z-index: 9;
+      transition: height 0.5s ease;
+      box-shadow: 0 0 4px rgba(255,255,255,0.8);
+    }
+    #spidey-web-line.web-active {
+      height: 48px;
+    }
+
     /* MOBILE */
     @media (max-width: 800px) {
       .menu-toggle {
         display: flex;
       }
-
       .nav-links {
         display: none;
         position: absolute;
@@ -772,42 +821,29 @@
         padding: 24px 6%;
         gap: 18px;
       }
-
       .nav-links.active {
         display: flex;
       }
-
       .nav-button {
         width: 100%;
         text-align: center;
         margin-top: 6px;
       }
-
       h1 {
         letter-spacing: -3px;
       }
-
-      .cards,
-      .pricing {
+      .cards, .pricing, .demos {
         grid-template-columns: 1fr;
       }
-
-      .demos {
-        grid-template-columns: 1fr;
-      }
-
       .process {
         grid-template-columns: repeat(2, 1fr);
       }
-
       .price-card.featured {
         transform: none;
       }
-
       .lead-form-grid {
         grid-template-columns: 1fr;
       }
-
       .footer-inner {
         flex-direction: column;
         gap: 12px;
@@ -815,34 +851,12 @@
     }
 
     @media (max-width: 480px) {
-      .nav-inner {
-        height: 68px;
-      }
-
-      .brand {
-        font-size: 18px;
-      }
-
-      .brand-icon {
-        width: 30px;
-        height: 30px;
-      }
-
-      .hero {
-        padding-top: 50px;
-      }
-
-      section {
-        padding: 80px 0;
-      }
-
-      .process {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .cta {
-        padding: 65px 20px;
-      }
+      .nav-inner { height: 68px; }
+      .brand { font-size: 18px; }
+      .brand-icon { width: 30px; height: 30px; }
+      .hero { padding-top: 50px; }
+      section { padding: 80px 0; }
+      .cta { padding: 65px 20px; }
     }
   </style>
 </head>
@@ -855,11 +869,9 @@
 
       <a href="#" class="brand">
         <div class="brand-icon" id="brand-emblem">W</div>
-        <!-- GENTLE KINETIC TEXT -->
         <span class="brand-text">Webora</span>
       </a>
 
-      <!-- Mobile Hamburger Button -->
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">
         <span></span>
         <span></span>
@@ -872,7 +884,6 @@
         <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
         <a href="#reviews" data-i18n="nav_reviews">Reviews</a>
         
-        <!-- Language Switcher -->
         <button class="lang-btn" id="lang-switcher">🌐 <span id="current-lang">EN</span></button>
 
         <a href="#contact" class="nav-button" data-i18n="nav_cta">Get Started</a>
@@ -924,25 +935,19 @@
         <div class="card">
           <div class="card-icon">✦</div>
           <h3 data-i18n="card1_title">Modern Design</h3>
-          <p data-i18n="card1_desc">
-            Clean and premium designs built around your brand and your customers.
-          </p>
+          <p data-i18n="card1_desc">Clean and premium designs built around your brand and your customers.</p>
         </div>
 
         <div class="card">
           <div class="card-icon">⚡</div>
           <h3 data-i18n="card2_title">Fast Websites</h3>
-          <p data-i18n="card2_desc">
-            Lightweight websites that load quickly and work smoothly on every device.
-          </p>
+          <p data-i18n="card2_desc">Lightweight websites that load quickly and work smoothly on every device.</p>
         </div>
 
         <div class="card">
           <div class="card-icon">◎</div>
           <h3 data-i18n="card3_title">Mobile First</h3>
-          <p data-i18n="card3_desc">
-            Your website will look great whether customers use a phone, tablet or computer.
-          </p>
+          <p data-i18n="card3_desc">Your website will look great whether customers use a phone, tablet or computer.</p>
         </div>
       </div>
 
@@ -956,9 +961,7 @@
       <div class="section-title">
         <span data-i18n="work_sub">Our work</span>
         <h2 data-i18n="work_title">See what your business could look like.</h2>
-        <p data-i18n="work_desc">
-          Explore our website concepts created for different types of businesses.
-        </p>
+        <p data-i18n="work_desc">Explore our website concepts created for different types of businesses.</p>
       </div>
 
       <div class="demos">
@@ -1168,7 +1171,6 @@
         </div>
       </div>
 
-      <!-- Duplicates for continuous loop -->
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
         <p class="review-text">"Webora delivered our fine-dining cafe website in just 4 days. Table inquiries on WhatsApp doubled within the first weekend!"</p>
@@ -1273,12 +1275,29 @@
     </div>
   </footer>
 
-  <!-- ================= ADVANCED GEMINI PRO AI ASSISTANT ================= -->
+  <!-- ================= WEBORA AI ASSISTANT + SPIDER-MAN STALKER ================= -->
   <div id="webora-ai">
     <!-- Pop-up Speech Bubble Raised by Bot -->
     <div id="bot-speech-bubble">
       <span>May I help you? 👋</span>
       <div class="bubble-arrow"></div>
+    </div>
+
+    <!-- SPIDER-MAN HANGING MASCOT -->
+    <div id="spidey-web-line"></div>
+    <div id="spidey-mascot">
+      <svg class="spidey-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Spider-Man hanging head & mask -->
+        <path d="M50 10 C30 10, 20 30, 25 50 C28 62, 40 75, 50 85 C60 75, 72 62, 75 50 C80 30, 70 10, 50 10 Z" fill="#E21717" stroke="#111" stroke-width="2.5"/>
+        <!-- Big Spider Eyes -->
+        <path d="M33 35 Q40 28 47 36 Q42 45 33 35 Z" fill="#FFFFFF" stroke="#111" stroke-width="2"/>
+        <path d="M67 35 Q60 28 53 36 Q58 45 67 35 Z" fill="#FFFFFF" stroke="#111" stroke-width="2"/>
+        <!-- Classic Web Pattern Lines -->
+        <path d="M50 10 L50 85 M25 50 L75 50 M32 25 L68 65 M68 25 L32 65" stroke="#111" stroke-width="1.2" opacity="0.6"/>
+        <!-- Hands holding top edge -->
+        <circle cx="20" cy="5" r="7" fill="#E21717" stroke="#111" stroke-width="2"/>
+        <circle cx="80" cy="5" r="7" fill="#E21717" stroke="#111" stroke-width="2"/>
+      </svg>
     </div>
 
     <button id="webora-ai-launch" aria-label="Open Webora AI">
@@ -1301,7 +1320,7 @@
       </svg>
     </button>
 
-    <!-- GEMINI LIGHT BORDER GLOW CONTAINER -->
+    <!-- WEBORA AI WINDOW -->
     <div id="webora-ai-window">
       <div class="gemini-border-glow"></div>
       <div class="wa-window-content">
@@ -1312,8 +1331,8 @@
               <i></i>
             </div>
             <div>
-              <div class="wa-title">Webora Gemini Pro <span class="ai-tag">v3.0</span></div>
-              <div class="wa-status"><span></span> Neural Live AI</div>
+              <div class="wa-title">Webora AI <span class="ai-tag">v3.5</span></div>
+              <div class="wa-status"><span></span> Online & Ready</div>
             </div>
           </div>
           <button id="wa-close" aria-label="Close">×</button>
@@ -1325,7 +1344,7 @@
           <div class="ai-thinking-indicator">
             <span></span><span></span><span></span>
           </div>
-          <small>Gemini Pro is thinking...</small>
+          <small>Webora AI is typing...</small>
         </div>
 
         <div class="wa-input-area">
@@ -1334,7 +1353,7 @@
         </div>
 
         <div class="wa-powered">
-          ⚡ Powered by <strong>Google Gemini Pro API</strong>
+          ⚡ Powered by <strong>Webora Intelligence</strong>
         </div>
       </div>
     </div>
@@ -1351,7 +1370,6 @@
     font-family: inherit;
   }
 
-  /* POP-IN & CLOUD-BURST FADE-OUT SPEECH BUBBLE */
   #bot-speech-bubble {
     position: absolute;
     bottom: 68px;
@@ -1464,7 +1482,6 @@
     50% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
   }
 
-  /* GEMINI BORDER GLOW WINDOW */
   #webora-ai-window {
     position: absolute;
     right: 0;
@@ -1847,33 +1864,11 @@
   }
 
   @media(max-width: 480px) {
-    #webora-ai {
-      right: 18px;
-      bottom: 18px;
-      top: auto;
-    }
-    #webora-ai-launch {
-      width: 48px;
-      height: 48px;
-    }
-    .bot-avatar-svg {
-      width: 36px;
-      height: 36px;
-    }
-    #bot-speech-bubble {
-      bottom: 58px;
-      font-size: 11px;
-      padding: 6px 12px;
-    }
-    .bubble-arrow {
-      right: 18px;
-    }
-    #webora-ai-window {
-      right: 0;
-      bottom: 60px;
-      width: calc(100vw - 36px);
-      height: 480px;
-    }
+    #webora-ai { right: 18px; bottom: 18px; }
+    #webora-ai-launch { width: 48px; height: 48px; }
+    .bot-avatar-svg { width: 36px; height: 36px; }
+    #bot-speech-bubble { bottom: 58px; font-size: 11px; padding: 6px 12px; }
+    #webora-ai-window { right: 0; bottom: 60px; width: calc(100vw - 36px); height: 480px; }
   }
   </style>
 
@@ -2009,21 +2004,21 @@
         services_title: "ऑनलाइन बिज़नेस के लिए हर ज़रूरी चीज़।",
         services_desc: "सरल, मॉडर्न वेबसाइट्स जो आने वाले ग्राहकों को आकर्षित करती हैं।",
         card1_title: "आधुनिक डिज़ाइन",
-        card1_desc: "प्रीमियम और साफ़-सुथरा डिज़ाइन जो आपके ब्रांड और ग्राहकों के अनुरूप हो।",
+        card1_desc: "प्रीमियम और साफ़-सुथरा डिज़ाइन जो आपके ब्रांड और ग्राहकों के अनुरूप हो。",
         card2_title: "सुपरफास्ट स्पीड",
         card2_desc: "हल्की वेबसाइटें जो हर डिवाइस पर तुरंत खुलती हैं।",
         card3_title: "मोबाइल फर्स्ट",
         card3_desc: "फोन, टैबलेट या कंप्यूटर—आपकी वेबसाइट हर स्क्रीन पर शानदार दिखेगी।",
         work_sub: "हमारा काम",
-        work_title: "देखें आपकी वेबसाइट कैसी दिख सकती है।",
-        work_desc: "विभिन्न प्रकार के बिज़नेस के लिए बनाए गए हमारे डेमो देखें।",
+        work_title: "देखें आपकी वेबसाइट कैसी दिख सकती है。",
+        work_desc: "विभिन्न प्रकार के बिज़नेस के लिए बनाए गए हमारे डेमो देखें。",
         view_demo: "डेमो देखें →",
         demo1_title: "रेस्टोरेंट वेबसाइट",
         demo2_title: "वीडियो एडिटर वेबसाइट",
         demo3_title: "सैलून वेबसाइट",
         demo4_title: "जिम व फिटनेस वेबसाइट",
         process_sub: "प्रक्रिया",
-        process_title: "विचार से लाइव वेबसाइट तक।",
+        process_title: "विचार से लाइव वेबसाइट तक。",
         step1_title: "हमें बताएं",
         step1_desc: "अपने व्यवसाय और ज़रूरतों के बारे में बताएं।",
         step2_title: "हम बनाएंगे",
@@ -2058,12 +2053,12 @@
         plan3_f5: "प्राथमिकता सपोर्ट",
         reviews_sub: "ग्राहकों की राय",
         reviews_title: "स्थानीय ब्रांड्स का भरोसा।",
-        reviews_desc: "Webora के साथ अपनी वेबसाइट लाइव करने वाले बिज़नेस ओनर्स का अनुभव।",
+        reviews_desc: "Webora के साथ अपनी वेबसाइट लाइव करने वाले बिज़नेस ओनर्स का अनुभव。",
         cta_title: "आगे बढ़ने के लिए तैयार हैं?",
-        cta_desc: "आइए ऐसी वेबसाइट बनाएं जिसे आपके ग्राहक याद रखें।",
+        cta_desc: "आइए ऐसी वेबसाइट बनाएं जिसे आपके ग्राहक याद रखें。",
         cta_btn: "प्रोजेक्ट शुरू करें →",
         contact_title: "आइए कुछ बेहतरीन बनाते हैं।",
-        contact_desc: "क्या आपके पास कोई बिज़नेस है जिसके लिए बेहतर वेबसाइट चाहिए? हमसे संपर्क करें।",
+        contact_desc: "क्या आपके पास कोई बिज़नेस है जिसके लिए बेहतर वेबसाइट चाहिए? हमसे संपर्क करें。",
         contact_btn: "संपर्क करें →",
         contact_wa: "व्हाट्सएप करें →",
         footer_tag: "वेबसाइटें जो आपके बिज़नेस को सबसे अलग बनाती हैं।"
@@ -2136,7 +2131,7 @@
     }
   </script>
 
-  <!-- ================= ADVANCED GEMINI PRO AI CHATBOT + TYPEWRITER + AUDIO SOUNDS ================= -->
+  <!-- ================= ADVANCED WEBORA AI ASSISTANT + SPIDER-MAN STALKER ================= -->
   <script>
   (function(){
     const launch = document.getElementById("webora-ai-launch");
@@ -2147,18 +2142,18 @@
     const send = document.getElementById("wa-send");
     const typing = document.getElementById("wa-typing");
     const speechBubble = document.getElementById("bot-speech-bubble");
+    const spideyMascot = document.getElementById("spidey-mascot");
+    const spideyWebLine = document.getElementById("spidey-web-line");
 
-    let chatHistory = []; // Memory for conversation
+    let chatHistory = [];
     let interactionCount = 0;
     let ratingShown = false;
 
-    // Soft Synthesized Sound Effects (No external audio files needed)
+    // Soft Synthesized Sound Effects + Web Shooter Swoosh
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    function playSoftPop(type) {
+    function playSound(type) {
       if (!audioCtx) return;
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.connect(gain);
@@ -2169,15 +2164,21 @@
         osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08);
         gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.08);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.08);
       } else if (type === 'receive') {
         osc.frequency.setValueAtTime(650, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(320, audioCtx.currentTime + 0.12);
         gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.12);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.12);
+      } else if (type === 'webshoot') {
+        // High pitch web shooter zip sound
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(900, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.18);
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.18);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.18);
       }
     }
 
@@ -2192,7 +2193,7 @@
       return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
 
-    // Speech bubble loop
+    // Speech bubble periodic loop
     setInterval(() => {
       if (windowBox.style.display === "flex") return;
       speechBubble.classList.remove("bubble-burst");
@@ -2208,15 +2209,11 @@
     function addMessage(text, type, isHtml = false){
       const wrap = document.createElement("div");
       wrap.className = "wa-message-wrap";
-
       const message = document.createElement("div");
       message.className = "wa-message " + (type === "user" ? "wa-user" : "wa-bot");
       
-      if(isHtml) {
-        message.innerHTML = text;
-      } else {
-        message.textContent = text;
-      }
+      if(isHtml) message.innerHTML = text;
+      else message.textContent = text;
 
       const timeSpan = document.createElement("span");
       timeSpan.className = "wa-time " + (type === "user" ? "wa-user-time" : "wa-bot-time");
@@ -2227,19 +2224,16 @@
       chat.appendChild(wrap);
       chat.scrollTop = chat.scrollHeight;
 
-      if(type === 'user') playSoftPop('send');
-      else playSoftPop('receive');
-
+      if(type === 'user') playSound('send');
+      else playSound('receive');
       return wrap;
     }
 
-    // Typewriter effect for Gemini Pro responses
     function typeWriterEffect(fullText, callback){
       const wrap = document.createElement("div");
       wrap.className = "wa-message-wrap";
       const message = document.createElement("div");
       message.className = "wa-message wa-bot";
-      
       const timeSpan = document.createElement("span");
       timeSpan.className = "wa-time wa-bot-time";
       timeSpan.textContent = getCurrentTimeFormatted();
@@ -2249,7 +2243,7 @@
       chat.appendChild(wrap);
 
       let i = 0;
-      playSoftPop('receive');
+      playSound('receive');
       const timer = setInterval(() => {
         if (i < fullText.length) {
           message.textContent += fullText.charAt(i);
@@ -2262,243 +2256,97 @@
       }, 15);
     }
 
-    // ============ WEBORA SMART REPLY ENGINE ============
-    // Local, rule-based conversation engine. No external API key needed,
-    // so it never breaks and never leaks a key. Picks from several
-    // varied, professional responses per topic so it doesn't repeat
-    // itself like a script.
-
-    const lastUsedIndex = {}; // avoids repeating same line twice in a row per topic
-
-    function pickResponse(topic, list) {
-      let idx = Math.floor(Math.random() * list.length);
-      if (list.length > 1 && lastUsedIndex[topic] === idx) {
-        idx = (idx + 1) % list.length;
-      }
-      lastUsedIndex[topic] = idx;
-      return list[idx];
-    }
-
+    // Knowledge Base Engine
     const knowledgeBase = [
       {
         topic: "greeting",
-        keywords: ["hi","hello","hey","namaste","namaskar","yo ","salaam","hola"],
+        keywords: ["hi","hello","hey","namaste","namaskar","yo ","salaam"],
         responses: [
-          "Hey! 👋 Main Webora Assistant hoon. Business ke liye website chahiye ya bas baat karni hai — dono chalega!",
-          "Namaste! Kaise ho aap? Website, pricing ya kuch aur — jo bhi puchna ho, bataiye.",
-          "Hello hello! Welcome to Webora. Bataiye kis cheez mein help chahiye aaj.",
-          "Hey there 🙂 Achha laga aapse baat karke. Kya chal raha hai — naya business, website upgrade, ya bas curiosity?"
-        ]
-      },
-      {
-        topic: "howAreYou",
-        keywords: ["kaise ho","kese ho","how are you","kya haal","kya chal raha hai","sab badhiya"],
-        responses: [
-          "Main bilkul badhiya hoon, poochne ke liye shukriya! Aap batao, business kaisa chal raha hai?",
-          "Sab theek hai mere taraf se 😄 Aap sunao — koi naya project soch rahe ho?",
-          "Main hamesha ready rehta hoon madad ke liye! Aapka din kaisa ja raha hai?"
+          "Hey! 👋 Main Webora AI assistant hoon. Business ke liye website chahiye ya kuch aur puchna hai?",
+          "Namaste! Kaise ho aap? Website, pricing ya kuch bhi puchna ho, bataiye."
         ]
       },
       {
         topic: "founder",
-        keywords: ["founder","owner","kisne banaya","ashutosh","who made","who created","malik","proprietor","ceo"],
+        keywords: ["founder","owner","ashutosh","malik","ceo"],
         responses: [
-          "Webora ko Ashutosh Singh ne start kiya tha — unka goal hai local businesses ko affordable, professional websites dena jo actually results laayein.",
-          "Ashutosh Singh, Webora ke founder hain. Wo khud design aur strategy dekhte hain taaki website sirf achhi na lage, kaam bhi aaye.",
-          "Founder ka naam Ashutosh Singh hai. Chahen toh unse seedha WhatsApp pe baat kar sakte ho — https://wa.me/917518896121"
-        ]
-      },
-      {
-        topic: "services",
-        keywords: ["service","kya karte ho","what do you do","offer karte","website banao","design karte","kya kya milta"],
-        responses: [
-          "Webora modern, fast aur mobile-friendly websites banata hai — restaurants, salons, gyms, creators aur local shops ke liye. Design, development aur launch, sab kuch hum sambhalte hain.",
-          "Hum full website solutions dete hain: custom design, mobile responsiveness, contact/booking forms, WhatsApp integration aur basic SEO — sab ek hi jagah.",
-          "Simple bolun toh — aap business batao, hum us business ke liye ek professional website bana kar de dete hain jo customers laaye. Services section mein detail mil jayegi."
+          "Webora ko Ashutosh Singh ne start kiya tha — unka goal local businesses ko professional websites dena hai."
         ]
       },
       {
         topic: "pricing",
-        keywords: ["price","cost","kitna","charge","fee","budget","package","plan","kitne paise","rate"],
+        keywords: ["price","cost","kitna","charge","budget","package","rate"],
         responses: [
-          "Pricing project ke size par depend karti hai — Starter, Professional aur Premium, teen plans hain. Pricing section check kariye ya WhatsApp pe apni requirement bataiye, exact quote mil jayega.",
-          "Har business ki zarurat alag hoti hai isliye hum custom quote dete hain. Aap apna business type aur pages ki details WhatsApp pe bhejo, jaldi reply milega.",
-          "Koi fixed generic price nahi hai kyunki har website custom banti hai. Best hoga agar aap direct WhatsApp pe Ashutosh se baat kar lo — 2 minute mein rough estimate mil jayega."
+          "Webora par aapka development investment 100% Zero rehta hai! Hum free hosting use karte hain. Exact quote ke liye WhatsApp par connect karein."
         ]
       },
       {
-        topic: "process",
-        keywords: ["time","kitne din","delivery","kab tak","how long","process kya hai","kaise kaam"],
+        topic: "services",
+        keywords: ["service","kya karte ho","website banao"],
         responses: [
-          "Process simple hai: aap requirement batate ho → hum design karte hain → aap review karte ho → website live ho jaati hai. Zyada tar projects 4–7 din mein ban jaate hain.",
-          "Kaam ka flow hai: brief lena, design banana, aapse approval lena, aur fir launch. Timeline project ki complexity par depend karti hai, lekin usually ek hafte ke andar."
-        ]
-      },
-      {
-        topic: "portfolio",
-        keywords: ["example","demo","portfolio","kaam dikhao","previous work","sample","dekhna hai"],
-        responses: [
-          "Bilkul, 'Our Work' section mein restaurant, salon, gym aur creator jaisi websites ke live demos hain — scroll karke dekh lijiye.",
-          "Homepage pe hi kuch demos diye hain — La Maison (restaurant), Frame Studio (editor), Luna Beauty (salon) aur Forge Fitness (gym). Ek baar zaroor dekhiye."
-        ]
-      },
-      {
-        topic: "contact",
-        keywords: ["contact","number","phone","email","reach","baat karni hai","kaise contact"],
-        responses: [
-          "Aap seedha WhatsApp pe baat kar sakte ho: https://wa.me/917518896121, ya email kar sakte ho hello.weborasites@gmail.com par.",
-          "Sabse fast tarika WhatsApp hai — https://wa.me/917518896121. Email bhi ready hai agar wo prefer karte ho: hello.weborasites@gmail.com"
-        ]
-      },
-      {
-        topic: "whatsapp",
-        keywords: ["whatsapp"],
-        responses: [
-          "Yahan se seedha WhatsApp pe connect ho jaiye: https://wa.me/917518896121",
-          "WhatsApp pe baat karne ke liye ye link use kariye: https://wa.me/917518896121 — team jaldi reply karegi."
-        ]
-      },
-      {
-        topic: "thanks",
-        keywords: ["thanks","thank you","shukriya","dhanyavaad","dhanywaad"],
-        responses: [
-          "Koi baat nahi! 🙂 Aur kuch puchna ho toh main yahin hoon.",
-          "Welcome! Agar aur koi sawaal ho, bejhijhak poochiye.",
-          "Khushi hui help karke. Kuch aur chahiye ho toh bataiye!"
-        ]
-      },
-      {
-        topic: "bye",
-        keywords: ["bye","alvida","see you","milte hain","chalta hoon","tata"],
-        responses: [
-          "Bye! Jab bhi zarurat ho, main yahin hoon. Take care! 👋",
-          "Alvida! Website ka soch rahe ho toh WhatsApp pe zaroor batana."
-        ]
-      },
-      {
-        topic: "compliment",
-        keywords: ["nice","great","awesome","achha hai","badhiya","cool","zabardast","sundar hai","mast"],
-        responses: [
-          "Shukriya! 😊 Yehi toh try karte hain — cheezein simple aur professional rakhna.",
-          "Glad aapko pasand aaya! Aap bhi apne business ke liye aisi hi ek website le sakte ho."
-        ]
-      },
-      {
-        topic: "identity",
-        keywords: ["who are you","tum kaun ho","aap kaun ho","bot ho kya","are you real","insaan ho"],
-        responses: [
-          "Main Webora ka website assistant hoon — yahan aapke sawaalon ka jawab dene, business samajhne aur founder tak connect karwane ke liye hoon.",
-          "Main ek AI assistant hoon jo Webora ki website par baitha hai, taaki aapke sawaal turant solve ho sakein. Complex cheezon ke liye founder Ashutosh Singh khud WhatsApp pe available hain."
-        ]
-      },
-      {
-        topic: "technology",
-        keywords: ["wordpress","shopify","technology","code kaise","kis language","framework"],
-        responses: [
-          "Hum har project ki zarurat ke hisaab se sahi technology choose karte hain — kabhi custom code, kabhi modern frameworks. Focus hamesha speed aur simplicity par rehta hai, chahe backend kuch bhi ho.",
-          "Technology koi bhi ho, hamara focus hota hai fast-loading aur mobile-friendly website dena. Detail chahiye toh Ashutosh se WhatsApp pe discuss kar sakte hain."
-        ]
-      },
-      {
-        topic: "hosting",
-        keywords: ["hosting","domain","server"],
-        responses: [
-          "Hosting aur domain setup mein bhi hum guide karte hain — plan ke hisaab se options WhatsApp pe discuss kar lete hain.",
-          "Domain aur hosting ki zarurat ho toh hum us process mein bhi help karte hain. Details ke liye WhatsApp pe baat kar lijiye."
-        ]
-      },
-      {
-        topic: "maintenance",
-        keywords: ["maintenance","baad mein change","support after","update baad mein"],
-        responses: [
-          "Launch ke baad bhi hum support dete hain — chhote updates aur changes ke liye Premium plan mein priority support included hai.",
-          "Website live hone ke baad bhi agar kuch update karwana ho, WhatsApp pe bata dena — team help kar degi."
-        ]
-      },
-      {
-        topic: "joke",
-        keywords: ["joke","bored","bore ho raha","masti","funny sunao"],
-        responses: [
-          "Haha, ek try karta hoon: Website slow kyun thi? Kyunki usme bhi coffee break chahiye tha ☕😄 Chalo ab serious baat karte hain — kis business ke liye website chahiye?",
-          "Main jokes mein utna acha nahi, website banane mein zyada acha hoon 😄 Batao, kuch business-related help chahiye?"
+          "Hum restaurants, gyms, salons aur creators ke liye fast aur mobile-friendly websites design aur launch karte hain."
         ]
       }
     ];
 
-    const fallbackResponses = [
-      "Achha sawaal hai — is par exact answer dene ke liye best hoga agar aap seedha founder Ashutosh Singh se WhatsApp pe baat kar lein: https://wa.me/917518896121",
-      "Ye specific detail mere paas nahi hai, lekin team turant reply degi — WhatsApp pe message kar dijiye: https://wa.me/917518896121",
-      "Interesting! Iska sahi jawab dene ke liye WhatsApp pe connect karna best rahega taaki aapki exact requirement samajh sakein.",
-      "Hmm, isko thoda aur detail mein samjhaiye, ya seedha WhatsApp pe baat kar lein — https://wa.me/917518896121"
-    ];
-
-    function generateSmartReply(userMessageRaw) {
-      const msg = userMessageRaw.toLowerCase();
-
-      let bestTopic = null;
-      let bestScore = 0;
-
-      knowledgeBase.forEach(entry => {
-        let score = 0;
-        entry.keywords.forEach(k => {
-          if (msg.includes(k)) score++;
-        });
-        if (score > bestScore) {
-          bestScore = score;
-          bestTopic = entry;
+    function generateSmartReply(msg) {
+      msg = msg.toLowerCase();
+      for (let item of knowledgeBase) {
+        for (let kw of item.keywords) {
+          if (msg.includes(kw)) {
+            return item.responses[Math.floor(Math.random() * item.responses.length)];
+          }
         }
-      });
-
-      if (bestTopic) {
-        return pickResponse(bestTopic.topic, bestTopic.responses);
       }
-      return pickResponse("fallback", fallbackResponses);
+      return "Aapke business ke liye perfect website zero investment par banane ke liye aap direct WhatsApp par founder Ashutosh Singh se baat kar sakte hain: https://wa.me/917518896121";
     }
 
-    // Local Smart Reply "engine call" — keeps the same natural typing
-    // delay + typewriter + sound experience, just without any external
-    // API dependency (so it never breaks).
-    async function callGeminiAPI(userMessage) {
+    async function processBotQuery(userMessage) {
       typing.style.display = "flex";
       chat.scrollTop = chat.scrollHeight;
 
-      chatHistory.push({ role: "user", text: userMessage });
-
-      const thinkDelay = 650 + Math.random() * 900; // feels natural, not instant
-
       setTimeout(() => {
         typing.style.display = "none";
-
         const botReply = generateSmartReply(userMessage);
-        chatHistory.push({ role: "bot", text: botReply });
-
         typeWriterEffect(botReply, () => {
           interactionCount++;
           if(interactionCount >= 4 && !ratingShown) {
             setTimeout(showRatingSystem, 1200);
           }
         });
-      }, thinkDelay);
+      }, 700);
     }
 
     launch.addEventListener("click", function(e){
       e.preventDefault();
-      speechBubble.classList.remove("bubble-show");
-      speechBubble.classList.remove("bubble-burst");
-      if(windowBox.style.display === "flex"){
+      speechBubble.classList.remove("bubble-show", "bubble-burst");
+      const isOpen = windowBox.style.display === "flex";
+      
+      if(isOpen){
         windowBox.style.display = "none";
+        spideyMascot.classList.remove("spidey-active");
+        spideyWebLine.classList.remove("web-active");
         return;
       }
+
+      // OPEN CHAT & TRIGGER SPIDER-MAN STALKER SWING + SOUND!
       windowBox.style.display = "flex";
+      playSound('webshoot');
+      spideyWebLine.classList.add("web-active");
+      spideyMascot.classList.add("spidey-active");
 
       if(chatHistory.length === 0) {
         const greeting = getTimeGreeting();
-        typeWriterEffect(`${greeting}! Main Webora Gemini Pro AI assistant hoon. Aaj main aapke business ya website project me kaise help kar sakta hoon?`);
+        typeWriterEffect(`${greeting}! Main Webora AI assistant hoon. Aaj main aapke website project me kaise help kar sakta hoon?`);
       }
       setTimeout(() => input.focus(), 300);
     });
 
-    closeBtn.addEventListener("click", () => windowBox.style.display = "none");
+    closeBtn.addEventListener("click", () => {
+      windowBox.style.display = "none";
+      spideyMascot.classList.remove("spidey-active");
+      spideyWebLine.classList.remove("web-active");
+    });
 
     send.addEventListener("click", handleUserSend);
     input.addEventListener("keydown", (e) => {
@@ -2513,28 +2361,16 @@
       if(!text) return;
       addMessage(text, "user");
       input.value = "";
-      callGeminiAPI(text);
-    }
-
-    function showContactActions(){
-      addMessage(
-        "Connect directly with <strong>Founder Ashutosh Singh & Team</strong>:<br>" +
-        "<div class='wa-contact-buttons'>" +
-        "<a class='wa-whatsapp' href='https://wa.me/917518896121?text=Hi%20Webora%20Team,%20I%20am%20chatting%20via%20your%20website%20AI.' target='_blank'>WhatsApp Us →</a>" +
-        "<a class='wa-email' href='mailto:hello.weborasites@gmail.com'>Email Us</a>" +
-        "</div>", "bot", true
-      );
+      processBotQuery(text);
     }
 
     function showRatingSystem(){
       if(ratingShown) return;
       ratingShown = true;
-
       const ratingBox = document.createElement("div");
       ratingBox.className = "wa-rating-box";
       ratingBox.innerHTML = `
         <div style="font-weight: 700; font-size: 13.5px; color: #fff;">Rate this conversation ⭐</div>
-        <div style="font-size: 11px; color: #8e8e99; margin-top: 3px;">Aapka experience kaisa raha Gemini Pro ke sath?</div>
         <div class="wa-rating-stars">
           <button class="wa-star-btn" data-star="1">⭐</button>
           <button class="wa-star-btn" data-star="2">⭐</button>
@@ -2542,7 +2378,6 @@
           <button class="wa-star-btn" data-star="4">⭐</button>
           <button class="wa-star-btn" data-star="5">⭐</button>
         </div>
-        <div style="font-size: 11px; color: #8276ff; min-height: 16px;">Tap a star to rate</div>
       `;
       chat.appendChild(ratingBox);
       chat.scrollTop = chat.scrollHeight;
@@ -2550,11 +2385,7 @@
       ratingBox.querySelectorAll(".wa-star-btn").forEach(btn => {
         btn.addEventListener("click", function(){
           const stars = this.dataset.star;
-          ratingBox.innerHTML = `
-            <div style="font-size: 24px; margin-bottom: 6px;">🎉</div>
-            <div style="color:#25D366; font-weight:700; font-size:13.5px;">Thank you for ${stars}-Star Rating! ❤️</div>
-            <div style="color:#8e8e99; font-size:11px; margin-top:4px;">Feedback successfully recorded.</div>
-          `;
+          ratingBox.innerHTML = `<div style="color:#25D366; font-weight:700; font-size:13.5px;">Thank you for ${stars}-Star Rating! ❤️</div>`;
           chat.scrollTop = chat.scrollHeight;
         });
       });
